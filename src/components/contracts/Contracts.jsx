@@ -5,7 +5,6 @@ export const Contracts = () => {
 
         <ContractsCard />
         <ContractsCard />
-
         <ContractsCard />
 
     </div>

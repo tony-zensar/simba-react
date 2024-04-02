@@ -1,4 +1,4 @@
-import { Contracts, ContractsCard, ContractTemplates } from ".."
+import { Contracts, Templates } from ".."
 
 export const ContractTabContents = ({ activeTabName }) => {
 
@@ -14,7 +14,7 @@ export const ContractTabContents = ({ activeTabName }) => {
                 return "Shared contract"
 
             case "templates":
-                return <ContractTemplates />
+                return <Templates />
             // case "favTemplates":
             //     return "Fav templates"
             // case "newTemplate":
