@@ -1,0 +1,6 @@
+{
+  "APP_ENV": "development",
+  "API_SERVER": {
+    "USER": "http://127.0.0.1:3333/user/"
+  }
+}

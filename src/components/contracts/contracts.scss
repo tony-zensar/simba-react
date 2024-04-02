@@ -1,0 +1,174 @@
+.contracts {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 20px;
+  row-gap: 20px;
+
+  padding: 20px;
+  background-color: #e0e1dd;
+}
+
+.contract-card {
+  display: flex;
+  height: 125px;
+  border: 2px solid #adb5bd;
+  width: 435px;
+  &__thumbnail {
+    background-color: #ced4da;
+    & img {
+      height: 100%;
+      width: 110px;
+    }
+  }
+  &__info {
+    padding: 8px 8px 8px 18px;
+    background-color: #fff;
+    &-title {
+      font-size: 18px;
+      margin-bottom: 0;
+    }
+    &-subTitle {
+      font-size: 13px;
+      color: gray;
+    }
+    &-description {
+      font-size: 14px;
+      color: gray;
+    }
+  }
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.contract-templates {
+  &-new {
+    position: absolute;
+    right: 20px;
+    top: -50px;
+    padding: 10px 20px;
+    background-color: #fff;
+    border: 2px solid #aeb8fe;
+    outline: none;
+    color: #023e8a;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+  display: flex;
+  &__col {
+    background-color: #fff;
+    padding: 18px;
+    margin-right: 20px;
+    width: 100%;
+
+    &__header {
+      margin-bottom: 16px;
+      display: flex;
+      justify-content: space-between;
+
+      & h4 {
+        font-size: 20px;
+        font-weight: normal;
+        margin: 0;
+      }
+      & h4 + div {
+        & > label {
+          color: gray;
+          margin-right: 12px;
+        }
+        & select {
+          height: 30px;
+          padding: 5px;
+          width: 125px;
+          border: 1px solid gray;
+          font-size: 12px;
+          color: gray;
+        }
+      }
+
+      &-sort {
+      }
+    }
+    &-list {
+      height: 480px;
+      display: flex;
+      flex-direction: column;
+      row-gap: 14px;
+      overflow-y: auto;
+      overflow-x: hidden;
+    }
+    &-preview {
+      height: 400px;
+      overflow-y: auto;
+      overflow-x: hidden;
+      display: flex;
+      flex-direction: column;
+      row-gap: 14px;
+      & > div {
+        margin-right: 10px;
+        & p {
+          margin-left: 5px;
+        }
+        & p + div {
+          border: 1px solid gray;
+          padding: 10px;
+        }
+      }
+    }
+    &-btn {
+      margin-top: 50px;
+      padding: 10px 20px;
+      background-color: #109648;
+      outline: none;
+      border: none;
+      color: #fff;
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+}
+.contract-template-card {
+  // display: flex;
+  // flex-direction: column;
+  // border: 1px solid gray;
+  height: 160px;
+  padding: 12px;
+  margin-right: 10px;
+
+  border: 2px solid #adb5bd;
+  background-color: #e9ecef;
+  width: 435px;
+  &__info {
+    display: flex;
+    justify-content: space-between;
+
+    &-title {
+      font-size: 18px;
+    }
+    &-subTitle {
+      font-size: 14px;
+      color: gray;
+    }
+    &-thumbnail {
+      & img {
+        width: 110px;
+        height: 100%;
+      }
+    }
+  }
+  &__details {
+    margin-top: 12px;
+    display: flex;
+    flex-direction: row;
+
+    color: gray;
+    & p {
+      margin-right: 10px;
+      font-size: 14px;
+    }
+  }
+  &:hover {
+    cursor: pointer;
+  }
+}
