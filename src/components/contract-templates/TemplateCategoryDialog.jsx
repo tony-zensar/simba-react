@@ -18,7 +18,7 @@ const BootstrapDialog = styled(Dialog)(({ theme }) => ({
     },
 }));
 
-export const TemplateCategoryDialog = ({ open, closeHandler, title, showClose, showFooter }) => {
+export const TemplateCategoryDialog = ({ open, closeHandler, templateConfigHandler }) => {
 
 
 
@@ -29,9 +29,10 @@ export const TemplateCategoryDialog = ({ open, closeHandler, title, showClose, s
             aria-labelledby="customized-dialog-title"
             open={open}
             fullWidth
+
         >
 
-            <DialogContent style={{ paddingLeft: "50px" }}>
+            <DialogContent >
                 <div className='template-category'>
                     <h4>Create a template</h4>
                     <div style={{ display: "flex" }}>
@@ -68,14 +69,20 @@ export const TemplateCategoryDialog = ({ open, closeHandler, title, showClose, s
                     </div>
                 </div>
 
+                <div className='template-category-actions'>
+                    <button type='button' onClick={templateConfigHandler}>
+                        Configure Template
+                    </button>
+
+                    <button type='button' onClick={closeHandler}>
+                        Cancel
+                    </button>
+                </div>
+
 
             </DialogContent>
-            {showFooter ?
-                <DialogActions>
-                    <Button autoFocus onClick={closeHandler}>
-                        Save changes
-                    </Button>
-                </DialogActions> : null}
+
+
         </BootstrapDialog>
 
     );

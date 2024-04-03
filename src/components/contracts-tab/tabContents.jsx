@@ -15,6 +15,9 @@ export const ContractTabContents = ({ activeTabName }) => {
 
             case "templates":
                 return <Templates />
+
+            case "templates":
+                return <Templates />
             // case "favTemplates":
             //     return "Fav templates"
             // case "newTemplate":

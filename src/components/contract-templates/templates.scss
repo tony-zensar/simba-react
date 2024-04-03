@@ -130,6 +130,8 @@
 .template-category {
   & > h4 {
     text-align: center;
+    margin: 0;
+    margin-bottom: 20px;
   }
   &-options {
     margin-right: 5px;
@@ -138,8 +140,12 @@
       display: block;
       padding: 10px 10px 10px 15px;
       background-color: #f8f9fa;
+      cursor: pointer;
       &:not(:last-child) {
         margin-bottom: 2px;
+      }
+      &:hover {
+        background-color: wheat;
       }
 
       &.active {
@@ -161,5 +167,22 @@
   &-contract {
     padding: 10px 30px;
     background-color: #a2d6f9;
+  }
+  &-actions {
+    display: flex;
+    justify-content: center;
+    column-gap: 20px;
+    margin-top: 50px;
+    & > button {
+      padding: 10px;
+      color: blue;
+      background: none;
+      border-color: blue;
+      cursor: pointer;
+      &:last-child {
+        border: none;
+        text-decoration: underline;
+      }
+    }
   }
 }
