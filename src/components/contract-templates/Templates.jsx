@@ -68,7 +68,7 @@ export const Templates = ({ }) => {
                                 </div>
                             )}
                     </div>
-                    <button type="button" className="templates__col-btn">Use selected template</button>
+                    <button type="button" className="templates__col-btn" onClick={dialogOpenHandler}>Use selected template</button>
                 </div>
 
             </div>
