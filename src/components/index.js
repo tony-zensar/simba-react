@@ -1,4 +1,7 @@
-export { Templates } from './contract-templates/Templates';
+export { TemplateConfig } from './templates/TemplateConfig';
+
+export { Templates } from './templates/Templates';
+
 export { Contracts } from './contracts/Contracts';
-export { ContractTabContents } from './contracts-tab/tabContents';
-export { ContractTabItems } from './contracts-tab/tabItems';
+export { ContractTabContents } from './tabs/tabContents';
+export { ContractTabItems } from './tabs/tabItems';

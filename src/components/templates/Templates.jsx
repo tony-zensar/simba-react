@@ -6,7 +6,7 @@ import { TemplatesCard } from "./TemplatesCard"
 import { TemplateCategoryDialog } from "./TemplateCategoryDialog"
 import "./templates.scss"
 
-export const Templates = ({ }) => {
+export const Templates = ({ showTemplateConfig }) => {
     const [previewLoading, setPreviewLoading] = useState(false)
     const [open, setOpen] = useState(false);
 
@@ -31,7 +31,7 @@ export const Templates = ({ }) => {
 
     }
     return <>
-        <TemplateCategoryDialog open={open} closeHandler={dialogCloseHandler} />
+        <TemplateCategoryDialog open={open} closeHandler={dialogCloseHandler} showTemplateConfig={showTemplateConfig} />
 
         <div style={{ position: "relative" }}>
             <button type="button" className="templates-new" onClick={dialogOpenHandler} >Create a new template</button>

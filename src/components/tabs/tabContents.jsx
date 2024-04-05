@@ -1,6 +1,6 @@
 import { Contracts, Templates } from ".."
 
-export const ContractTabContents = ({ activeTabName }) => {
+export const ContractTabContents = ({ activeTabName, showTemplateConfig }) => {
 
 
     const getTabContent = (tabName) => {
@@ -14,7 +14,7 @@ export const ContractTabContents = ({ activeTabName }) => {
                 return "Shared contract"
 
             case "templates":
-                return <Templates />
+                return <Templates showTemplateConfig={showTemplateConfig} />
 
             case "templates":
                 return <Templates />
