@@ -1,7 +1,8 @@
 @import 'partials/reset';
-@import 'partials/typography';
-@import 'partials/fonts';
+@import 'partials/variables';
+// @import 'partials/typography';
 
 .App {
   min-height: 100vh;
+  display: flex;
 }

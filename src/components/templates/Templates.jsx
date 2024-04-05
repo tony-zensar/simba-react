@@ -1,9 +1,15 @@
 
+import { InputAdornment, TextField, FormControl, FilledInput, FormHelperText } from '@mui/material/'
+import * as React from 'react'
 import { useState } from "react"
 import { contractTemplates } from "../../data/contractTemplates"
 import { templatesPreview } from "../../data/templatesPreview"
-import { TemplatesCard } from "./TemplatesCard"
 import { TemplateCategoryDialog } from "./TemplateCategoryDialog"
+import { TemplatesCard } from "./TemplatesCard"
+import SearchIcon from '@mui/icons-material/Search';
+import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
+import MenuRoundedIcon from '@mui/icons-material/MenuRounded';
+import GridViewRoundedIcon from '@mui/icons-material/GridViewRounded';
 import "./templates.scss"
 
 export const Templates = ({ showTemplateConfig }) => {
@@ -35,43 +41,74 @@ export const Templates = ({ showTemplateConfig }) => {
 
         <div style={{ position: "relative" }}>
             <button type="button" className="templates-new" onClick={dialogOpenHandler} >Create a new template</button>
-
             <div className="templates">
                 <div className="templates__col">
                     <div className="templates__col-header">
-                        <h4>Org templates</h4>
-                        <div>
-                            <label>Sort By:</label>
-                            <select>
-                                <option>Last modified</option>
-                                <option>Favourite</option>
-                            </select>
+                        <div className='search-input'>
+                            <input type='text' placeholder='Search' value="" onChange={null} />
+                            <span><SearchIcon /></span>
                         </div>
                     </div>
-                    <div className="templates__col-list">
-                        {contractTemplates.map(template => <TemplatesCard {...template} previewHandler={previewHandler} />)}
-                    </div>
-                </div>
-                <div className="templates__col">
-                    <div className="templates__col-header">
-                        <h4>Preview</h4>
+
+                    <div className='redirect-page'>
+                        <KeyboardArrowLeftIcon />
+                        <label>Contracts</label>
                     </div>
 
-                    <div className="templates__col-preview">
-                        {previewLoading ? "Loading" :
-                            templatesPreview.map(({ heading, content }, index) =>
-                                <div key={index}>
-                                    <p>{heading}</p>
+                    <div className='page-header'>
+                        <label>Templates</label>
+                    </div>
+
+                    <div className='template-type-tab'>
+                        <div className='template-type-tab-items'>
+                            <div>
+                                <label>My templates</label>
+                            </div>
+                            <div className='active'>
+                                <label>Company Templates</label>
+                            </div>
+                        </div>
+                        <div style={{ display: "flex" }}>
+                            <div style={{ width: "328px", flexShrink: 0 }}>
+                                <div className='template-view-setting'>
+                                    <div className='template-view-style' >
+                                        <GridViewRoundedIcon /><MenuRoundedIcon />
+                                    </div>
                                     <div>
-                                        {content}
+                                        <select>
+                                            <option>Last modified</option>
+                                            <option>Created On</option>
+                                        </select>
                                     </div>
                                 </div>
-                            )}
-                    </div>
-                    <button type="button" className="templates__col-btn" onClick={dialogOpenHandler}>Use selected template</button>
-                </div>
 
-            </div>
-        </div>
+
+                                <div className="templates-list">
+                                    {contractTemplates.map(template => <TemplatesCard {...template} previewHandler={previewHandler} />)}
+                                </div>
+                            </div>
+                            <div style={{ padding: "48px" }}>
+                                {previewLoading ? "Loading" :
+                                    templatesPreview.map(({ heading, content }, index) =>
+                                        <div key={index}>
+                                            <p>{heading}</p>
+                                            <div>
+                                                {content}
+                                            </div>
+                                        </div>
+                                    )}
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                {/* <div className="templates__col">
+
+
+                    <button type="button" className="templates__col-btn" onClick={dialogOpenHandler}>Use selected template</button>
+                </div> */}
+
+            </div >
+        </div >
     </>
 }

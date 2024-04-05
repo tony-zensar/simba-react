@@ -1,12 +1,89 @@
-// Typography declaration
-
-body {
-  font-size: 16px;
-  line-height: 22px;
+@font-face {
+  font-family: body-xl;
+  src: url('../../assets/fonts/FrutigerLTStd-Roman.otf');
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%; //36px
+  letter-spacing: 0;
 }
 
-p {
-  font-size: 1em;
-  margin: 0 0 6px 0;
-  padding: 0;
+@font-face {
+  font-family: body-xl-emphasis;
+  src: url('../../assets/fonts/FrutigerLTStd-Bold.otf');
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 150%; //36px
+  letter-spacing: 0;
+}
+
+@font-face {
+  font-family: body-large;
+  src: url('../../assets/fonts/FrutigerLTStd-Roman.otf');
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%; //24px;
+  letter-spacing: -0.16px;
+}
+
+@font-face {
+  font-family: body-large-emphasis;
+  src: url('../../assets/fonts/FrutigerLTStd-Bold.otf');
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 150%; //24px;
+  letter-spacing: -0.16px;
+}
+
+@font-face {
+  font-family: body-medium;
+  src: url('../../assets/fonts/FrutigerLTStd-Roman.otf');
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%; //21px;
+  letter-spacing: -0.14px;
+}
+
+@font-face {
+  font-family: body-medium-emphasis;
+  src: url('../../assets/fonts/FrutigerLTStd-Bold.otf');
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 150%; //21px;
+  letter-spacing: -0.14px;
+}
+
+@font-face {
+  font-family: body-small;
+  src: url('../../assets/fonts/FrutigerLTStd-Roman.otf');
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%; //18px;
+  letter-spacing: 0;
+}
+
+@font-face {
+  font-family: body-small-emphasis;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 150%; //18px;
+  letter-spacing: 0;
+  src: url('../../assets/fonts/FrutigerLTStd-Bold.otf');
+}
+
+@font-face {
+  font-family: body-nlf;
+  src: url('../../assets/fonts/FrutigerLTStd-Roman.otf');
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 200%; //32px;
+  letter-spacing: -1%;
 }

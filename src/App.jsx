@@ -4,8 +4,7 @@ import './styles/global.scss';
 
 function App() {
   return (
-    <div className='App'>
-      das
+    <div className="App" >
       <Contracts />
     </div>
   );

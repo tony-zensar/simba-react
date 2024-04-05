@@ -5,7 +5,7 @@ export const Contracts = () => {
     const [activeTabName, setActiveTabName] = useState("myContracts");
     const [showTemplateConfig, setShowTemplateConfig] = useState(false)
 
-    return <div style={{ padding: "40px", display: "flex", background: "#e0e1dd" }}>
+    return <div style={{ display: "flex" }}>
         {!showTemplateConfig ?
             <>
                 <ContractTabItems tabChangeHandler={(tab) => setActiveTabName(tab)} activeTabName={activeTabName} />
