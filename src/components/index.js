@@ -1,3 +1,5 @@
+export { NameInput } from './name-input/NameInput';
+
 export { CustomRadio } from './radio/CustomRadio';
 
 export { Button } from './button/Button';

@@ -5,3 +5,4 @@ export { ReactComponent as GridIcon } from './icons/Grid.svg';
 export { ReactComponent as LeftArrowIcon } from './icons/LeftArrow.svg';
 export { ReactComponent as MenuIcon } from './icons/Menu.svg';
 export { ReactComponent as ContractIcon } from './icons/contract.svg';
+export { ReactComponent as EditIcon } from './icons/edit.svg';

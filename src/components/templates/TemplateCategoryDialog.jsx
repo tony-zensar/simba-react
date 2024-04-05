@@ -12,7 +12,7 @@ export const TemplateCategoryDialog = ({ open, closeHandler, showConfigHandler }
             onClose={closeHandler}
             aria-labelledby="customized-dialog-title"
             open={open}
-            maxWidth="694px"
+            maxWidth="684px"
             style={{ padding: 0 }}
         >
             <DialogContent style={{ padding: 0 }} >
@@ -26,7 +26,7 @@ export const TemplateCategoryDialog = ({ open, closeHandler, showConfigHandler }
 
 
                         </div>
-                        <div className='template-category-contract' >
+                        <div className='template-category-contract'>
                             <div style={{ display: "flex", flexDirection: "column", columnGap: "4px", marginBottom: "24px" }}>
                                 <h4>Contractor</h4>
                                 <CustomRadio name="contractor" value="mainContractor" label="Main contractor" />

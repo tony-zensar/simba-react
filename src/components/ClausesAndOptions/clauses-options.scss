@@ -1,0 +1,65 @@
+@import '../../styles/global.scss';
+@import '../../styles/partials/typography';
+
+.template-option-groups {
+  display: flex;
+  width: 211px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 12px;
+}
+.template-options {
+  width: 100%;
+}
+.template-options p {
+  display: flex;
+  padding: 8px 24px 8px 8px;
+  align-items: center;
+  align-self: stretch;
+  background: $neutralSurface;
+  color: $neutralDefault;
+
+  /* Body/Medium (default) */
+  // font-family: "Frutiger LT Std";
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%; /* 21px */
+  letter-spacing: -0.14px;
+  margin-bottom: 4px;
+}
+
+.template-options.level-1 > p {
+  border-top: 2px solid $neutralBorder;
+  background-color: $white;
+  color: $neutralDefault;
+  font-weight: 400;
+}
+.template-options.level-1 > p.active {
+  border-top: 2px solid $neutralEmphasis;
+  background-color: $white;
+  color: $neutralEmphasis;
+  font-weight: 700;
+}
+
+.template-options.level-2 > p.active {
+  background: $neutralEmphasis;
+  color: $white;
+}
+
+.template-options.level-3 > p {
+  background-color: $white;
+  border-left: 2px solid $neutralBorder;
+}
+
+.template-options.level-3 > p.active {
+  font-weight: 700;
+  border-left: 2px solid $neutralEmphasis;
+  color: $neutralEmphasis;
+  background-color: $white;
+}
+
+.divider {
+  border-top: 2px solid $neutralBorder;
+}

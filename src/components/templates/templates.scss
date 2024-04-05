@@ -231,3 +231,15 @@
   letter-spacing: -0.14px;
   margin-bottom: 24px;
 }
+
+.config-container {
+}
+.config-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 46px;
+}
+.config-actions {
+  display: flex;
+  gap: 8px;
+}

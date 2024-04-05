@@ -1,0 +1,40 @@
+@import '../../styles/global.scss';
+@import '../../styles/partials/typography';
+
+.name-input {
+  display: flex;
+  align-items: center;
+  row-gap: 16px;
+}
+
+.name-input-field,
+.name-input-text {
+  width: 191px;
+  color: $neutralSubtle;
+  // font-family: "Frutiger LT Std";
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 150%;
+  margin-right: 16px;
+}
+
+.name-input-field {
+  outline: none;
+  border: none;
+  border-bottom: 1px solid $primaryDefault;
+}
+
+.name-input-icon {
+  display: flex;
+  height: 24px;
+  padding: 4px;
+  align-items: center;
+  border-radius: 4px;
+  background: $neutralSurface;
+  cursor: pointer;
+  svg {
+    height: 20px;
+    width: 20px;
+  }
+}
