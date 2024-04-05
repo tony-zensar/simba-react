@@ -2,12 +2,11 @@ export const contractTemplates = [
   {
     templateId: 1,
     title: 'Template 1',
-    description:
-      "A short summary of this template   , it's purpose, when it is used",
+    description: "A short summary of this template   , it's purpose, when...",
     author: 'Jane Doe',
     createdOn: '6 Jun 2021',
     lastModified: '1 Apr 2025',
-    isFavourite: true,
+    isBookmarked: true,
     thumbnail: '',
   },
   {
@@ -18,7 +17,7 @@ export const contractTemplates = [
     author: 'Jane Doe',
     createdOn: '6 Jun 2021',
     lastModified: '1 Apr 2025',
-    isFavourite: true,
+    isBookmarked: false,
     thumbnail: '',
   },
   {
@@ -29,7 +28,7 @@ export const contractTemplates = [
     author: 'Jane Doe',
     createdOn: '6 Jun 2021',
     lastModified: '1 Apr 2025',
-    isFavourite: true,
+    isBookmarked: false,
     thumbnail: '',
   },
   {
@@ -40,7 +39,7 @@ export const contractTemplates = [
     author: 'Jane Doe',
     createdOn: '6 Jun 2021',
     lastModified: '1 Apr 2025',
-    isFavourite: true,
+    isBookmarked: true,
     thumbnail: '',
   },
   {
@@ -51,7 +50,7 @@ export const contractTemplates = [
     author: 'Jane Doe',
     createdOn: '6 Jun 2021',
     lastModified: '1 Apr 2025',
-    isFavourite: true,
+    isBookmarked: false,
     thumbnail: '',
   },
 ];

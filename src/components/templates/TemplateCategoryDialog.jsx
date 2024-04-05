@@ -1,35 +1,19 @@
 import Dialog from '@mui/material/Dialog';
 import DialogContent from '@mui/material/DialogContent';
-import { styled } from '@mui/material/styles';
-import * as React from 'react';
-
-const BootstrapDialog = styled(Dialog)(({ theme }) => ({
-    '& .MuiDialogContent-root': {
-        padding: theme.spacing(2),
-    },
-    '& .MuiDialogActions-root': {
-        padding: theme.spacing(1),
-    },
-}));
 
 export const TemplateCategoryDialog = ({ open, closeHandler, showTemplateConfig }) => {
-
-
-
     return (
-
-        <BootstrapDialog
+        <Dialog
             onClose={closeHandler}
             aria-labelledby="customized-dialog-title"
             open={open}
-            fullWidth
-
+            maxWidth="694px"
+            style={{ padding: 0 }}
         >
-
-            <DialogContent >
+            <DialogContent style={{ padding: 0 }} >
                 <div className='template-category'>
-                    <h4>Create a template</h4>
-                    <div style={{ display: "flex" }}>
+                    <h4 className='template-category-heading'>Create a Template</h4>
+                    <div className='template-category-body'>
                         <div className='template-category-options'>
                             <p className='active'>Facilities Management</p>
                             <p>Term Service</p>
@@ -41,43 +25,44 @@ export const TemplateCategoryDialog = ({ open, closeHandler, showTemplateConfig 
 
                         </div>
                         <div className='template-category-contract' >
-                            <table>
-                                <th>Contractor</th>
-                                <th>Contract form</th>
+                            <div style={{ display: "flex", flexDirection: "column", columnGap: "4px", marginBottom: "24px" }}>
+                                <h4>Contractor</h4>
+                                <div className='custom-radio'>
+                                    <input type='radio' name="contractor" value="mainContractor" id="mainContractor" />
+                                    <label for="mainContractor">Main contractor</label>
+                                </div>
 
-                                <tbody>
-                                    <tr>
-                                        <td> <label><input type='radio' name="contractor" value="mainContractor" />Main contractor</label> </td>
-                                        <td> <label><input type='radio' name="contractForm" value="longForm" />Long form</label> </td>
+                                <div className='custom-radio'>
+                                    <input type='radio' name="contractor" value="subContractor" id="subContractor" />
+                                    <label for="subContractor">Sub contractor</label>
+                                </div>
+                            </div>
+                            <div>
+                                <h4>Contract Form</h4>
+                                <div className='custom-radio'>
+                                    <input type='radio' name="contractForm" value="longForm" id="longForm" />
+                                    <label for="longForm">Long form</label>
+                                </div>
 
-                                    </tr>
-                                    <tr>
-                                        <td> <label><input type='radio' name="contractor" value="subContractor" />Sub contractor</label> </td>
-                                        <td> <label><input type='radio' name="contractForm" value="shortForm" />Short form</label> </td>
-
-                                    </tr>
-
-                                </tbody>
-                            </table>
-                        </div>
+                                <div className='custom-radio'>
+                                    <input type='radio' name="contractForm" value="shortForm" id="shortForm" />
+                                    <label for="shortForm">Short form</label>
+                                </div>
+                            </div>
+                        </div >
+                    </div>
+                    <div className='template-category-actions'>
+                        <button type='button' className='primaryButton' onClick={() => showTemplateConfig(true)}>
+                            Configure Contract
+                        </button>
+                        <button type='button' className='secondaryButton' onClick={closeHandler}>
+                            Cancel
+                        </button>
                     </div>
                 </div>
 
-                <div className='template-category-actions'>
-                    <button type='button' onClick={() => showTemplateConfig(true)}>
-                        Configure Template
-                    </button>
-
-                    <button type='button' onClick={closeHandler}>
-                        Cancel
-                    </button>
-                </div>
-
-
-            </DialogContent>
-
-
-        </BootstrapDialog>
+            </DialogContent >
+        </Dialog >
 
     );
 }

@@ -14,12 +14,13 @@
     color: $white;
     padding: 12px;
     border-radius: 4px;
+    margin-bottom: 8px;
     background: rgba(0, 14, 26, 0.2);
   }
 
   &__title {
-    padding: 12px;
-    gap: 12px;
+    padding: 8px 12px;
+    margin-bottom: 8px;
     color: $primarySurface;
     // font-family: body-medium;
     font-weight: 400;
