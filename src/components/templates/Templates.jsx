@@ -57,6 +57,8 @@ export const Templates = ({ showTemplateConfig }) => {
 
                     <div className='page-header'>
                         <label>Templates</label>
+                        <button type="button" onClick={dialogOpenHandler}>Create a contract</button>
+
                     </div>
 
                     <div className='template-type-tab'>
@@ -102,11 +104,7 @@ export const Templates = ({ showTemplateConfig }) => {
                         </div>
                     </div>
                 </div>
-                {/* <div className="templates__col">
 
-
-                    <button type="button" className="templates__col-btn" onClick={dialogOpenHandler}>Use selected template</button>
-                </div> */}
 
             </div >
         </div >
