@@ -1,96 +1,30 @@
 @import '../../styles/global.scss';
 @import '../../styles/partials/typography';
 .templates {
-  .templates-list {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    row-gap: 14px;
-    // overflow-y: auto;
-    overflow-x: hidden;
-  }
-  &-new {
-    position: absolute;
-    right: 20px;
-    top: -50px;
-    padding: 10px 20px;
-    background-color: #fff;
-    border: 2px solid #aeb8fe;
-    outline: none;
-    color: #023e8a;
-    border-radius: 3px;
-    cursor: pointer;
-  }
   display: flex;
-  &__col {
-    background-color: #fff;
-    margin-right: 20px;
-    width: 100%;
-
-    &-header {
-      margin-bottom: 16px;
-      display: flex;
-      justify-content: space-between;
-
-      & h4 {
-        font-size: 20px;
-        font-weight: normal;
-        margin: 0;
-      }
-      & h4 + div {
-        & > label {
-          color: gray;
-          margin-right: 12px;
-        }
-        & select {
-          height: 30px;
-          padding: 5px;
-          width: 125px;
-          border: 1px solid gray;
-          font-size: 12px;
-          color: gray;
-        }
-      }
-    }
-    &-list {
-      height: 480px;
-      display: flex;
-      flex-direction: column;
-      row-gap: 14px;
-      overflow-y: auto;
-      overflow-x: hidden;
-    }
-    &-preview {
-      height: 400px;
-      overflow-y: auto;
-      overflow-x: hidden;
-      display: flex;
-      flex-direction: column;
-      row-gap: 14px;
-      & > div {
-        margin-right: 10px;
-        & p {
-          margin-left: 5px;
-        }
-        & p + div {
-          border: 1px solid gray;
-          padding: 10px;
-        }
-      }
-    }
-    &-btn {
-      margin-top: 50px;
-      padding: 10px 20px;
-      background-color: #109648;
-      outline: none;
-      border: none;
-      color: #fff;
-      &:hover {
-        cursor: pointer;
-      }
-    }
-  }
+  flex-direction: column;
+  position: relative;
 }
+
+.template-header {
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 150%;
+  margin-bottom: 25px;
+  color: $neutralEmphasis;
+  display: flex;
+  justify-content: space-between;
+}
+
+.templates-list {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  row-gap: 14px;
+  // overflow-y: auto;
+  overflow-x: hidden;
+}
+
 .templates-card {
   display: flex;
   flex-direction: column;
@@ -218,123 +152,6 @@
   }
 }
 
-.search-input {
-  margin-bottom: 25px;
-  input[type='text'] {
-    padding: 8px;
-    padding-left: 36px;
-    width: 330px;
-    border-radius: 8px;
-    border: none;
-    background-color: $neutralSurface;
-    color: $neutralDefault;
-    ::placeholder {
-      color: red;
-    }
-    &:active,
-    &:focus {
-      border: none;
-      outline: none;
-    }
-  }
-  & span {
-    position: absolute;
-    left: 0;
-    margin: 8px;
-    height: 20px;
-    width: 20px;
-    & svg {
-      height: 100%;
-      width: 100%;
-    }
-  }
-}
-
-.redirect-page {
-  display: flex;
-  align-items: center;
-  color: $neutralEmphasis;
-  column-gap: 4px;
-  margin-bottom: 24px;
-  & label {
-    font-size: 12px;
-    font-weight: 400;
-    line-height: 150%;
-  }
-  & > span {
-    display: inline-block;
-    height: 20px;
-    width: 20px;
-    & > svg {
-      height: 100%;
-      width: 100%;
-    }
-  }
-}
-
-.page-header {
-  font-size: 24px;
-  font-weight: 700;
-  line-height: 150%;
-  margin-bottom: 25px;
-  color: $neutralEmphasis;
-  display: flex;
-  justify-content: space-between;
-  & button {
-    padding: 0 16px;
-    display: inline-flex;
-    height: 48px;
-    padding: 0px 16px;
-    justify-content: center;
-    align-items: center;
-    gap: 12px;
-    flex-shrink: 0;
-    border-radius: 4px;
-    background: $primaryDefault;
-    border: none;
-
-    color: $white;
-    // font-family: 'Frutiger LT Std';
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 150%; /* 21px */
-    letter-spacing: -0.14px;
-  }
-}
-
-.template-type-tab {
-  position: relative;
-  &-items {
-    display: flex;
-    margin-bottom: 24px;
-    border-bottom: 2px solid $neutralBorder;
-
-    & > div {
-      padding: 4px 24px 8px 0;
-      color: $neutralDefault;
-      font-size: 14px;
-      font-style: normal;
-      font-weight: 400;
-      line-height: 150%;
-      letter-spacing: -0.14px;
-      & * {
-        cursor: pointer;
-      }
-
-      &.active {
-        color: $neutralEmphasis;
-        font-size: 14px;
-        font-style: normal;
-        font-weight: 700;
-        line-height: 150%;
-        letter-spacing: -0.14px;
-        border-bottom: 4px solid $secondaryDefault;
-      }
-    }
-  }
-}
-
 .template-view-setting {
   display: flex;
   justify-content: space-between;
@@ -413,102 +230,4 @@
   line-height: 150%; /* 21px */
   letter-spacing: -0.14px;
   margin-bottom: 24px;
-}
-
-input[type='radio'] {
-  /* Add if not using autoprefixer */
-  -webkit-appearance: none;
-  /* Remove most all native input styles */
-  appearance: none;
-  /* For iOS < 15 */
-  background-color: var(--form-background);
-  /* Not removed via appearance */
-  margin: 0;
-
-  font: inherit;
-  color: currentColor;
-  width: 24px;
-  height: 24px;
-  border: 2px solid $neutralEmphasis;
-  border-radius: 50%;
-
-  display: grid;
-  place-content: center;
-}
-
-.custom-radio {
-  display: flex;
-  align-items: center;
-  column-gap: 8px;
-  padding: 8px;
-  color: $neutralEmphasis;
-  /* Body/Medium (default) */
-  // font-family: 'Frutiger LT Std';
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 150%;
-
-  input[type='radio']::before {
-    content: '';
-    width: 16px;
-    height: 16px;
-    border-radius: 50%;
-    transform: scale(0);
-    transition: 120ms transform ease-in-out;
-    background-color: $secondaryDefault;
-  }
-
-  [type='radio']:checked + label {
-    color: $neutralEmphasis;
-    // font-family: 'Frutiger LT Std';
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 150%;
-    letter-spacing: -0.14px;
-  }
-  input[type='radio']:checked::before {
-    transform: scale(1);
-  }
-}
-
-.primaryButton {
-  display: flex;
-  height: 48px;
-  padding: 0px 16px;
-  justify-content: center;
-  align-items: center;
-  gap: 12px;
-  border-radius: 4px;
-  background: $primaryDefault;
-  color: $white;
-  // font-family: "Frutiger LT Std";
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: 150%; /* 21px */
-  letter-spacing: -0.14px;
-  outline: none;
-  border: none;
-}
-
-.secondaryButton {
-  display: flex;
-  height: 48px;
-  padding: 0px 16px;
-  justify-content: center;
-  align-items: center;
-  gap: 12px;
-  border-radius: 4px;
-  border: 1px solid $primaryDefault;
-  background: $white;
-  color: $primaryDefault;
-  /* Body/Medium Emphasis */
-  // font-family: "Frutiger LT Std";
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: 150%; /* 21px */
-  letter-spacing: -0.14px;
 }

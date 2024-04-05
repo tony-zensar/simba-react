@@ -1,4 +1,4 @@
-export const contractTabItems = [
+export const navItems = [
   {
     title: 'My contracts',
     component: 'myContracts',

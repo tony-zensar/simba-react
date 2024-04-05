@@ -4,9 +4,7 @@ import { useState } from 'react';
 export const TemplateConfig = ({ closeHandler }) => {
     const [open, setOpen] = useState(true);
 
-    const handleClick = () => {
-        setOpen(!open);
-    };
+
     return <div>
         <button onClick={closeHandler}>Go Back</button>
         <List

@@ -1,0 +1,37 @@
+@import '../../styles/global.scss';
+@import '../../styles/partials/typography';
+
+.nav-items {
+  width: 236px;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  background-color: $primaryDefault;
+  padding: 24px;
+}
+.nav-main {
+  font-family: body-xl;
+  color: $white;
+  padding: 12px;
+  border-radius: 4px;
+  margin-bottom: 8px;
+  background: rgba(0, 14, 26, 0.2);
+}
+
+.nav-title {
+  padding: 8px 12px;
+  margin-bottom: 8px;
+  color: $primarySurface;
+  // font-family: body-medium;
+  font-weight: 400;
+  font-size: 14px;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.nav-title-active {
+  font-family: body-medium-emphasis;
+  color: $white;
+}

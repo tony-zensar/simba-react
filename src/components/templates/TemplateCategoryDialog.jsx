@@ -1,7 +1,12 @@
 import Dialog from '@mui/material/Dialog';
 import DialogContent from '@mui/material/DialogContent';
+import { useState } from 'react';
+import { templateCategories } from '../../data/templateCategories';
+import { Button } from '../button/Button';
+import { CustomRadio } from '../radio/CustomRadio';
 
-export const TemplateCategoryDialog = ({ open, closeHandler, showTemplateConfig }) => {
+export const TemplateCategoryDialog = ({ open, closeHandler, showConfigHandler }) => {
+    const [selectedIndex, setCategoryIndex] = useState(-1)
     return (
         <Dialog
             onClose={closeHandler}
@@ -15,49 +20,28 @@ export const TemplateCategoryDialog = ({ open, closeHandler, showTemplateConfig 
                     <h4 className='template-category-heading'>Create a Template</h4>
                     <div className='template-category-body'>
                         <div className='template-category-options'>
-                            <p className='active'>Facilities Management</p>
-                            <p>Term Service</p>
-                            <p>Supply</p>
-                            <p>Engineering and Construction</p>
-                            <p>Design Build and Operate</p>
-                            <p>Alliance</p>
-                            <p>Framework</p>
+                            {templateCategories.map((category, index) => {
+                                return <p className={`${selectedIndex === index ? 'active' : ""}`} key={category} onClick={() => setCategoryIndex(index)}>{category}</p>
+                            })}
+
 
                         </div>
                         <div className='template-category-contract' >
                             <div style={{ display: "flex", flexDirection: "column", columnGap: "4px", marginBottom: "24px" }}>
                                 <h4>Contractor</h4>
-                                <div className='custom-radio'>
-                                    <input type='radio' name="contractor" value="mainContractor" id="mainContractor" />
-                                    <label for="mainContractor">Main contractor</label>
-                                </div>
-
-                                <div className='custom-radio'>
-                                    <input type='radio' name="contractor" value="subContractor" id="subContractor" />
-                                    <label for="subContractor">Sub contractor</label>
-                                </div>
+                                <CustomRadio name="contractor" value="mainContractor" label="Main contractor" />
+                                <CustomRadio name="contractor" value="subContractor" label="Sub contractor" />
                             </div>
                             <div>
                                 <h4>Contract Form</h4>
-                                <div className='custom-radio'>
-                                    <input type='radio' name="contractForm" value="longForm" id="longForm" />
-                                    <label for="longForm">Long form</label>
-                                </div>
-
-                                <div className='custom-radio'>
-                                    <input type='radio' name="contractForm" value="shortForm" id="shortForm" />
-                                    <label for="shortForm">Short form</label>
-                                </div>
+                                <CustomRadio name="contractForm" value="longForm" label="Long form" />
+                                <CustomRadio name="contractForm" value="shortForm" label="Short form" />
                             </div>
                         </div >
                     </div>
                     <div className='template-category-actions'>
-                        <button type='button' className='primaryButton' onClick={() => showTemplateConfig(true)}>
-                            Configure Contract
-                        </button>
-                        <button type='button' className='secondaryButton' onClick={closeHandler}>
-                            Cancel
-                        </button>
+                        <Button onClickHandler={() => showConfigHandler(true)} label="Configure Contract" />
+                        <Button onClickHandler={closeHandler} variant='secondary' label="Cancel" />
                     </div>
                 </div>
 

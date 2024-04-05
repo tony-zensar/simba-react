@@ -1,0 +1,65 @@
+@import '../../styles/global.scss';
+@import '../../styles/partials/typography';
+
+.search-input {
+  margin-bottom: 25px;
+  position: relative;
+  input[type='text'] {
+    padding: 8px;
+    padding-left: 36px;
+    width: 330px;
+    border-radius: 8px;
+    border: none;
+    background-color: $neutralSurface;
+    color: $neutralDefault;
+    ::placeholder {
+      color: red;
+    }
+    &:active,
+    &:focus {
+      border: none;
+      outline: none;
+    }
+  }
+  & span {
+    position: absolute;
+    left: 0;
+    margin: 8px;
+    height: 20px;
+    width: 20px;
+    & svg {
+      height: 100%;
+      width: 100%;
+    }
+  }
+}
+
+.redirect-page {
+  display: flex;
+  align-items: center;
+  column-gap: 4px;
+  margin-bottom: 24px;
+  & label {
+    color: $neutralEmphasis;
+    // font-family: "Frutiger LT Std";
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%;
+  }
+  & > span {
+    display: inline-block;
+    height: 20px;
+    width: 20px;
+    & > svg {
+      height: 100%;
+      width: 100%;
+    }
+  }
+}
+
+.page-body {
+  position: relative;
+  width: 100%;
+  padding: 24px;
+}
