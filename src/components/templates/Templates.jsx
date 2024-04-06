@@ -71,7 +71,17 @@ export const Templates = () => {
                                     {contractTemplates.map(template => <TemplatesCard {...template} previewHandler={previewHandler} />)}
                                 </div>
                             </div>
-                            <PreviewPane previewLoading={previewLoading} data={templatesPreview} />
+                            <PreviewPane>
+                                {previewLoading ? "Loading" :
+                                    templatesPreview.map(({ type, title, content }, index) =>
+                                        <div key={index}>
+                                            <p className={`${type === "heading" ? 'template-preview-heading' : type === 'subheading' ? "template-preview-subheading" : "template-preview-description"}`}>{title}</p>
+                                            <div className='template-preview-content'>
+                                                {content}
+                                            </div>
+                                        </div>
+                                    )}
+                            </PreviewPane>
                         </div>
                     </TabContent>
                 </Tabs>

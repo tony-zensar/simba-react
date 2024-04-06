@@ -1,0 +1,31 @@
+@import '../../styles/global.scss';
+@import '../../styles/partials/typography';
+
+.clauses-text {
+  // position: relative;
+  color: $neutralDefault;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 200%; /* 32px */
+  letter-spacing: -0.16px;
+  padding-left: 5px;
+  position: relative;
+
+  &:hover {
+    // border-left: 1px solid $neutralDefault;
+  }
+}
+.clause-selected {
+  border-left: 1px solid $neutralDefault;
+}
+
+.clause-toolbar {
+  position: absolute;
+
+  display: flex;
+  justify-content: flex-end;
+  gap: 5px;
+  top: -25px;
+  right: 0;
+}
