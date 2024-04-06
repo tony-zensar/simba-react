@@ -18,7 +18,7 @@ export const TemplateConfig = ({ closeHandler }) => {
                 </div>
             </div>
             <div>
-                <ClausesAndOptions />
+                <ClausesAndOptions template={coreTemplate} />
             </div>
         </div>
 
