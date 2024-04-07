@@ -1,4 +1,5 @@
 @import 'partials/reset';
+@import 'partials/mixins';
 @import 'partials/variables';
 @import 'partials/typography';
 
@@ -20,4 +21,8 @@ h5,
 h6,
 label {
   margin: 0;
+}
+
+html, body {
+  @include fonts();
 }

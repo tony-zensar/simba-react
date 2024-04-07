@@ -60,7 +60,7 @@ export const Templates = () => {
                     <TabItems items={["My Templates", "Company Templates"]} onChangeHandler={tabChangeHandler} activeTab={activeTab} />
                     <TabContent>
                         <div style={{ display: "flex", gap: "24px" }}>
-                            <div style={{ width: "328px", flexShrink: 0 }}>
+                            <div style={{ width: "333px", flexShrink: 0 }}>
                                 <SortHeader />
                                 <div className="templates-list">
                                     {contractTemplates.map(template => <TemplatesCard {...template} previewHandler={previewHandler} />)}
@@ -68,14 +68,20 @@ export const Templates = () => {
                             </div>
                             <PreviewPane>
                                 {previewLoading ? "Loading" :
-                                    templatesPreview.map(({ type, title, content }, index) =>
-                                        <div key={index}>
-                                            <p className={`${type === "heading" ? 'template-preview-heading' : type === 'subheading' ? "template-preview-subheading" : "template-preview-description"}`}>{title}</p>
-                                            <div className='template-preview-content'>
-                                                {content}
-                                            </div>
+                                    templatesPreview.map(({ type, title, content }, index) => {
+                                        const customClassName = type === "heading" ? 'template-preview-heading' : "template-preview-subheading";
+                                        const updatedCustomClassName = type === "description" ? "template-preview-description" : customClassName
+                                        return <div key={index}>
+                                        <p className={updatedCustomClassName}>{title}</p>
+                                        {content.map((text, textIndex) => {
+                                            return (
+                                                <div key={textIndex} className='template-preview-content'>
+                                                    {text}
+                                                </div>
+                                            )
+                                        })}
                                         </div>
-                                    )}
+                                    })}
                             </PreviewPane>
                         </div>
                     </TabContent>
