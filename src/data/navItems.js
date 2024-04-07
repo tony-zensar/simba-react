@@ -51,5 +51,20 @@ export const NAV_ITEMS = [
         id: "templates"
       },
     ]
+  },
+  {
+    title: "Training",
+    id: "training",
+    icon: "training"
+  },
+  {
+    title: "Workflow",
+    id: "workflow",
+    icon: "workflow"
+  },
+  {
+    title: "Guidance",
+    id: "guidance",
+    icon: "guidance"
   }
 ];

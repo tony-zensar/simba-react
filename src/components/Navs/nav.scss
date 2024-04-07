@@ -12,10 +12,20 @@
 
   &-list {
     list-style: none;
+    margin: 16px 0;
 
     &-cont{
       margin: 0;
       padding: 0;
+
+      &-submenu {
+        margin-top: 16px;
+      }
+    }
+
+    &-submenu {
+      margin: 8px 0;
+      list-style: none;
     }
   }
 
@@ -23,14 +33,36 @@
     text-decoration: none;
     color: $white;
     display: flex;
+    align-items: center;
     padding: 12px;
     font-size: 16px;
     letter-spacing: -0.14px;
+    border-radius: 4px;
 
     @include fonts(bold);
 
     &-active{
       background: $sideLinkActive;
+    }
+
+    &-text{
+      margin-top: 6px;
+    }
+
+    &-submenu{
+      text-decoration: none;
+      color: $primarySurface;
+      display: flex;
+      padding: 12px;
+      font-size: 16px;
+      letter-spacing: -0.14px;
+  
+      @include fonts();
+      font-weight: normal;
+  
+      &-active{
+        color: $white;
+      }
     }
   }
 

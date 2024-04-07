@@ -262,17 +262,13 @@
 @mixin fonts($font: regular) {
   @if $font == regular {
     font-family: 'FrutigerLTStd-Roman', Arial, Helvetica, sans-serif;
-  } @else if $font == medium {
-    font-family: 'FrutigerLTStd-Roman', Arial, Helvetica, sans-serif;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 150%; /* 21px */
   } @else if $font == bold {
-    font-family: 'FrutigerLTStd-Roman', Arial, Helvetica, sans-serif;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 150%; /* 21px */
-  } @else if $font == light {
-    font-family: 'FrutigerLTStd-Roman', Arial, Helvetica, sans-serif;
-  }
+    font-family: 'FrutigerLTStd-Bold', Arial, Helvetica, sans-serif;
+  } @else if $font == xlbold {
+    font-family: 'FrutigerLTStd-Black', Arial, Helvetica, sans-serif;
+  } @else if $font == Cn {
+    font-family: 'FrutigerLTStd-Cn', Arial, Helvetica, sans-serif;
+  } @else if $font == lightcn {
+    font-family: 'FrutigerLTStd-LightCn', Arial, Helvetica, sans-serif;
+  } 
 }
