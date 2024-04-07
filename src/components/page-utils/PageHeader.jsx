@@ -4,13 +4,15 @@ import "./pages.scss"
 export const PageHeader = () => {
     return <>
         <div className='search-input'>
-            <input type='text' placeholder='Search' value="" onChange={null} />
-            <span><SearchIcon /></span>
+            <div className='search-input-cont'>
+                <input type='text' placeholder='Search' value="" onChange={null} />
+                <span className="search-icon"><SearchIcon /></span>
+            </div>
         </div>
 
         <div className='redirect-page'>
-            <LeftArrowIcon />
-            <label>Contracts</label>
+            <span className="left-icon"><LeftArrowIcon /></span>
+            <label className="">Contracts</label>
         </div>
 
     </>

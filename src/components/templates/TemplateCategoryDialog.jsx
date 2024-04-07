@@ -21,18 +21,16 @@ export const TemplateCategoryDialog = ({ open, closeHandler, showConfigHandler }
                     <div className='template-category-body'>
                         <div className='template-category-options'>
                             {templateCategories.map((category, index) => {
-                                return <p className={`${selectedIndex === index ? 'active' : ""}`} key={category} onClick={() => setCategoryIndex(index)}>{category}</p>
+                                return <p className={`${selectedIndex === index || (selectedIndex === -1 && index === 0) ? 'active' : ""}`} key={category} onClick={() => setCategoryIndex(index)}>{category}</p>
                             })}
-
-
                         </div>
                         <div className='template-category-contract'>
-                            <div style={{ display: "flex", flexDirection: "column", columnGap: "4px", marginBottom: "24px" }}>
+                            <div className='template-category-contract-cont'>
                                 <h4>Contractor</h4>
                                 <CustomRadio name="contractor" value="mainContractor" label="Main contractor" />
                                 <CustomRadio name="contractor" value="subContractor" label="Sub contractor" />
                             </div>
-                            <div>
+                            <div className='template-category-contract-cont'>
                                 <h4>Contract Form</h4>
                                 <CustomRadio name="contractForm" value="longForm" label="Long form" />
                                 <CustomRadio name="contractForm" value="shortForm" label="Short form" />
@@ -44,8 +42,7 @@ export const TemplateCategoryDialog = ({ open, closeHandler, showConfigHandler }
                         <Button onClickHandler={closeHandler} variant='secondary' label="Cancel" />
                     </div>
                 </div>
-
-            </DialogContent >
+            </DialogContent>
         </Dialog >
 
     );

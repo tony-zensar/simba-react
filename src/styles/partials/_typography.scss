@@ -1,26 +1,41 @@
 @font-face {
-  font-family: body-xl;
-  src: url('../../assets/fonts/FrutigerLTStd-Roman.otf');
+  font-family: "body-xl";
+  src: url("../../assets/fonts/FrutigerLTStd-Roman.eot");
+  src: url("../../assets/fonts/FrutigerLTStd-Roman.eot?#iefix") format('embedded-opentype'),
+       url("../../assets/fonts/FrutigerLTStd-Roman.woff") format('woff'),
+       url("../../assets/fonts/FrutigerLTStd-Roman.woff2") format('woff2'),
+       url("../../assets/fonts/FrutigerLTStd-Roman.ttf") format('truetype'),
+       url("../../assets/fonts/FrutigerLTStd-Roman.svg#FrutigerLTStd-Roman") format('svg');
   font-size: 24px;
   font-style: normal;
   font-weight: 400;
-  line-height: 150%; //36px
+  line-height: 150%;
   letter-spacing: 0;
 }
 
 @font-face {
-  font-family: body-xl-emphasis;
-  src: url('../../assets/fonts/FrutigerLTStd-Bold.otf');
+  font-family: "body-xl-emphasis";
+  src: url("../../assets/fonts/FrutigerLTStd-Bold.eot");
+  src: url("../../assets/fonts/FrutigerLTStd-Bold.eot?#iefix") format('embedded-opentype'),
+       url("../../assets/fonts/FrutigerLTStd-Bold.woff") format('woff'),
+       url("../../assets/fonts/FrutigerLTStd-Bold.woff2") format('woff2'),
+       url("../../assets/fonts/FrutigerLTStd-Bold.ttf") format('truetype'),
+       url("../../assets/fonts/FrutigerLTStd-Bold.svg#FrutigerLTStd-Bold") format('svg');
   font-size: 24px;
   font-style: normal;
   font-weight: 700;
-  line-height: 150%; //36px
+  line-height: 150%;
   letter-spacing: 0;
 }
 
 @font-face {
-  font-family: body-large;
-  src: url('../../assets/fonts/FrutigerLTStd-Roman.otf');
+  font-family: "body-large";
+  src: url("../../assets/fonts/FrutigerLTStd-Roman.eot");
+  src: url("../../assets/fonts/FrutigerLTStd-Roman.eot?#iefix") format('embedded-opentype'),
+       url("../../assets/fonts/FrutigerLTStd-Roman.woff") format('woff'),
+       url("../../assets/fonts/FrutigerLTStd-Roman.woff2") format('woff2'),
+       url("../../assets/fonts/FrutigerLTStd-Roman.ttf") format('truetype'),
+       url("../../assets/fonts/FrutigerLTStd-Roman.svg#FrutigerLTStd-Roman") format('svg');
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
@@ -29,8 +44,13 @@
 }
 
 @font-face {
-  font-family: body-large-emphasis;
-  src: url('../../assets/fonts/FrutigerLTStd-Bold.otf');
+  font-family: "body-large-emphasis";
+  src: url("../../assets/fonts/FrutigerLTStd-Bold.eot");
+  src: url("../../assets/fonts/FrutigerLTStd-Bold.eot?#iefix") format('embedded-opentype'),
+       url("../../assets/fonts/FrutigerLTStd-Bold.woff") format('woff'),
+       url("../../assets/fonts/FrutigerLTStd-Bold.woff2") format('woff2'),
+       url("../../assets/fonts/FrutigerLTStd-Bold.ttf") format('truetype'),
+       url("../../assets/fonts/FrutigerLTStd-Bold.svg#FrutigerLTStd-Bold") format('svg');
   font-size: 16px;
   font-style: normal;
   font-weight: 700;
@@ -39,8 +59,13 @@
 }
 
 @font-face {
-  font-family: body-medium;
-  src: url('../../assets/fonts/FrutigerLTStd-Roman.otf');
+  font-family: "body-medium";
+  src: url("../../assets/fonts/FrutigerLTStd-Roman.eot");
+  src: url("../../assets/fonts/FrutigerLTStd-Roman.eot?#iefix") format('embedded-opentype'),
+       url("../../assets/fonts/FrutigerLTStd-Roman.woff") format('woff'),
+       url("../../assets/fonts/FrutigerLTStd-Roman.woff2") format('woff2'),
+       url("../../assets/fonts/FrutigerLTStd-Roman.ttf") format('truetype'),
+       url("../../assets/fonts/FrutigerLTStd-Roman.svg#FrutigerLTStd-Roman") format('svg');
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
@@ -49,8 +74,13 @@
 }
 
 @font-face {
-  font-family: body-medium-emphasis;
-  src: url('../../assets/fonts/FrutigerLTStd-Bold.otf');
+  font-family: "body-medium-emphasis";
+  src: url("../../assets/fonts/FrutigerLTStd-Bold.eot");
+  src: url("../../assets/fonts/FrutigerLTStd-Bold.eot?#iefix") format('embedded-opentype'),
+       url("../../assets/fonts/FrutigerLTStd-Bold.woff") format('woff'),
+       url("../../assets/fonts/FrutigerLTStd-Bold.woff2") format('woff2'),
+       url("../../assets/fonts/FrutigerLTStd-Bold.ttf") format('truetype'),
+       url("../../assets/fonts/FrutigerLTStd-Bold.svg#FrutigerLTStd-Bold") format('svg');
   font-size: 14px;
   font-style: normal;
   font-weight: 700;
@@ -59,8 +89,13 @@
 }
 
 @font-face {
-  font-family: body-small;
-  src: url('../../assets/fonts/FrutigerLTStd-Roman.otf');
+  font-family: "body-small";
+  src: url("../../assets/fonts/FrutigerLTStd-Roman.eot");
+  src: url("../../assets/fonts/FrutigerLTStd-Roman.eot?#iefix") format('embedded-opentype'),
+       url("../../assets/fonts/FrutigerLTStd-Roman.woff") format('woff'),
+       url("../../assets/fonts/FrutigerLTStd-Roman.woff2") format('woff2'),
+       url("../../assets/fonts/FrutigerLTStd-Roman.ttf") format('truetype'),
+       url("../../assets/fonts/FrutigerLTStd-Roman.svg#FrutigerLTStd-Roman") format('svg');
   font-size: 12px;
   font-style: normal;
   font-weight: 400;
@@ -69,21 +104,81 @@
 }
 
 @font-face {
-  font-family: body-small-emphasis;
+  font-family: "body-small-emphasis";
   font-size: 12px;
   font-style: normal;
   font-weight: 700;
   line-height: 150%; //18px;
   letter-spacing: 0;
-  src: url('../../assets/fonts/FrutigerLTStd-Bold.otf');
+  src: url("../../assets/fonts/FrutigerLTStd-Bold.eot");
+  src: url("../../assets/fonts/FrutigerLTStd-Bold.eot?#iefix") format('embedded-opentype'),
+       url("../../assets/fonts/FrutigerLTStd-Bold.woff") format('woff'),
+       url("../../assets/fonts/FrutigerLTStd-Bold.woff2") format('woff2'),
+       url("../../assets/fonts/FrutigerLTStd-Bold.ttf") format('truetype'),
+       url("../../assets/fonts/FrutigerLTStd-Bold.svg#FrutigerLTStd-Bold") format('svg');
 }
 
 @font-face {
-  font-family: body-nlf;
-  src: url('../../assets/fonts/FrutigerLTStd-Roman.otf');
+  font-family: "body-nlf";
+  src: url("../../assets/fonts/FrutigerLTStd-Roman.eot");
+  src: url("../../assets/fonts/FrutigerLTStd-Roman.eot?#iefix") format('embedded-opentype'),
+       url("../../assets/fonts/FrutigerLTStd-Roman.woff") format('woff'),
+       url("../../assets/fonts/FrutigerLTStd-Roman.woff2") format('woff2'),
+       url("../../assets/fonts/FrutigerLTStd-Roman.ttf") format('truetype'),
+       url("../../assets/fonts/FrutigerLTStd-Roman.svg#FrutigerLTStd-Roman") format('svg');
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
   line-height: 200%; //32px;
   letter-spacing: -1%;
+}
+
+@font-face {
+  font-family: 'FrutigerLTStd-Roman';
+  src: url("./fonts/FrutigerLTStd-Roman.eot");
+  src: url("./fonts/FrutigerLTStd-Roman.eot?#iefix") format('embedded-opentype'),
+       url("./fonts/FrutigerLTStd-Roman.woff") format('woff'),
+       url("./fonts/FrutigerLTStd-Roman.woff2") format('woff2'),
+       url("./fonts/FrutigerLTStd-Roman.ttf") format('truetype'),
+       url("./fonts/FrutigerLTStd-Roman.svg#FrutigerLTStd-Roman") format('svg');
+}
+
+@font-face {
+  font-family: 'FrutigerLTStd-LightCn';
+  src: url("./fonts/FrutigerLTStd-LightCn.eot");
+  src: url("./fonts/FrutigerLTStd-LightCn.eot?#iefix") format('embedded-opentype'),
+       url("./fonts/FrutigerLTStd-LightCn.svg#FrutigerLTStd-LightCn") format('svg'),
+       url("./fonts/FrutigerLTStd-LightCn.ttf") format('truetype'),
+       url("./fonts/FrutigerLTStd-LightCn.woff") format('woff'),
+       url("./fonts/FrutigerLTStd-LightCn.woff2") format('woff2');
+}
+
+@font-face {
+  font-family: 'FrutigerLTStd-Cn';
+  src: url("./fonts/FrutigerLTStd-Cn.eot");
+  src: url("./fonts/FrutigerLTStd-Cn.eot?#iefix") format('embedded-opentype'),
+       url("./fonts/FrutigerLTStd-Cn.svg#FrutigerLTStd-Cn") format('svg'),
+       url("./fonts/FrutigerLTStd-Cn.ttf") format('truetype'),
+       url("./fonts/FrutigerLTStd-Cn.woff") format('woff'),
+       url("./fonts/FrutigerLTStd-Cn.woff2") format('woff2');
+}
+
+@font-face {
+  font-family: 'FrutigerLTStd-Bold';
+  src: url("./fonts/FrutigerLTStd-Bold.eot");
+  src: url("./fonts/FrutigerLTStd-Bold.eot?#iefix") format('embedded-opentype'),
+       url("./fonts/FrutigerLTStd-Bold.svg#FrutigerLTStd-Bold") format('svg'),
+       url("./fonts/FrutigerLTStd-Bold.ttf") format('truetype'),
+       url("./fonts/FrutigerLTStd-Bold.woff") format('woff'),
+       url("./fonts/FrutigerLTStd-Bold.woff2") format('woff2');
+}
+
+@font-face {
+  font-family: 'FrutigerLTStd-Black';
+  src: url("./fonts/FrutigerLTStd-Black.eot");
+  src: url("./fonts/FrutigerLTStd-Black.eot?#iefix") format('embedded-opentype'),
+       url("./fonts/FrutigerLTStd-Black.svg#FrutigerLTStd-Black") format('svg'),
+       url("./fonts/FrutigerLTStd-Black.ttf") format('truetype'),
+       url("./fonts/FrutigerLTStd-Black.woff") format('woff'),
+       url("./fonts/FrutigerLTStd-Black.woff2") format('woff2');
 }
