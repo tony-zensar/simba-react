@@ -1,35 +1,45 @@
-@import '../../styles/global.scss';
+@import '../../styles/global';
+@import '../../styles/partials/mixins';
 @import '../../styles/partials/typography';
 
 .search-input {
-  margin-bottom: 25px;
+  margin-bottom: 24px;
   position: relative;
-  input[type='text'] {
-    padding: 8px;
-    padding-left: 36px;
+
+  &-cont {
+    background-color: $neutralSurface;
     width: 330px;
     border-radius: 8px;
-    border: none;
-    background-color: $neutralSurface;
-    color: $neutralDefault;
-    ::placeholder {
-      color: red;
-    }
-    &:active,
-    &:focus {
+    input[type='text'] {
+      padding: 12px;
+      padding-left: 40px;
       border: none;
-      outline: none;
+      color: $neutralDefault;
+      background: transparent;
+      @include fonts();
+      font-size: 14px;
+      
+      ::placeholder {
+        color: $neutralDefault;
+      }
+
+      &:active,
+      &:focus {
+        border: none;
+        outline: none;
+      }
     }
-  }
-  & span {
-    position: absolute;
-    left: 0;
-    margin: 8px;
-    height: 20px;
-    width: 20px;
-    & svg {
-      height: 100%;
-      width: 100%;
+    & span {
+      position: absolute;
+      left: 8px;
+      top: 8px;
+      height: 24px;
+      width: 24px;
+  
+      & svg {
+        height: 100%;
+        width: 100%;
+      }
     }
   }
 }
@@ -37,15 +47,14 @@
 .redirect-page {
   display: flex;
   align-items: center;
-  column-gap: 4px;
   margin-bottom: 24px;
+  gap: 4px;
+
   & label {
     color: $neutralEmphasis;
-    // font-family: "Frutiger LT Std";
+    @include fonts();
     font-size: 12px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 150%;
+    margin-top: 4px;
   }
   & > span {
     display: inline-block;
@@ -62,4 +71,9 @@
   position: relative;
   width: 100%;
   padding: 24px;
+}
+
+.left-icon{
+  width: 20px;
+  height: 20px;
 }
