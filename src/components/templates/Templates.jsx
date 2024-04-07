@@ -18,7 +18,6 @@ export const Templates = () => {
     const [open, setOpen] = useState(false);
     const [activeTab, setActiveTab] = useState(1)
 
-
     useEffect(() => {
         if (showConfig) {
             dialogCloseHandler()
@@ -29,29 +28,25 @@ export const Templates = () => {
         setOpen(() => {
             return true
         })
-    }
+    };
 
     const dialogCloseHandler = () => {
         setOpen(() => {
             return false
         })
-    }
-
+    };
 
     const tabChangeHandler = (tabIndex) => {
         setActiveTab(tabIndex)
-    }
-
+    };
 
     const previewHandler = (templateId) => {
         setPreviewLoading(true)
         setTimeout(() => {
             setPreviewLoading(false)
-        }, [1000])
+        }, [1000]);
+    };
 
-
-
-    }
     return showConfig ? <TemplateConfig closeHandler={() => showConfigHandler(false)} />
         : <>
             <PageHeader />
@@ -86,9 +81,6 @@ export const Templates = () => {
                     </TabContent>
                 </Tabs>
             </div>
-
             <TemplateCategoryDialog open={open} closeHandler={dialogCloseHandler} showConfigHandler={showConfigHandler} />
-
-
         </>
 }
