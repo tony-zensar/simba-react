@@ -121,6 +121,7 @@
     line-height: 150%;
     margin: 0;
     border-bottom: 2px solid $neutralBorder;
+    @include fonts(bold);
   }
   &-body {
     display: flex;
@@ -130,8 +131,6 @@
   &-options {
     & p {
       color: $neutralDefault;
-      /* Body/Medium (default) */
-      // font-family: 'Frutiger LT Std';
       margin-bottom: 4px;
       font-size: 14px;
       font-style: normal;
@@ -139,12 +138,10 @@
       line-height: 150%; /* 21px */
       letter-spacing: -0.14px;
       cursor: pointer;
-      display: flex;
       padding: 8px 24px 8px 8px;
-      align-items: center;
-      gap: 16px;
-      align-self: stretch;
       background: $neutralSurface;
+      @include fonts();
+      max-width: 180px;
 
       &.active {
         color: $white;
@@ -244,7 +241,7 @@
   letter-spacing: -0.14px;
   @include fonts();
   margin-bottom: 24px;
-  
+
   &:last-child {
     margin-bottom: 0;
   }
@@ -311,3 +308,25 @@
   }
 }
 
+.template{
+  &-category{
+    &-contract{
+      &-cont{
+        display: flex;
+        flex-direction: column;
+        gap: 4px; 
+        margin-bottom: 24px;
+
+        h4{
+          font-size: 16px;
+          font-style: normal;
+          font-weight: 700;
+          line-height: 150%; /* 24px */
+          letter-spacing: -0.16px;
+          @include fonts(bold);
+          color: $neutralEmphasis;
+        }
+      }
+    }
+  }
+}

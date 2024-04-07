@@ -26,3 +26,9 @@ label {
 html, body {
   @include fonts();
 }
+
+.MuiDialog-container {
+  > div{
+    border-radius: 0;
+  }
+}
