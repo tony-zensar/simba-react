@@ -28,3 +28,28 @@ export const navItems = [
     // ],
   },
 ];
+
+export const NAV_ITEMS = [
+  {
+    title: "Contracts",
+    id: "contracts",
+    icon: "contract_icon",
+    subMenu: [
+      {
+        title: 'My contracts',
+        component: 'myContracts',
+        id: "myContracts"
+      },
+      {
+        title: 'Shared contracts',
+        component: 'sharedContracts',
+        id: "sharedContracts"
+      },
+      {
+        title: 'Templates',
+        component: 'templates',
+        id: "templates"
+      },
+    ]
+  }
+];

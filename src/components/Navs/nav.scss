@@ -1,16 +1,48 @@
-@import '../../styles/global.scss';
+@import '../../styles/global';
+@import '../../styles/partials/mixins';
 @import '../../styles/partials/typography';
 
-.nav-items {
+.nav {
   width: 236px;
   display: flex;
   flex-direction: column;
   flex-shrink: 0;
   background-color: $primaryDefault;
   padding: 24px;
+
+  &-list {
+    list-style: none;
+
+    &-cont{
+      margin: 0;
+      padding: 0;
+    }
+  }
+
+  &-link{
+    text-decoration: none;
+    color: $white;
+    display: flex;
+    padding: 12px;
+    font-size: 16px;
+    letter-spacing: -0.14px;
+
+    @include fonts(bold);
+
+    &-active{
+      background: $sideLinkActive;
+    }
+  }
+
+  &-icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 12px;
+  }
 }
+
 .nav-main {
-  font-family: body-xl;
+  font-family: "body-xl";
   color: $white;
   padding: 12px;
   border-radius: 4px;
@@ -22,7 +54,7 @@
   padding: 8px 12px;
   margin-bottom: 8px;
   color: $primarySurface;
-  // font-family: body-medium;
+  // font-family: "body-medium";
   font-weight: 400;
   font-size: 14px;
 
@@ -32,6 +64,20 @@
 }
 
 .nav-title-active {
-  font-family: body-medium-emphasis;
+  font-family: "body-medium-emphasis";
   color: $white;
+}
+
+.logo {
+  width: 86px;
+  height: 24px;
+  margin-bottom: 48px;
+  
+  &-link{
+    text-indent: -99999em;
+    width: 100%;
+    height: 100%;
+    background: url(../../assets/icons/logo.svg) no-repeat transparent;
+    float: left;
+  }
 }

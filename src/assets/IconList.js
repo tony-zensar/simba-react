@@ -8,3 +8,4 @@ export { ReactComponent as ContractIcon } from './icons/contract.svg';
 export { ReactComponent as EditIcon } from './icons/edit.svg';
 export { ReactComponent as AddIcon } from './icons/add.svg';
 export { ReactComponent as TrashIcon } from './icons/trash.svg';
+export { ReactComponent as Logo } from './icons/logo.svg';
