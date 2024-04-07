@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { coreTemplate } from '../../data/coreTemplate';
 import { ClausesAndOptions } from '../ClausesAndOptions/ClausesAndOptions';
-import { Button, ClauseEditor, PreviewPane, Review, Suggestions } from '../index';
+import { Button, ClauseEditor, PreviewPane, Review, Suggestions, Summary } from '../index';
 import { NameInput } from '../name-input/NameInput';
 import { PageHeader } from '../page-utils/PageHeader';
 
@@ -131,7 +131,8 @@ export const TemplateConfig = ({ closeHandler }) => {
 
                     }
                 </PreviewPane>
-                <Suggestions />
+                {/* <Suggestions /> */}
+                <Summary />
 
 
             </div>

@@ -1,4 +1,5 @@
 export { Suggestions } from './templates/Suggestions';
+export { Summary } from './templates/Summary';
 
 export { Review } from './templates/Review';
 
