@@ -4,6 +4,7 @@ import { ClausesAndOptions } from '../ClausesAndOptions/ClausesAndOptions';
 import { Button, ClauseEditor, PreviewPane, Review } from '../index';
 import { NameInput } from '../name-input/NameInput';
 import { PageHeader } from '../page-utils/PageHeader';
+import { AISuggestion } from '../AISuggestion';
 
 export const TemplateConfig = ({ closeHandler }) => {
     const [clauses, setClauses] = useState([])
@@ -116,23 +117,15 @@ export const TemplateConfig = ({ closeHandler }) => {
             </div>
             <div style={{ display: "flex", columnGap: "24px" }}>
                 <ClausesAndOptions template={coreTemplate} optionSelectHandler={optionSelectHandler} optionSelected={optionSelected} />
-
-
-                <PreviewPane >
+                <PreviewPane>
                     {reviewContract ?
                         <Review data={clausesSelected?.optionGroups || []} />
                         :
-
                         <ClauseEditor data={clauses.map(c => c.content).toString()} addClauseHandler={addClauseHandler} />
-
                     }
                 </PreviewPane>
-
-
+                <AISuggestion />
             </div>
-
         </div>
-
-
     </div>
 }
