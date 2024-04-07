@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { coreTemplate } from '../../data/coreTemplate';
 import { ClausesAndOptions } from '../ClausesAndOptions/ClausesAndOptions';
-import { Button, ClauseEditor, PreviewPane, Review } from '../index';
+import { Button, ClauseEditor, PreviewPane, Review, Suggestions } from '../index';
 import { NameInput } from '../name-input/NameInput';
 import { PageHeader } from '../page-utils/PageHeader';
 
@@ -26,6 +26,7 @@ export const TemplateConfig = ({ closeHandler }) => {
             labelId: 2
         })
         setClauses(content)
+        setClauseSelected({ optionGroups: coreTemplate.optionGroups })
 
     }, [])
 
@@ -61,6 +62,7 @@ export const TemplateConfig = ({ closeHandler }) => {
     }
 
     const addClauseHandler = (content) => {
+
 
         const clauseDetailsCpy = { ...clausesSelected }
 
@@ -100,7 +102,7 @@ export const TemplateConfig = ({ closeHandler }) => {
 
         clauseDetailsCpy.optionGroups[optionGroupIndex].options[optionsIndex].groupClauses[groupClausesIndex].clauses.push({ content: content })
         setClauseSelected(clauseDetailsCpy)
-
+        console.log(clauseDetailsCpy)
     }
 
     return <div >
@@ -120,13 +122,16 @@ export const TemplateConfig = ({ closeHandler }) => {
 
                 <PreviewPane >
                     {reviewContract ?
-                        <Review data={clausesSelected?.optionGroups || []} />
-                        :
+                        <>
+                            <Review data={clausesSelected?.optionGroups || []} />
 
+                        </>
+                        :
                         <ClauseEditor data={clauses.map(c => c.content).toString()} addClauseHandler={addClauseHandler} />
 
                     }
                 </PreviewPane>
+                <Suggestions />
 
 
             </div>

@@ -20,8 +20,9 @@ export const ClauseEditor = ({ data, addClauseHandler, selectedClause }) => {
     const [isEdit, setIsEdit] = useState(false)
 
     const changeHandler = (html) => {
-        console.log(html)
         setEditorState({ ...editorState, html: html });
+
+
     };
     useEffect(() => {
         setEditorState({ ...editorState, html: data });
@@ -47,13 +48,14 @@ export const ClauseEditor = ({ data, addClauseHandler, selectedClause }) => {
 
 
 
-    return <ReactQuill
+    return <>  <ReactQuill
         className='clause-editor'
         modules={{ toolbar: toolbarOptions }}
         value={editorState.html}
         onChange={changeHandler}
 
     />
+    </>
 
     /*
     {isEdit ? <div>

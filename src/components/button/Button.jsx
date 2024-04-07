@@ -9,6 +9,7 @@ export const Button = ({ variant = "primary", onClickHandler, label }) => {
 
 export const ButtonSmall = ({ label, onClick, icon }) => {
     return <button className='btn-small-light' onClick={onClick}>
+        {icon}
         {label}
     </button>
 }

@@ -44,7 +44,7 @@
 
 .btn-small-light {
   display: flex;
-  padding: 8px 16px;
+  padding: 8px 16px 8px 8px;
   justify-content: center;
   align-items: center;
   gap: 8px;
@@ -52,13 +52,13 @@
   background: $primarySurface;
   border: none;
   outline: none;
+  cursor: pointer;
   color: $primaryDefault;
   font-size: 12px;
   font-style: normal;
   font-weight: 700;
   line-height: 150%; /* 18px */
-  cursor: pointer;
-  @include fonts(bold);
+  @include fonts(regular);
 
   & span {
     position: absolute;

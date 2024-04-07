@@ -1,3 +1,5 @@
+export { Suggestions } from './templates/Suggestions';
+
 export { Review } from './templates/Review';
 
 export { Icon } from './icon/Icon';
