@@ -1,7 +1,7 @@
 @import 'partials/reset';
+@import 'partials/mixins';
 @import 'partials/variables';
-
-// @import 'partials/typography';
+@import 'partials/typography';
 
 .App {
   min-height: 100vh;
@@ -21,4 +21,14 @@ h5,
 h6,
 label {
   margin: 0;
+}
+
+html, body {
+  @include fonts();
+}
+
+.MuiDialog-container {
+  > div{
+    border-radius: 0;
+  }
 }

@@ -1,4 +1,5 @@
-@import '../../styles/global.scss';
+@import '../../styles/global';
+@import '../../styles/partials/mixins';
 @import '../../styles/partials/typography';
 .templates {
   display: flex;
@@ -14,39 +15,48 @@
   color: $neutralEmphasis;
   display: flex;
   justify-content: space-between;
+  align-items: center;
+
+  label {
+    @include fonts(bold);
+    font-size: 24px;
+  }
 }
 
 .templates-list {
   height: 100%;
   display: flex;
   flex-direction: column;
-  row-gap: 14px;
-  // overflow-y: auto;
+  gap: 12px;
   overflow-x: hidden;
 }
 
 .templates-card {
   display: flex;
   flex-direction: column;
-  height: 120px;
   padding: 16px;
   border-radius: 4px;
   border: 2px solid $neutralBorder;
   width: 100%;
+  gap: 4px;
+
   p {
     margin: 0;
+  }
+
+  &:first-child{
+    border: 2px solid $neutralEmphasis;
   }
 
   .template-author-date {
     position: relative;
     display: flex;
-    column-gap: 8px;
-    margin-bottom: 4px;
     color: $neutralDefault;
     font-size: 12px;
     font-style: normal;
     font-weight: 700;
     line-height: 150%; /* 18px */
+    @include fonts(bold);
   }
 
   .template-bookmark {
@@ -65,15 +75,15 @@
   .template-details {
     display: flex;
     flex-direction: column;
-    row-gap: 4px;
+    gap: 4px;
     .template-title {
       color: $neutralEmphasis;
-      // font-family: 'Frutiger LT Std';
       font-size: 14px;
       font-style: normal;
       font-weight: 700;
       line-height: 150%;
       letter-spacing: -0.14px;
+      @include fonts(bold);
     }
     .template-description {
       overflow: hidden;
@@ -111,6 +121,7 @@
     line-height: 150%;
     margin: 0;
     border-bottom: 2px solid $neutralBorder;
+    @include fonts(bold);
   }
   &-body {
     display: flex;
@@ -120,8 +131,6 @@
   &-options {
     & p {
       color: $neutralDefault;
-      /* Body/Medium (default) */
-      // font-family: 'Frutiger LT Std';
       margin-bottom: 4px;
       font-size: 14px;
       font-style: normal;
@@ -129,12 +138,10 @@
       line-height: 150%; /* 21px */
       letter-spacing: -0.14px;
       cursor: pointer;
-      display: flex;
       padding: 8px 24px 8px 8px;
-      align-items: center;
-      gap: 16px;
-      align-self: stretch;
       background: $neutralSurface;
+      @include fonts();
+      max-width: 180px;
 
       &.active {
         color: $white;
@@ -164,6 +171,10 @@
     font-weight: 700;
     line-height: 150%;
     cursor: pointer;
+    color: $neutralEmphasis;
+    @include fonts(bold);
+    padding: 8px;
+
     &:active,
     &:focus {
       border: none;
@@ -192,45 +203,48 @@
   }
 }
 .template-preview-heading {
-  margin-bottom: 8px;
+  margin-bottom: 8px!important;
   color: $neutralEmphasis;
-  // font-family: "Frutiger LT Std";
   font-size: 24px;
   font-style: normal;
   font-weight: 700;
   line-height: 150%;
+  @include fonts(bold);
 }
 .template-preview-subheading {
+  margin-bottom: 8px!important;
   color: $neutralEmphasis;
-  /* Body/Large Emphasis */
-  // font-family: "Frutiger LT Std";
   font-size: 16px;
   font-style: normal;
   font-weight: 700;
   line-height: 150%; /* 24px */
   letter-spacing: -0.16px;
+  @include fonts(bold);
 }
 .template-preview-description {
+  margin-bottom: 8px!important;
   color: $neutralEmphasis;
-  /* Body/Medium Emphasis */
-  // font-family: "Frutiger LT Std";
   font-size: 14px;
   font-style: normal;
   font-weight: 700;
   line-height: 150%; /* 21px */
   letter-spacing: -0.14px;
+  @include fonts(bold);
 }
 
 .template-preview-content {
   color: $neutralDefault;
-  /* Body/Medium (default) */
-  // font-family: "Frutiger LT Std";
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
   line-height: 150%; /* 21px */
   letter-spacing: -0.14px;
+  @include fonts();
   margin-bottom: 24px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
 }
 
 .config-container {
@@ -281,5 +295,38 @@
     line-height: 150%; /* 21px */
     letter-spacing: -0.14px;
     margin-bottom: 24px;
+  }
+}
+
+.template{
+  &-view{
+    &-style{
+      border-radius: 4px;
+    overflow: hidden;
+    height: 24px;
+    }
+  }
+}
+
+.template{
+  &-category{
+    &-contract{
+      &-cont{
+        display: flex;
+        flex-direction: column;
+        gap: 4px; 
+        margin-bottom: 24px;
+
+        h4{
+          font-size: 16px;
+          font-style: normal;
+          font-weight: 700;
+          line-height: 150%; /* 24px */
+          letter-spacing: -0.16px;
+          @include fonts(bold);
+          color: $neutralEmphasis;
+        }
+      }
+    }
   }
 }

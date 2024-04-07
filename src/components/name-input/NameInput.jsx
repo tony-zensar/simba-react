@@ -11,11 +11,6 @@ export const NameInput = ({ onChangeHandler, name = "Untitle contract" }) => {
                 :
                 <h5 className="name-input-text" onClick={() => setEdit(true)}>{name}</h5>
         }
-        <div className="name-input-icon"> <EditIcon onClick={() => setEdit(true)} /></div>
-
-
-
+        <div className="name-input-icon"><EditIcon onClick={() => setEdit(true)} /></div>
     </div >
-
-
 }
