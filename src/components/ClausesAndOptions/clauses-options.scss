@@ -59,6 +59,30 @@
   background-color: $white;
 }
 
+.template-options.level-2,
+.template-options.level-3 {
+  height: 0;
+  visibility: hidden;
+}
+.template-options.level-1 > p.active {
+  & + .template-options.level-2 {
+    height: auto;
+    visibility: visible;
+  }
+}
+.template-options.level-2 > p.active {
+  & + .template-options.level-3 {
+    height: auto;
+    visibility: visible;
+  }
+}
+
+.template-options.level-2,
+.template-options.level-3 {
+  height: 0;
+  visibility: hidden;
+}
+
 .divider {
   border-top: 2px solid $neutralBorder;
 }

@@ -50,6 +50,49 @@ export const coreTemplate = {
                 },
                 {
                   content:
+                    '<p>Action--------A Partner implements a decision of the Core Group by issuing\n  instructions in accordance<br> with its Own Contracts.</p>',
+                  id: 5,
+                  label: 'Collaboration',
+                  summary:
+                    'A Partner implements a decision of the Core Group by issuing instructions in accordance\nwith its Own Contracts.',
+                },
+                {
+                  content:
+                    '<p>The Core Group prepares and maintains a timetable showing the\n  proposed timing of the<br> contributions of the Partners. The Core\n  Group issues a copy of the timetable to the Partners<br> each time it\n  is revised. The Contractor changes its programme if it is necessary to\n  do so in<br> order to comply with the revised timetable. Each such\n  change is a compensation event which<br> may lead to reduced Prices.</p>',
+                  id: 6,
+                  label: 'Collaboration',
+                  summary: '',
+                },
+                {
+                  content:
+                    '<p>X5.1 In these conditions of contract, unless stated as the whole of\n  the works, each reference and<br> clause relevant to<br> � the\n  works,<br> � Completion and<br> � Completion Date<br> applies, as the\n  case may be, to either the whole of the works or any section of the works.</p>',
+                  id: 7,
+                  label: 'Sectional Completion',
+                  summary: '',
+                },
+              ],
+            },
+            {
+              id: 3,
+              label: 'Sample',
+              clauses: [
+                {
+                  content:
+                    '<p id="something"> Sample---------Each Partner gives an early warning to the other Partners when it\n  becomes aware of<br> any matter that could affect the achievement of\n  another Partner�s objectives stated in the<br> Schedule of Partners.</p>',
+                  id: 2,
+                  label: 'Collaboration',
+                  summary: 'Partners',
+                },
+                {
+                  content:
+                    '<p>The Partners use common information systems as set out in the\n  Partnering Information.</p>',
+                  id: 3,
+                  label: 'Collaboration',
+                  summary:
+                    'The Partners use common information systems as set out in the Partnering Information.',
+                },
+                {
+                  content:
                     '<p>A Partner implements a decision of the Core Group by issuing\n  instructions in accordance<br> with its Own Contracts.</p>',
                   id: 5,
                   label: 'Collaboration',
