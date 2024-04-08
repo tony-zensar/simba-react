@@ -1,12 +1,22 @@
 import Dialog from '@mui/material/Dialog';
 import DialogContent from '@mui/material/DialogContent';
-import { useState } from 'react';
-import { templateCategories } from '../../data/templateCategories';
+import { useDispatch, useSelector } from 'react-redux';
+import { setNewTemplate } from '../../store/actionCreators';
 import { Button } from '../button/Button';
 import { CustomRadio } from '../radio/CustomRadio';
 
+
 export const TemplateCategoryDialog = ({ open, closeHandler, showConfigHandler }) => {
-    const [selectedIndex, setCategoryIndex] = useState(-1)
+    const { templateCategories, newTemplate } = useSelector(state => state.templatesReducer)
+    const { category } = newTemplate
+    const dispatch = useDispatch()
+
+    const categoryHandler = (key, value) => {
+        let cat = { ...category, [key]: value }
+        dispatch(setNewTemplate('category', cat))
+
+    }
+
     return (
         <Dialog
             onClose={closeHandler}
@@ -20,20 +30,20 @@ export const TemplateCategoryDialog = ({ open, closeHandler, showConfigHandler }
                     <h4 className='template-category-heading'>Create a Template</h4>
                     <div className='template-category-body'>
                         <div className='template-category-options'>
-                            {templateCategories.map((category, index) => {
-                                return <p className={`${selectedIndex === index || (selectedIndex === -1 && index === 0) ? 'active' : ""}`} key={category} onClick={() => setCategoryIndex(index)}>{category}</p>
+                            {templateCategories.map(({ id, title }) => {
+                                return <p className={`${category?.id === id ? 'active' : ""}`} key={id} onClick={() => categoryHandler('id', id)}>{title}</p>
                             })}
                         </div>
                         <div className='template-category-contract'>
                             <div className='template-category-contract-cont'>
                                 <h4>Contractor</h4>
-                                <CustomRadio name="contractor" value="mainContractor" label="Main contractor" />
-                                <CustomRadio name="contractor" value="subContractor" label="Sub contractor" />
+                                <CustomRadio name="contractor" value="mainContractor" label="Main contractor" onChange={(e) => categoryHandler('contractor', e.target.value)} />
+                                <CustomRadio name="contractor" value="subContractor" label="Sub contractor" onChange={(e) => categoryHandler('contractor', e.target.value)} />
                             </div>
                             <div className='template-category-contract-cont'>
                                 <h4>Contract Form</h4>
-                                <CustomRadio name="contractForm" value="longForm" label="Long form" />
-                                <CustomRadio name="contractForm" value="shortForm" label="Short form" />
+                                <CustomRadio name="contractForm" value="longForm" label="Long form" onChange={(e) => categoryHandler('form', e.target.value)} />
+                                <CustomRadio name="contractForm" value="shortForm" label="Short form" onChange={(e) => categoryHandler('form', e.target.value)} />
                             </div>
                         </div >
                     </div>

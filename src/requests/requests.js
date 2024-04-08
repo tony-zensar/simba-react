@@ -1,3 +1,4 @@
+import { templateCategories } from '../data/templateCategories';
 import { templates } from '../data/templates';
 import { templatesPreview } from '../data/templatesPreview';
 
@@ -10,5 +11,11 @@ export const getTemplates = () => {
 export const getTemplateById = (id) => {
   return new Promise((resolve, reject) => {
     resolve(templatesPreview);
+  });
+};
+
+export const getTemplateCategories = () => {
+  return new Promise((resolve, reject) => {
+    resolve(templateCategories);
   });
 };

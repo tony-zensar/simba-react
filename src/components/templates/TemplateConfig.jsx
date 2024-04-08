@@ -4,8 +4,16 @@ import { ClausesAndOptions } from '../ClausesAndOptions/ClausesAndOptions';
 import { Button, ClauseEditor, PreviewPane, Review, Suggestions, Summary } from '../index';
 import { NameInput } from '../name-input/NameInput';
 import { PageHeader } from '../page-utils/PageHeader';
+import { useSelector, useDispatch } from 'react-redux';
+import { setNewTemplate } from '../../store/actionCreators';
 
-export const TemplateConfig = ({ closeHandler }) => {
+
+export const TemplateConfig = () => {
+
+    const { newTemplate } = useSelector(state => state.templatesReducer)
+    const { templateName } = newTemplate
+    const dispatch = useDispatch()
+
     const [clauses, setClauses] = useState([])
 
     const [clausesSelected, setClauseSelected] = useState({ optionGroups: [] })
@@ -105,12 +113,16 @@ export const TemplateConfig = ({ closeHandler }) => {
         console.log(clauseDetailsCpy)
     }
 
+    const templateNameHandler = (e) => {
+        dispatch(setNewTemplate("templateName", e.target.value))
+    }
+
     return <div >
         <PageHeader />
         {/* <button onClick={closeHandler}>Go Back</button> */}
         <div className='config-container'>
             <div className='config-header'>
-                <NameInput />
+                <NameInput onChange={templateNameHandler} value={templateName || ""} />
                 <div className='config-actions'>
                     {reviewContract ? <Button label="Create Contract" /> : <Button label="Review Contract" onClickHandler={() => setReviewContract(true)} />}
                     <Button variant='secondary' label="Save & Exit" onClickHandler={() => setReviewContract(false)} />
@@ -131,8 +143,8 @@ export const TemplateConfig = ({ closeHandler }) => {
 
                     }
                 </PreviewPane>
-                {/* <Suggestions /> */}
-                <Summary />
+                <Suggestions />
+                {/* <Summary /> */}
 
 
             </div>

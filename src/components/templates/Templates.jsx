@@ -1,7 +1,6 @@
 
 
 import { useEffect, useState } from "react"
-// import { templates } from "../../data/templates"
 import { PageHeader } from "../page-utils/PageHeader"
 
 import { useDispatch, useSelector } from 'react-redux'
@@ -11,8 +10,8 @@ import { TemplateConfig } from './TemplateConfig'
 import { TemplatesCard } from "./TemplatesCard"
 
 
-import { getTemplateById, getTemplates } from "../../requests/requests"
-import { setTemplateList, setTemplatePreview } from "../../store/actionCreators"
+import { getTemplateById, getTemplateCategories, getTemplates } from "../../requests/requests"
+import { setTemplateCategories, setTemplateList, setTemplatePreview } from "../../store/actionCreators"
 import "./templates.scss"
 
 export const Templates = () => {
@@ -28,6 +27,9 @@ export const Templates = () => {
         getTemplates().then(res => {
             dispatch(setTemplateList(res))
             previewHandler(res[0].templateId)
+        })
+        getTemplateCategories().then(res => {
+            dispatch(setTemplateCategories(res))
         })
     }, [])
 
