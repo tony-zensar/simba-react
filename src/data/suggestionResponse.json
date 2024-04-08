@@ -1,0 +1,16 @@
+[
+  {
+    "title": "Missing Clause title",
+    "optionGroup": "Core Clause",
+    "option": "General",
+    "groupClause": "Action",
+    "clauses": ["clause 1", "clause 1"]
+  },
+  {
+    "title": "Missing Clause title",
+    "optionGroup": "Main Option Clauses",
+    "option": "Option A: Priced contract with activity schedule",
+    "groupClause": "Identified and defined terms",
+    "clauses": ["clause 1", "clause 1"]
+  }
+]

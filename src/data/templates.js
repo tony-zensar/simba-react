@@ -1,4 +1,4 @@
-export const contractTemplates = [
+export const templates = [
   {
     templateId: 1,
     title: 'Template 1',
