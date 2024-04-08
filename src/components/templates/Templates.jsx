@@ -10,8 +10,8 @@ import { TemplateConfig } from './TemplateConfig'
 import { TemplatesCard } from "./TemplatesCard"
 
 
-import { getTemplateById, getTemplateCategories, getTemplates } from "../../requests/requests"
-import { setTemplateCategories, setTemplateList, setTemplatePreview } from "../../store/actionCreators"
+import { getDefaultTemplate, getTemplateById, getTemplateCategories, getTemplates } from "../../requests/requests"
+import { setDefaultTemplate, setTemplateCategories, setTemplateList, setTemplatePreview } from "../../store/actionCreators"
 import "./templates.scss"
 
 export const Templates = () => {
@@ -24,12 +24,29 @@ export const Templates = () => {
     const dispatch = useDispatch()
 
     useEffect(() => {
-        getTemplates().then(res => {
-            dispatch(setTemplateList(res))
-            previewHandler(res[0].templateId)
-        })
+
+        if (!templateList)
+            getTemplates().then(res => {
+                console.log(res.data.items)
+                dispatch(setTemplateList(res?.data?.items))
+                previewHandler(res?.data?.items[0]?.id)
+            }).catch(err => {
+                console.log(err)
+            })
+    }, [])
+
+    useEffect(() => {
+
         getTemplateCategories().then(res => {
             dispatch(setTemplateCategories(res))
+        }).catch(err => {
+            console.log(err)
+        })
+
+        getDefaultTemplate().then(res => {
+            dispatch(setDefaultTemplate(res))
+        }).catch(err => {
+            console.log(err)
         })
     }, [])
 
@@ -61,6 +78,9 @@ export const Templates = () => {
         getTemplateById(templateId).then(res => {
             dispatch(setTemplatePreview(res))
             setPreviewLoading(false)
+        }).catch(err => {
+            setPreviewLoading(false)
+            console.log(err)
         })
 
     };
@@ -86,7 +106,7 @@ export const Templates = () => {
                             </div>
                             <PreviewPane>
                                 {previewLoading ? "Loading" :
-                                    templatePreview?.map(({ type, title, content }, index) => {
+                                    Array.isArray(templatePreview)?.map(({ type, title, content }, index) => {
                                         const customClassName = type === "heading" ? 'template-preview-heading' : "template-preview-subheading";
                                         const updatedCustomClassName = type === "description" ? "template-preview-description" : customClassName
                                         return <div key={index}>

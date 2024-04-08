@@ -1,4 +1,6 @@
 import {
+  SET_CLAUSES,
+  SET_DEFAULT_TEMPLATE,
   SET_NEW_TEMPLATE,
   SET_TEMPLATE_CATEGORIES,
   SET_TEMPLATE_LIST,
@@ -11,6 +13,7 @@ export const showDialog = (flag) => {
 };
 
 export const setTemplateList = (templates) => {
+  console.log(templates);
   return { type: SET_TEMPLATE_LIST, templates };
 };
 
@@ -24,4 +27,12 @@ export const setTemplateCategories = (categories) => {
 
 export const setNewTemplate = (key, value) => {
   return { type: SET_NEW_TEMPLATE, key, value };
+};
+
+export const setClauses = (clauses) => {
+  return { type: SET_CLAUSES, clauses };
+};
+
+export const setDefaultTemplate = (template) => {
+  return { type: SET_DEFAULT_TEMPLATE, template };
 };

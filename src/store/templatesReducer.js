@@ -1,5 +1,6 @@
-import { toggleDialog } from './actionCreators';
 import {
+  SET_CLAUSES,
+  SET_DEFAULT_TEMPLATE,
   SET_NEW_TEMPLATE,
   SET_TEMPLATE_CATEGORIES,
   SET_TEMPLATE_LIST,
@@ -8,10 +9,11 @@ import {
 } from './actionTypes';
 
 const initialState = {
-  templateList: [],
+  templateList: null,
   templateCategories: [],
   templatePreview: [],
   defaultTemplate: [],
+  clauses: [],
   selectedClause: [],
   newTemplate: {
     templateName: 'Untitle contract',
@@ -20,7 +22,7 @@ const initialState = {
       contractor: '',
       form: '',
     },
-    selectedClause: [],
+    clausesSelected: [],
   },
   previewLoading: false,
   templateName: '',
@@ -41,10 +43,19 @@ export const templatesReducer = (state = initialState, action = null) => {
     case SET_TEMPLATE_CATEGORIES:
       return { ...state, templateCategories: action.categories };
 
+    case SET_CLAUSES:
+      return { ...state, clauses: action.clauses };
+
     case SET_NEW_TEMPLATE:
       return {
         ...state,
         newTemplate: { ...state.newTemplate, [action.key]: action.value },
+      };
+
+    case SET_DEFAULT_TEMPLATE:
+      return {
+        ...state,
+        defaultTemplate: action.template,
       };
     default:
       return state;

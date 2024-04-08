@@ -1,23 +1,15 @@
 import { useEffect, useState } from 'react';
-import { coreTemplate } from '../../data/coreTemplate';
+import { useDispatch, useSelector } from 'react-redux';
+import { setClauses, setNewTemplate } from '../../store/actionCreators';
 import { ClausesAndOptions } from '../ClausesAndOptions/ClausesAndOptions';
 import { Button, ClauseEditor, PreviewPane, Review, Suggestions, Summary } from '../index';
 import { NameInput } from '../name-input/NameInput';
 import { PageHeader } from '../page-utils/PageHeader';
-import { useSelector, useDispatch } from 'react-redux';
-import { setNewTemplate } from '../../store/actionCreators';
-import { AISuggestion } from '../AISuggestion';
 
 
 export const TemplateConfig = () => {
-
-    const { newTemplate } = useSelector(state => state.templatesReducer)
-    const { templateName } = newTemplate
-    const dispatch = useDispatch()
-
-    const [clauses, setClauses] = useState([])
-
-    const [clausesSelected, setClauseSelected] = useState({ optionGroups: [] })
+    const { newTemplate, clauses, defaultTemplate } = useSelector(state => state.templatesReducer)
+    const { templateName, clausesSelected } = newTemplate
 
     const [optionSelected, setOptionsSelected] = useState({
         sectionId: -1,
@@ -26,6 +18,7 @@ export const TemplateConfig = () => {
     })
 
     const [reviewContract, setReviewContract] = useState(false)
+    const dispatch = useDispatch()
 
     useEffect(() => {
         const content = getClauses({ sectionIndex: 0, subSectionIndex: 0, labelIndex: 0 })
@@ -34,8 +27,10 @@ export const TemplateConfig = () => {
             subSectionId: 8,
             labelId: 2
         })
-        setClauses(content)
-        setClauseSelected({ optionGroups: coreTemplate.optionGroups })
+
+        // dispatch(setClauses(content))
+        dispatch(setNewTemplate('clausesSelected', { optionGroups: defaultTemplate.optionGroups }))
+
 
     }, [])
 
@@ -60,14 +55,14 @@ export const TemplateConfig = () => {
             }
             const content = getClauses(path)
 
-            setClauses(content)
+            // dispatch(setClauses(content))
 
         }
         setOptionsSelected(updateSelections)
     }
 
     const getClauses = ({ sectionIndex, subSectionIndex, labelIndex }) => {
-        return coreTemplate.optionGroups[sectionIndex]?.options[subSectionIndex]?.groupClauses[labelIndex]?.clauses
+        return defaultTemplate.optionGroups[sectionIndex]?.options[subSectionIndex]?.groupClauses[labelIndex]?.clauses
     }
 
     const addClauseHandler = (content) => {
@@ -75,7 +70,7 @@ export const TemplateConfig = () => {
 
         const clauseDetailsCpy = { ...clausesSelected }
 
-        const optionGroup = coreTemplate.optionGroups.find(data => data.id === optionSelected.sectionId)
+        const optionGroup = defaultTemplate.optionGroups.find(data => data.id === optionSelected.sectionId)
         const options = optionGroup.options.find(data => data.id === optionSelected.subSectionId)
         const groupClauses = options.groupClauses.find(data => data.id === optionSelected.labelId)
 
@@ -93,24 +88,25 @@ export const TemplateConfig = () => {
 
         if (optionGroupIndex < 0) {
             clauseDetailsCpy.optionGroups.push({ title: optionGroup.title, options: [{ summary: options.summary, groupClauses: [{ label: groupClauses.label, clauses: [{ content: content }] }] }] })
-            setClauseSelected(clauseDetailsCpy)
+
+            dispatch(setNewTemplate('clausesSelected', clauseDetailsCpy))
             return
         }
 
         if (optionsIndex < 0) {
             clauseDetailsCpy.optionGroups[optionGroupIndex].options.push({ groupClauses: [{ label: groupClauses.label, clauses: [{ content: content }] }] })
-            setClauseSelected(clauseDetailsCpy)
+            dispatch(setNewTemplate('clausesSelected', clauseDetailsCpy))
             return
         }
 
         if (groupClausesIndex < 0) {
             clauseDetailsCpy.optionGroups[optionGroupIndex].options[optionsIndex].groupClauses.push({ label: groupClauses.label, clauses: [{ content: content }] })
-            setClauseSelected(clauseDetailsCpy)
+            dispatch(setNewTemplate('clausesSelected', clauseDetailsCpy))
             return
         }
 
         clauseDetailsCpy.optionGroups[optionGroupIndex].options[optionsIndex].groupClauses[groupClausesIndex].clauses.push({ content: content })
-        setClauseSelected(clauseDetailsCpy)
+        dispatch(setNewTemplate('clausesSelected', clauseDetailsCpy))
         console.log(clauseDetailsCpy)
     }
 
@@ -129,7 +125,7 @@ export const TemplateConfig = () => {
                 </div>
             </div>
             <div style={{ display: "flex", columnGap: "24px" }}>
-                <ClausesAndOptions template={coreTemplate} optionSelectHandler={optionSelectHandler} optionSelected={optionSelected} />
+                <ClausesAndOptions template={defaultTemplate} optionSelectHandler={optionSelectHandler} optionSelected={optionSelected} />
                 <PreviewPane>
                     {reviewContract ?
                         <>
@@ -143,7 +139,7 @@ export const TemplateConfig = () => {
                 {reviewContract ? <Suggestions /> : <Summary />}
 
 
-                {/* <AISuggestion /> */}
+
             </div>
         </div>
     </div>
