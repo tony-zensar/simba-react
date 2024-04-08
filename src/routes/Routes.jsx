@@ -7,6 +7,7 @@ export const Routes = () => {
     return <div className='routes'>
         <NavItems tabChangeHandler={(tab) => setActiveTabName(tab)} activeTabName={activeTabName} />
         <NavContent activeTabName={activeTabName} />
+
     </div>
 
 

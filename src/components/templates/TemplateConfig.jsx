@@ -119,10 +119,9 @@ export const TemplateConfig = () => {
 
     return <div >
         <PageHeader />
-        {/* <button onClick={closeHandler}>Go Back</button> */}
         <div className='config-container'>
             <div className='config-header'>
-                <NameInput onChange={templateNameHandler} value={templateName || ""} />
+                <NameInput onChange={templateNameHandler} value={templateName} />
                 <div className='config-actions'>
                     {reviewContract ? <Button label="Create Contract" /> : <Button label="Review Contract" onClickHandler={() => setReviewContract(true)} />}
                     <Button variant='secondary' label="Save & Exit" onClickHandler={() => setReviewContract(false)} />
@@ -143,8 +142,7 @@ export const TemplateConfig = () => {
 
                     }
                 </PreviewPane>
-                <Suggestions />
-                {/* <Summary /> */}
+                {reviewContract ? <Suggestions /> : <Summary />}
 
 
             </div>
