@@ -13,16 +13,13 @@ export const coreTemplate = {
     '<p>NEC was first published as a new and innovative way of managing\n  construction contracts in<br> 1993 � some 24 years ago. It was\n  designed to facilitate and encourage good management of<br> risks and\n  uncertainties, using clear and simple language.<br> The NEC approach\n  to managing contracts was endorsed in �Constructing the team � The<br>\n  Latham Report�, which was a government/industry review of procurement\n  and contractual<br> arrangements in the UK construction industry. This\n  led to a second edition in 1995<br> incorporating the further\n  recommendations of that review. This contract was used\n  increasingly<br> in the UK and overseas, and a major revision was made\n  with the third edition in 2005.<br> NEC has played a part in helping\n  the industry do things differently and better. It has done<br> so by\n  introducing effective project management procedures into the contract\n  itself. These<br> require pro-active management of risk and change,\n  and the day-to-day use of an up-to-date<br> programme. The range of\n  pricing options has given Clients flexibility in the allocation of\n  risk<br> and the ability to share risk and manage it,\n  collaboratively.<br> The NEC suite has evolved over three decades,\n  embedding consultation responses and user<br> feedback, and reflecting\n  industry development, including new procurement approaches and<br>\n  management techniques such as alliances, management of information\n  (BIM) and supply<br> chain engagement. This feedback and the new\n  procurement approaches formed the driver<br> for the development of\n  the next generation contracts and the launch of NEC4.<br> There were\n  three key objectives in drafting NEC4:<br> � provide greater stimulus\n  to good management<br> � support new approaches to procurement which\n  improve contract management and<br> � inspire increased use of NEC in\n  new markets and sectors.<br> It was to be evolution, not\n  revolution.<br> Some features of NEC4 include:<br> � a new design\n  build and operate contract to allow flexibility between construction\n  and<br> operational requirements in timing and extent<br> � a new\n  multi-party alliance contract based upon an integrated risk and reward\n  model<br> � new forms of subcontract to improve integration of the\n  supply chain.<br> Further enhancements include:<br> � finalising cost\n  elements during the contract<br> � incorporating a party-led dispute\n  avoidance process into the adjudication process<br> � increasing\n  standardisation between contracts and<br> � providing enhanced\n  guidance to give greater practical advice to users.<br> NEC has always\n  been known for its innovative approach to contract management, and\n  this<br> revision continues that approach. No other contract suite has\n  had such a transformative effect<br> on the built environment industry\n  as NEC. It has put the collaborative sharing of risk and<br> reward at\n  the heart of modern procurement. It is also unique in providing a\n  complete, back-toback<br> procurement solution for all works, services\n  and supplies in any sector and any country.<br> NEC4 continues to set\n  the benchmark for best practice procurement worldwide.<br>\n  <strong>Peter Higgins BSc (Hons), CEng, FICE<br> Chair of NEC4\n    Contract Board</strong>\n</p>',
   createdDate: '2024-04-03T17:12:22',
   id: 32797,
-
   modifiedDate: '2024-04-04T17:13:46',
-
   summary: '',
   heading: '',
   subHeading: '',
   description: '',
   author: '',
   bookmark: '',
-
   optionGroups: [
     {
       id: 1,
@@ -80,8 +77,156 @@ export const coreTemplate = {
               ],
             },
           ],
+          id: 8,
+          label: '1',
+          summary: 'General',
+        },
+        {
+          id: 1000,
+          label: '2',
+          summary: 'The Contractor’s main responsibilities',
+        },
+        {
+          id: 1001,
+          label: '3',
+          summary: 'Time',
+        },
+        {
+          id: 1002,
+          label: '4',
+          summary: 'Testing and Defects',
+        },
+        {
+          id: 1003,
+          label: '5',
+          summary: 'Payment',
+        },
+        {
+          id: 1004,
+          label: '6',
+          summary: 'Compensation events',
+        },
+        {
+          id: 1005,
+          label: '7',
+          summary: 'Title',
+        },
+        {
+          id: 1006,
+          label: '8',
+          summary: 'Risks and insurance',
+        },
+        {
+          id: 1007,
+          label: '9',
+          summary: 'Termination',
         },
       ],
+      selected: false,
+      summary:
+        'honcus libero tristique dolor id et Vestibulum nulla feugiat sociis nibh. Convallis ante lorem Morbi nulla Pellentesque fringilla consequat id sociis tristique. Laoreet dolor auctor eget ac eget Curabitur cursus magna Nullam nibh',
+      title: 'Core Clause',
+    },
+    {
+      id: 2000,
+      selected: false,
+      summary:
+        'honcus libero tristique dolor id et Vestibulum nulla feugiat sociis nibh. Convallis ante lorem Morbi nulla Pellentesque fringilla consequat id sociis tristique. Laoreet dolor auctor eget ac eget Curabitur cursus magna Nullam nibh',
+      title: 'Dispute resolution',
+    },
+    {
+      id: 2001,
+      selected: false,
+      summary:
+        'honcus libero tristique dolor id et Vestibulum nulla feugiat sociis nibh. Convallis ante lorem Morbi nulla Pellentesque fringilla consequat id sociis tristique. Laoreet dolor auctor eget ac eget Curabitur cursus magna Nullam nibh',
+      title: 'Secondary option clauses',
+    },
+    {
+      id: 2002,
+      selected: false,
+      summary:
+        'honcus libero tristique dolor id et Vestibulum nulla feugiat sociis nibh. Convallis ante lorem Morbi nulla Pellentesque fringilla consequat id sociis tristique. Laoreet dolor auctor eget ac eget Curabitur cursus magna Nullam nibh',
+      title: 'Schedule of Cost Components',
+    },
+    {
+      id: 2003,
+      selected: false,
+      summary:
+        'honcus libero tristique dolor id et Vestibulum nulla feugiat sociis nibh. Convallis ante lorem Morbi nulla Pellentesque fringilla consequat id sociis tristique. Laoreet dolor auctor eget ac eget Curabitur cursus magna Nullam nibh',
+      title: 'Shorter Schedule of Costs Components',
+    },
+    {
+      id: 2004,
+      selected: false,
+      summary:
+        'honcus libero tristique dolor id et Vestibulum nulla feugiat sociis nibh. Convallis ante lorem Morbi nulla Pellentesque fringilla consequat id sociis tristique. Laoreet dolor auctor eget ac eget Curabitur cursus magna Nullam nibh',
+      title: 'Contract Data',
+    },
+    {
+      id: 2005,
+      selected: false,
+      summary:
+        'honcus libero tristique dolor id et Vestibulum nulla feugiat sociis nibh. Convallis ante lorem Morbi nulla Pellentesque fringilla consequat id sociis tristique. Laoreet dolor auctor eget ac eget Curabitur cursus magna Nullam nibh',
+      title: 'Index',
+    },
+    {
+      id: 9,
+      options: [
+        {
+          groupClauses: [
+            {
+              id: 10,
+              label: 'Actions',
+              clauses: [
+                {
+                  content:
+                    '<p>Each Partner gives an early warning to the other Partners when it\n  becomes aware of<br> any matter that could affect the achievement of\n  another Partner�s objectives stated in the<br> Schedule of Partners.</p>',
+                  id: 11,
+                  label: 'Collaboration',
+                  summary: 'Partners',
+                },
+                {
+                  content:
+                    '<p>The Partners use common information systems as set out in the\n  Partnering Information.</p>',
+                  id: 12,
+                  label: 'Collaboration',
+                  summary:
+                    'The Partners use common information systems as set out in the Partnering Information.',
+                },
+                {
+                  content:
+                    '<p>A Partner implements a decision of the Core Group by issuing\n  instructions in accordance<br> with its Own Contracts.</p>',
+                  id: 13,
+                  label: 'Collaboration',
+                  summary:
+                    'A Partner implements a decision of the Core Group by issuing instructions in accordance\nwith its Own Contracts.',
+                },
+                {
+                  content:
+                    '<p>The Core Group prepares and maintains a timetable showing the\n  proposed timing of the<br> contributions of the Partners. The Core\n  Group issues a copy of the timetable to the Partners<br> each time it\n  is revised. The Contractor changes its programme if it is necessary to\n  do so in<br> order to comply with the revised timetable. Each such\n  change is a compensation event which<br> may lead to reduced Prices.</p>',
+                  id: 14,
+                  label: 'Collaboration',
+                  summary: '',
+                },
+                {
+                  content:
+                    '<p>X5.1 In these conditions of contract, unless stated as the whole of\n  the works, each reference and<br> clause relevant to<br> � the\n  works,<br> � Completion and<br> � Completion Date<br> applies, as the\n  case may be, to either the whole of the works or any section of the works.</p>',
+                  id: 15,
+                  label: 'Sectional Completion',
+                  summary: '',
+                },
+              ],
+            },
+          ],
+          id: 16,
+          label: '1',
+          summary: 'The Contractor’s main responsibilities',
+        },
+      ],
+      required: false,
+      summary:
+        'honcus libero tristique dolor id et Vestibulum nulla feugiat sociis nibh. Convallis ante lorem Morbi nulla Pellentesque fringilla consequat id sociis tristique. Laoreet dolor auctor eget ac eget Curabitur cursus magna Nullam nibh',
+      title: 'Core Clause',
     },
   ],
   status: '0',

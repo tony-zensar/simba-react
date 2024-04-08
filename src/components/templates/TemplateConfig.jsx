@@ -6,6 +6,7 @@ import { NameInput } from '../name-input/NameInput';
 import { PageHeader } from '../page-utils/PageHeader';
 import { useSelector, useDispatch } from 'react-redux';
 import { setNewTemplate } from '../../store/actionCreators';
+import { AISuggestion } from '../AISuggestion';
 
 
 export const TemplateConfig = () => {
@@ -129,9 +130,7 @@ export const TemplateConfig = () => {
             </div>
             <div style={{ display: "flex", columnGap: "24px" }}>
                 <ClausesAndOptions template={coreTemplate} optionSelectHandler={optionSelectHandler} optionSelected={optionSelected} />
-
-
-                <PreviewPane >
+                <PreviewPane>
                     {reviewContract ?
                         <>
                             <Review data={clausesSelected?.optionGroups || []} />
@@ -139,16 +138,13 @@ export const TemplateConfig = () => {
                         </>
                         :
                         <ClauseEditor data={clauses.map(c => c.content).toString()} addClauseHandler={addClauseHandler} />
-
                     }
                 </PreviewPane>
                 {reviewContract ? <Suggestions /> : <Summary />}
 
 
+                {/* <AISuggestion /> */}
             </div>
-
         </div>
-
-
     </div>
 }

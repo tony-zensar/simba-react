@@ -1,8 +1,6 @@
-import { useState } from "react";
 import "./clauses-options.scss";
 
 export const ClausesAndOptions = ({ template, optionSelectHandler = null, optionSelected }) => {
-
     return <div className="template-option-groups">
         {template?.optionGroups.map(({ title, id: sectionId, options }, sectionIndex) => {
             return <div style={{ width: "100%" }}>
@@ -25,19 +23,5 @@ export const ClausesAndOptions = ({ template, optionSelectHandler = null, option
                 </div>
             </div>
         })}
-
-
     </div>
-
-
-
-
-
-
-
-
-
-
-
-
 }
