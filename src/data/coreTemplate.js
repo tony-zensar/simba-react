@@ -26,8 +26,15 @@ export const coreTemplate = {
   optionGroups: [
     {
       id: 1,
+      selected: false,
+      summary:
+        'honcus libero tristique dolor id et Vestibulum nulla feugiat sociis nibh. Convallis ante lorem Morbi nulla Pellentesque fringilla consequat id sociis tristique. Laoreet dolor auctor eget ac eget Curabitur cursus magna Nullam nibh',
+      title: 'Core Clause',
       options: [
         {
+          id: 8,
+          label: '1',
+          summary: 'General',
           groupClauses: [
             {
               id: 2,
@@ -73,76 +80,8 @@ export const coreTemplate = {
               ],
             },
           ],
-
-          id: 8,
-          label: '1',
-          summary: 'General',
         },
       ],
-      selected: false,
-      summary:
-        'honcus libero tristique dolor id et Vestibulum nulla feugiat sociis nibh. Convallis ante lorem Morbi nulla Pellentesque fringilla consequat id sociis tristique. Laoreet dolor auctor eget ac eget Curabitur cursus magna Nullam nibh',
-      title: 'Core Clause',
-    },
-    {
-      id: 9,
-      options: [
-        {
-          groupClauses: [
-            {
-              id: 10,
-              label: 'Actions',
-              clauses: [
-                {
-                  content:
-                    '<p>Each Partner gives an early warning to the other Partners when it\n  becomes aware of<br> any matter that could affect the achievement of\n  another Partner�s objectives stated in the<br> Schedule of Partners.</p>',
-                  id: 11,
-                  label: 'Collaboration',
-                  summary: 'Partners',
-                },
-                {
-                  content:
-                    '<p>The Partners use common information systems as set out in the\n  Partnering Information.</p>',
-                  id: 12,
-                  label: 'Collaboration',
-                  summary:
-                    'The Partners use common information systems as set out in the Partnering Information.',
-                },
-                {
-                  content:
-                    '<p>A Partner implements a decision of the Core Group by issuing\n  instructions in accordance<br> with its Own Contracts.</p>',
-                  id: 13,
-                  label: 'Collaboration',
-                  summary:
-                    'A Partner implements a decision of the Core Group by issuing instructions in accordance\nwith its Own Contracts.',
-                },
-                {
-                  content:
-                    '<p>The Core Group prepares and maintains a timetable showing the\n  proposed timing of the<br> contributions of the Partners. The Core\n  Group issues a copy of the timetable to the Partners<br> each time it\n  is revised. The Contractor changes its programme if it is necessary to\n  do so in<br> order to comply with the revised timetable. Each such\n  change is a compensation event which<br> may lead to reduced Prices.</p>',
-                  id: 14,
-                  label: 'Collaboration',
-                  summary: '',
-                },
-                {
-                  content:
-                    '<p>X5.1 In these conditions of contract, unless stated as the whole of\n  the works, each reference and<br> clause relevant to<br> � the\n  works,<br> � Completion and<br> � Completion Date<br> applies, as the\n  case may be, to either the whole of the works or any section of the works.</p>',
-                  id: 15,
-                  label: 'Sectional Completion',
-                  summary: '',
-                },
-              ],
-            },
-          ],
-
-          id: 16,
-          label: '1',
-          summary: 'The Contractor’s main responsibilities',
-        },
-      ],
-      required: false,
-      summary:
-        'honcus libero tristique dolor id et Vestibulum nulla feugiat sociis nibh. Convallis ante lorem Morbi nulla Pellentesque fringilla consequat id sociis tristique. Laoreet dolor auctor eget ac eget Curabitur cursus magna Nullam nibh',
-      title: 'Core Clause',
     },
   ],
   status: '0',
