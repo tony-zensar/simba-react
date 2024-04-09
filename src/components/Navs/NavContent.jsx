@@ -5,7 +5,7 @@ export const NavContent = ({ activeTabName }) => {
     const getTabContent = (tabName) => {
         switch (tabName) {
             case "myContracts":
-                return <Contracts />
+                return <>Contracts</>
             case "sharedContracts":
                 return "Shared contract"
             case "templates":
