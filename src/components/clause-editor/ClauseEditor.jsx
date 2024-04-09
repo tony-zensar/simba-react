@@ -21,11 +21,13 @@ export const ClauseEditor = ({ data, addClauseHandler, selectedClause }) => {
 
     const changeHandler = (html) => {
         setEditorState({ ...editorState, html: html });
+        addClauseHandler(html)
 
 
     };
+
     useEffect(() => {
-        setEditorState({ ...editorState, html: data });
+        setEditorState({ ...editorState, html: data })
     }, [data])
 
 

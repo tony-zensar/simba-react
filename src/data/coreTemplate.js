@@ -30,12 +30,24 @@ export const coreTemplate = {
         title: 'Core Clause',
         options: [
           {
-            id: 8,
+            id: 111,
             label: '1',
             summary: 'General',
             groupClauses: [
               {
-                id: 2,
+                id: 222,
+                label: 'Time',
+                clauses: [
+                  {
+                    content: 'hello',
+                    id: 2,
+                    label: 'Collaboration',
+                    summary: 'Partners',
+                  },
+                ],
+              },
+              {
+                id: 333,
                 label: 'Actions',
                 clauses: [
                   {
