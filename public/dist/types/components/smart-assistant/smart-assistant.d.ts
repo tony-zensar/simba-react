@@ -20,6 +20,9 @@ export declare class SmartAssistant {
     currentQuestionIndex: number;
     element: HTMLElement;
     chat_secretkey: string;
+    isOpen: boolean;
+    toggleChatbot(): void;
+    handleEscape(): void;
     componentWillLoad(): void;
     scrollToBottom: () => void;
     getToken(): Promise<void>;

@@ -11,7 +11,6 @@ import { TemplatesCard } from "./TemplatesCard"
 
 
 import { templateCategories } from "../../data/templateCategories"
-import { templatesPreview } from "../../data/templatesPreview"
 import { getTemplateById, getTemplateCategories, getTemplates } from "../../requests/requests"
 import { setTemplateCategories, setTemplateList, setTemplatePreview } from "../../store/actionCreators"
 import "./templates.scss"
@@ -88,13 +87,12 @@ export const Templates = () => {
 
     };
 
-    return showConfig ? <TemplateConfig closeHandler={() => showConfigHandler(false)} />
+    return showConfig ? <TemplateConfig closeHandler={() => showConfigHandler(false)} type="template" />
         : <>
             <PageHeader />
             <div className="templates" >
                 <div className='template-header'>
                     <label>Templates</label>
-                    <Button onClickHandler={dialogOpenHandler} label="Create a contract" />
                 </div>
 
                 <Tabs>
@@ -117,14 +115,16 @@ export const Templates = () => {
                                         {/* <div key={textIndex} className='template-preview-content'></div> */}
                                         {!previewLoading && <p className="template-preview-description">Description</p>}
                                         <div className='template-preview-content'>{templatePreview?.data?.description}</div>
-
-
-                                    </>}
+                                        <div style={{ display: "flex", justifyContent: "flex-end", width: "100%" }}>
+                                            <Button onClickHandler={dialogOpenHandler} label="Use this template" />
+                                        </div>
+                                    </>
+                                }
                             </PreviewPane>
                         </div>
                     </TabContent>
                 </Tabs>
             </div >
-            <TemplateCategoryDialog open={open} closeHandler={dialogCloseHandler} showConfigHandler={showConfigHandler} />
+            <TemplateCategoryDialog open={open} closeHandler={dialogCloseHandler} showConfigHandler={showConfigHandler} type="template" />
         </>
 }

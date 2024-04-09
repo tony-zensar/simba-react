@@ -1,5 +1,5 @@
-import { B as BUILD, c as consoleDevInfo, H, d as doc, N as NAMESPACE, p as promiseResolve, b as bootstrapLazy } from './index-4ff0296a.js';
-export { s as setNonce } from './index-4ff0296a.js';
+import { B as BUILD, c as consoleDevInfo, H, d as doc, N as NAMESPACE, p as promiseResolve, b as bootstrapLazy } from './index-0e981b19.js';
+export { s as setNonce } from './index-0e981b19.js';
 import { g as globalScripts } from './app-globals-0f993ce5.js';
 
 /*
@@ -47,7 +47,7 @@ const patchCloneNodeFix = (HTMLElementPrototype) => {
 
 patchBrowser().then(async (options) => {
   await globalScripts();
-  return bootstrapLazy([["smart-assistant",[[1,"smart-assistant",{"page":[1537],"isChatbotVisible":[32],"query":[32],"feedback":[32],"chatHistory":[32],"refinedQuery":[32],"refinedQueryHidden":[32],"isLoading":[32],"showEmptyQueryMessage":[32],"currentResponseIndex":[32],"isProblem":[32],"selectedFeedback":[32],"feedbackSubmitted":[32],"errorMessage":[32],"session_id":[32],"starttime":[32],"showSource":[32],"sourceSet":[32],"currentQuestionIndex":[32],"chat_secretkey":[32]}]]]], options);
+  return bootstrapLazy([["smart-assistant",[[1,"smart-assistant",{"page":[1537],"isChatbotVisible":[32],"query":[32],"feedback":[32],"chatHistory":[32],"refinedQuery":[32],"refinedQueryHidden":[32],"isLoading":[32],"showEmptyQueryMessage":[32],"currentResponseIndex":[32],"isProblem":[32],"selectedFeedback":[32],"feedbackSubmitted":[32],"errorMessage":[32],"session_id":[32],"starttime":[32],"showSource":[32],"sourceSet":[32],"currentQuestionIndex":[32],"chat_secretkey":[32],"isOpen":[32]},[[0,"document:keydown.escape","handleEscape"]]]]]], options);
 });
 
 //# sourceMappingURL=chatbot.esm.js.map

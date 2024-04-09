@@ -88,13 +88,12 @@ export const Contracts = ({ page }) => {
 
     };
 
-    return showConfig ? <TemplateConfig closeHandler={() => showConfigHandler(false)} />
+    return showConfig ? <TemplateConfig closeHandler={() => showConfigHandler(false)} type="contract" />
         : <>
             <PageHeader />
             <div className="templates" >
                 <div className='template-header'>
                     <label>Contracts</label>
-                    <Button onClickHandler={dialogOpenHandler} label="Create a contract" />
                 </div>
 
                 <Tabs>
@@ -109,25 +108,23 @@ export const Contracts = ({ page }) => {
                             </div>
                             <PreviewPane>
                                 {previewLoading ? "Loading" :
-                                    templatePreview?.map(({ type, title, content }, index) => {
-                                        const customClassName = type === "heading" ? 'template-preview-heading' : "template-preview-subheading";
-                                        const updatedCustomClassName = type === "description" ? "template-preview-description" : customClassName
-                                        return <div key={index}>
-                                            <p className={updatedCustomClassName}>{title}</p>
-                                            {content.map((text, textIndex) => {
-                                                return (
-                                                    <div key={textIndex} className='template-preview-content'>
-                                                        {text}
-                                                    </div>
-                                                )
-                                            })}
+
+                                    <>
+                                        <p className="template-preview-heading">{templatePreview?.data?.heading}</p>
+                                        <div className='template-preview-content'>{templatePreview?.data?.subHeading}</div>
+                                        {/* <p className="template-preview-subheading">{title}</p> */}
+                                        {/* <div key={textIndex} className='template-preview-content'></div> */}
+                                        {!previewLoading && <p className="template-preview-description">Description</p>}
+                                        <div className='template-preview-content'>{templatePreview?.data?.description}</div>
+                                        <div style={{ display: "flex", justifyContent: "flex-end", width: "100%" }}>
+                                            <Button onClickHandler={() => showConfigHandler(true)} label="Edit this contract" />
                                         </div>
-                                    })}
+                                    </>
+                                }
                             </PreviewPane>
                         </div>
                     </TabContent>
                 </Tabs>
             </div>
-            <TemplateCategoryDialog open={open} closeHandler={dialogCloseHandler} showConfigHandler={showConfigHandler} />
         </>
 }

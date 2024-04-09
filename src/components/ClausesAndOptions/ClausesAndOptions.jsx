@@ -1,6 +1,6 @@
 import "./clauses-options.scss";
 
-export const ClausesAndOptions = ({ optionGroups = [], optionSelectHandler = null, optionSelected }) => {
+export const ClausesAndOptions = ({ type, optionGroups = [], optionSelectHandler = null, optionSelected }) => {
     return <div className="template-option-groups">
         {optionGroups?.map(({ title, id: sectionId, options }, sectionIndex) => {
             return <div style={{ width: "100%" }}>

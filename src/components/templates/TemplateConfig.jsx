@@ -8,10 +8,11 @@ import { NameInput } from '../name-input/NameInput';
 import { PageHeader } from '../page-utils/PageHeader';
 import { coreTemplate } from '../../data/coreTemplate';
 import clone from "rfdc"
+import { AiTabs } from './AiTabs';
 
 
 
-export const TemplateConfig = () => {
+export const TemplateConfig = ({ type, closeHandler }) => {
     const { newTemplate, clauses, defaultTemplate } = useSelector(state => state.templatesReducer)
     const { templateName, clausesSelected } = newTemplate
 
@@ -22,7 +23,7 @@ export const TemplateConfig = () => {
     })
 
     const [editorClause, setEditorClause] = useState("")
-    const [reviewContract, setReviewContract] = useState(false)
+    const [review, setReview] = useState(false)
     const dispatch = useDispatch()
 
     useEffect(() => {
@@ -114,8 +115,13 @@ export const TemplateConfig = () => {
     const addClauseHandler = (content) => {
         const clauseDetailsCpy = clone()(clausesSelected)
         const optionGroup = defaultTemplate?.data?.optionGroups.find(data => data.id === optionSelected.sectionId)
-        const options = optionGroup.options.find(data => data.id === optionSelected.subSectionId)
-        const groupClauses = options.groupClauses.find(data => data.id === optionSelected.labelId)
+        const options = optionGroup?.options.find(data => data.id === optionSelected.subSectionId)
+        const groupClauses = options?.groupClauses?.find(data => data.id === optionSelected.labelId)
+
+        if (!optionGroup || !options || !groupClauses) {
+            setEditorClause(content)
+            return
+        }
 
         let optionGroupIndex = -1;
         let optionsIndex = -1;
@@ -123,25 +129,33 @@ export const TemplateConfig = () => {
 
         optionGroupIndex = clauseDetailsCpy?.optionGroups?.findIndex(data => data.title === optionGroup.title)
         optionsIndex = clauseDetailsCpy?.optionGroups[optionGroupIndex]?.options?.findIndex(data => data.summary === options.summary)
-        groupClausesIndex = clauseDetailsCpy.optionGroups[optionGroupIndex]?.options[optionsIndex]?.groupClauses?.findIndex(data => data.label === groupClauses.label)
+        groupClausesIndex = clauseDetailsCpy.optionGroups[optionGroupIndex]?.options[optionsIndex]?.groupClauses?.findIndex(data => data?.label === groupClauses?.label)
 
-        // if (optionGroupIndex < 0) {
-        //     clauseDetailsCpy.optionGroups.push({ title: optionGroup.title, options: [{ summary: options.summary, groupClauses: [{ label: groupClauses.label, clauses: [{ content: content }] }] }] })
-        //     dispatch(setNewTemplate('clausesSelected', clauseDetailsCpy))
-        //     return
-        // }
+        if (optionGroupIndex < 0) {
+            clauseDetailsCpy.optionGroups.push({ title: optionGroup.title, options: [{ summary: options.summary, groupClauses: [{ label: groupClauses?.label, clauses: [{ content: content }] }] }] })
+            dispatch(setNewTemplate('clausesSelected', clauseDetailsCpy))
+            setEditorClause(content)
+            return
+        }
 
-        // if (optionsIndex < 0) {
-        //     clauseDetailsCpy.optionGroups[optionGroupIndex].options.push({ groupClauses: [{ label: groupClauses.label, clauses: [{ content: content }] }] })
-        //     dispatch(setNewTemplate('clausesSelected', clauseDetailsCpy))
-        //     return
-        // }
+        if (optionsIndex < 0) {
+            clauseDetailsCpy.optionGroups[optionGroupIndex].options.push({ groupClauses: [{ label: groupClauses?.label, clauses: [{ content: content }] }] })
+            dispatch(setNewTemplate('clausesSelected', clauseDetailsCpy))
+            setEditorClause(content)
+            return
+        }
 
-        // if (groupClausesIndex < 0) {
-        //     clauseDetailsCpy.optionGroups[optionGroupIndex].options[optionsIndex].groupClauses.push({ label: groupClauses.label, clauses: [{ content: content }] })
-        //     dispatch(setNewTemplate('clausesSelected', clauseDetailsCpy))
-        //     return
-        // }
+        if (groupClausesIndex < 0) {
+            clauseDetailsCpy.optionGroups[optionGroupIndex].options[optionsIndex].groupClauses.push({ label: groupClauses?.label, clauses: [{ content: content }] })
+            dispatch(setNewTemplate('clausesSelected', clauseDetailsCpy))
+            setEditorClause(content)
+            return
+        }
+
+
+        if (!clauseDetailsCpy?.optionGroups[optionGroupIndex]?.options[optionsIndex]?.groupClauses) {
+            clauseDetailsCpy.optionGroups[optionGroupIndex].options[optionsIndex].groupClauses = [{}]
+        }
 
         clauseDetailsCpy.optionGroups[optionGroupIndex].options[optionsIndex].groupClauses[groupClausesIndex].content = content
         dispatch(setNewTemplate('clausesSelected', clauseDetailsCpy))
@@ -185,22 +199,26 @@ export const TemplateConfig = () => {
         <PageHeader />
         <div className='config-container'>
             <div className='config-header'>
-                <NameInput onChange={templateNameHandler} value={templateName} />
+                <NameInput onChange={templateNameHandler} value={type === "template" ? templateName : "Untitled contract"} />
                 <div className='config-actions'>
-                    {reviewContract ? <Button label="Create Contract" /> : <Button label="Review Contract" onClickHandler={() => setReviewContract(true)} />}
-                    <Button variant='secondary' label="Save & Exit" onClickHandler={() => setReviewContract(false)} />
+                    {review ? <Button label={type === "template" ? "Edit template" : "Edit Contract"} onClickHandler={() => setReview(false)} /> : <Button label={type === "template" ? "Review Template" : "Review Contract"} onClickHandler={() => setReview(true)} />}
+                    <Button variant='secondary' label="Save & Exit" onClickHandler={closeHandler} />
                 </div>
             </div>
             <div style={{ display: "flex", columnGap: "24px" }}>
-                <ClausesAndOptions optionGroups={clausesSelected?.optionGroups} optionSelectHandler={optionSelectHandler} optionSelected={optionSelected} />
+                <ClausesAndOptions optionGroups={clausesSelected?.optionGroups} optionSelectHandler={optionSelectHandler} optionSelected={optionSelected} type={type} />
                 <PreviewPane>
-                    {reviewContract ?
+                    {review ?
                         <Review data={clausesSelected?.optionGroups || []} />
                         :
                         <ClauseEditor data={editorClause} addClauseHandler={addClauseHandler} />
                     }
                 </PreviewPane>
-                {reviewContract ? <Suggestions /> : <Summary />}
+                {type === "contract" && review &&
+                    <AiTabs />
+                }
+
+
 
 
 

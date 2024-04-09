@@ -1,0 +1,740 @@
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css');
+
+@font-face {
+  font-family: 'Black';
+  src: url('%PUBLIC_URL%/assets/fonts/FrutigerLTStd-Black.otf')
+    format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Bold';
+  src: url('%PUBLIC_URL%/assets/fonts/FrutigerLTStd-Bold.otf')
+    format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Cn';
+  src: url('%PUBLIC_URL%/assets/fonts/FrutigerLTStd-Cn.otf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'LightCn';
+  src: url('%PUBLIC_URL%/assets/fonts/FrutigerLTStd-LightCn.otf')
+    format('truetype');
+  font-weight: lighter;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Roman';
+  src: url('%PUBLIC_URL%/assets/fonts/FrutigerLTStd-Roman.otf')
+    format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.body {
+  font-family: 'LightCn', sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'YourFont-Bold', sans-serif;
+}
+
+@media only screen and (max-width: 400px) {
+  .circular-icon {
+    border-radius: 50%;
+    padding: 10px; /* Adjust this value as needed for the desired size */
+    transition: background-color 0.3s ease;
+  }
+
+  .chat-icon {
+    position: fixed;
+    bottom: 2vh; /* Adjust this value to position it vertically */
+    right: 2vw; /* Adjust this value to position it horizontally */
+    /* Set height to 48px for the image */
+    border-radius: 50%; /* Make it circular */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 999;
+  }
+
+  .down-icon {
+    position: fixed;
+    height: 4vh;
+    width: 8vw;
+    background-color: #e80c31;
+    border-radius: 30px;
+    bottom: 31.5vh;
+    color: white;
+    font-size: 2vh;
+    right: 5%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 999;
+  }
+
+  .inner-box {
+    display: flex;
+    flex-direction: column;
+    width: 94vw;
+    /* height:600px; */
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    margin-left: 0;
+    margin-top: 0;
+
+    /* margin: 20px auto;  */
+  }
+
+  .chatbot-header {
+    height: 3.5vh;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.4vh;
+    font-weight: bold;
+  }
+
+  .header-content {
+    display: flex;
+    align-items: center;
+  }
+
+  .bot-logo {
+    height: 40px;
+    width: 40px;
+    margin-right: 10px;
+    border-radius: 50%;
+  }
+
+  .bot-name {
+    margin-left: 60px;
+    text-align: center;
+    font-family: 'Roman';
+    font-size: 16px;
+  }
+  .close-icon {
+    cursor: pointer;
+    font-size: 24px;
+    margin-right: 10px;
+    display: flex;
+  }
+
+  .App {
+    display: flex;
+    flex-direction: column;
+    height: 42vh;
+    padding: 1vw;
+  }
+
+  .chat-container {
+    flex-grow: 1;
+    overflow: auto; /* Enable automatic scrolling */
+    height: 100px;
+  }
+
+  /* Hide the scrollbar track */
+  .chat-container::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
+  /* Define scrollbar width and color */
+  .chat-container::-webkit-scrollbar {
+    width: 8px; /* Adjust as needed */
+    background-color: transparent;
+  }
+  /* Define scrollbar thumb appearance */
+  .chat-container::-webkit-scrollbar-thumb {
+    background-color: transparent;
+    border-radius: 4px; /* Rounded corners */
+  }
+  /* Define scrollbar thumb on hover appearance */
+  .chat-container::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(0, 0, 0, 0.3); /* Adjust opacity as needed */
+  }
+
+  .message {
+    display: flex;
+    flex-direction: column;
+    margin: 5px;
+    align-items: baseline;
+  }
+
+  .bot-icon {
+    height: 25px;
+    width: 25px;
+    border-radius: 50%;
+    object-fit: cover;
+    /* border-radius: 50% ; */
+  }
+
+  .user-message {
+    align-self: flex-end;
+    padding: 8px;
+    border-radius: 10px;
+    margin-bottom: 5px;
+    font-family: 'Roman';
+    font-size: 14px;
+  }
+
+  .bot-message {
+    padding: 8px;
+    border-radius: 10px;
+    margin-bottom: 5px;
+    font-family: 'Roman';
+    font-size: 14px;
+    word-wrap: break-word;
+    max-width: 360px;
+    white-space: pre-line;
+  }
+
+  .feedback-icon {
+    display: flex;
+    gap: 15px;
+  }
+  /* icon.css */
+  .thumbs-up-icon,
+  .thumbs-down-icon {
+    transform: scale(1.1);
+    transition: transform 0.3s;
+  }
+
+  .default-icon {
+    transform: scale(1);
+  }
+
+  .refined-query {
+    font-style: italic;
+    font-size: 12px;
+    color: #888;
+    align-self: flex-end;
+  }
+
+  .input-container {
+    display: flex;
+    align-items: center;
+    padding: 1.5vh;
+    height: 3vh;
+    gap: 5px;
+    border-top: 2px solid #ccc;
+  }
+
+  input[type='text'] {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    font-family: 'Roman';
+    font-size: 14px;
+  }
+
+  .user-icon {
+    margin: 2px 6px;
+    align-self: flex-end;
+  }
+  .user-bot-icon {
+    height: 25px;
+    width: 25px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  .empty-input {
+    border: 1px solid #e80c31;
+    color: #e80c31;
+  }
+
+  /* Additional style for the "Enter Valid Query" placeholder */
+  .empty-input::placeholder {
+    color: #e80c31;
+  }
+
+  /* Add this CSS in your stylesheets */
+  .chatbot-overlay {
+    position: fixed;
+    right: 3%;
+    bottom: 36%;
+    background-color: white;
+    z-index: 999;
+  }
+
+  .send-icon {
+    font-size: 20px;
+    cursor: pointer;
+  }
+}
+
+@media only screen and (min-width: 400px) and (max-width: 600px) {
+  .circular-icon {
+    border-radius: 50%;
+    padding: 10px; /* Adjust this value as needed for the desired size */
+    transition: background-color 0.3s ease;
+  }
+
+  .chat-icon {
+    position: fixed;
+    bottom: 2vh; /* Adjust this value to position it vertically */
+    right: 2vw; /* Adjust this value to position it horizontally */
+    /* Set height to 48px for the image */
+    border-radius: 50%; /* Make it circular */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 999;
+  }
+
+  .down-icon {
+    position: fixed;
+    height: 5vh;
+    width: 10vw;
+    background-color: #e80c31;
+    border-radius: 30px;
+    bottom: 37vh;
+    color: white;
+    font-size: 3vh;
+    right: 4%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 999;
+  }
+
+  .inner-box {
+    display: flex;
+    flex-direction: column;
+    width: 94vw;
+    /* height:600px; */
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    margin-left: 0;
+    margin-top: 0;
+
+    /* margin: 20px auto;  */
+  }
+
+  .chatbot-header {
+    height: 4vh;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.4vh;
+    font-weight: bold;
+  }
+
+  .header-content {
+    display: flex;
+    align-items: center;
+  }
+
+  .bot-logo {
+    height: 40px;
+    width: 40px;
+    margin-right: 10px;
+    border-radius: 50%;
+  }
+
+  .bot-name {
+    text-align: center;
+    margin-left: 60px;
+    font-family: 'Roman';
+    font-size: 16px;
+  }
+  .close-icon {
+    cursor: pointer;
+    font-size: 24px;
+    margin-right: 10px;
+    display: flex;
+  }
+
+  .App {
+    display: flex;
+    flex-direction: column;
+    height: 39vh;
+    padding: 1vw;
+  }
+
+  .chat-container {
+    flex-grow: 1;
+    overflow: auto; /* Enable automatic scrolling */
+    height: 100px;
+  }
+
+  /* Hide the scrollbar track */
+  .chat-container::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
+  /* Define scrollbar width and color */
+  .chat-container::-webkit-scrollbar {
+    width: 8px; /* Adjust as needed */
+    background-color: transparent;
+  }
+  /* Define scrollbar thumb appearance */
+  .chat-container::-webkit-scrollbar-thumb {
+    background-color: transparent;
+    border-radius: 4px; /* Rounded corners */
+  }
+  /* Define scrollbar thumb on hover appearance */
+  .chat-container::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(0, 0, 0, 0.3); /* Adjust opacity as needed */
+  }
+
+  .message {
+    display: flex;
+    flex-direction: column;
+    margin: 5px;
+    align-items: baseline;
+  }
+
+  .bot-icon {
+    height: 25px;
+    width: 25px;
+    border-radius: 50%;
+    object-fit: cover;
+    /* border-radius: 50% ; */
+  }
+
+  .user-message {
+    align-self: flex-end;
+    padding: 8px;
+    border-radius: 10px;
+    margin-bottom: 5px;
+    font-family: 'Roman';
+    font-size: 14px;
+  }
+
+  .bot-message {
+    padding: 8px;
+    border-radius: 10px;
+    margin-bottom: 5px;
+    font-family: 'Roman';
+    font-size: 14px;
+    word-wrap: break-word;
+    max-width: 360px;
+    white-space: pre-line;
+  }
+
+  .feedback-icon {
+    display: flex;
+    gap: 15px;
+  }
+  /* icon.css */
+  .thumbs-up-icon,
+  .thumbs-down-icon {
+    transform: scale(1.1);
+    transition: transform 0.3s;
+  }
+
+  .default-icon {
+    transform: scale(1);
+  }
+
+  .refined-query {
+    font-style: italic;
+    font-size: 12px;
+    color: #888;
+    align-self: flex-end;
+  }
+
+  .input-container {
+    display: flex;
+    align-items: center;
+    padding: 2vh;
+    height: 2vh;
+    gap: 5px;
+    border-top: 2px solid #ccc;
+  }
+
+  input[type='text'] {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    font-family: 'Roman';
+    font-size: 14px;
+  }
+
+  .user-icon {
+    margin: 2px 6px;
+    align-self: flex-end;
+  }
+  .user-bot-icon {
+    height: 25px;
+    width: 25px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  .empty-input {
+    border: 1px solid #e80c31;
+    color: #e80c31;
+  }
+
+  /* Additional style for the "Enter Valid Query" placeholder */
+  .empty-input::placeholder {
+    color: #e80c31;
+  }
+
+  /* Add this CSS in your stylesheets */
+  .chatbot-overlay {
+    position: fixed;
+    right: 3%;
+    bottom: 43%;
+    background-color: white;
+    z-index: 999;
+  }
+
+  .send-icon {
+    font-size: 20px;
+    cursor: pointer;
+  }
+}
+
+@media only screen and (min-width: 601px) {
+  .circular-icon {
+    border-radius: 50%;
+    padding: 10px; /* Adjust this value as needed for the desired size */
+    transition: background-color 0.3s ease;
+  }
+
+  .chat-icon {
+    position: fixed;
+    bottom: 2vh; /* Adjust this value to position it vertically */
+    right: 2vw; /* Adjust this value to position it horizontally */
+    /* Set height to 48px for the image */
+    border-radius: 50%; /* Make it circular */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 999;
+  }
+
+  .down-icon {
+    position: fixed;
+    height: 6%;
+    width: 3%;
+    background-color: #e80c31;
+    border-radius: 20px;
+
+    bottom: 2px;
+    color: white;
+    font-size: 3vh;
+    right: 4%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+
+  .inner-box {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    width: 416px;
+    height: 420px;
+    margin-left: 0;
+    margin-top: 0;
+
+    /* margin: 20px auto;  */
+  }
+
+  .chatbot-header {
+    height: 7vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.4vh;
+    font-weight: bold;
+    font-family: 'LightCn', sans-serif;
+  }
+
+  .header-content {
+    display: flex;
+    align-items: center;
+    font-family: 'Roman';
+  }
+
+  .bot-logo {
+    height: 40px;
+    width: 40px;
+    margin-right: 10px;
+    border-radius: 50%;
+  }
+
+  .bot-name {
+    margin-left: 60px;
+    text-align: center;
+    font-family: 'Roman';
+    font-size: 16px;
+  }
+  .close-icon {
+    cursor: pointer;
+    font-size: 24px;
+    margin-right: 10px;
+    display: flex;
+  }
+
+  .App {
+    display: flex;
+    flex-direction: column;
+    height: 73%;
+    padding: 1vw;
+  }
+
+  .chat-container {
+    flex-grow: 1;
+    overflow: auto; /* Enable automatic scrolling */
+    height: 100px;
+  }
+
+  /* Hide the scrollbar track */
+  .chat-container::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
+  /* Define scrollbar width and color */
+  .chat-container::-webkit-scrollbar {
+    width: 8px; /* Adjust as needed */
+    background-color: transparent;
+  }
+  /* Define scrollbar thumb appearance */
+  .chat-container::-webkit-scrollbar-thumb {
+    background-color: transparent;
+    border-radius: 4px; /* Rounded corners */
+  }
+  /* Define scrollbar thumb on hover appearance */
+  .chat-container::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(0, 0, 0, 0.3); /* Adjust opacity as needed */
+  }
+
+  .message {
+    display: flex;
+    flex-direction: column;
+    margin: 5px;
+    align-items: baseline;
+  }
+
+  .bot-icon {
+    height: 25px;
+    width: 25px;
+    border-radius: 50%;
+    object-fit: cover;
+    /* border-radius: 50% ; */
+  }
+
+  .user-message {
+    align-self: flex-end;
+    padding: 8px;
+    border-radius: 10px;
+    margin-bottom: 5px;
+    font-family: 'Roman';
+    font-size: 14px;
+  }
+
+  .bot-message {
+    display: flex;
+    padding: 8px;
+    border-radius: 10px;
+    margin-bottom: 5px;
+    font-family: 'Roman';
+    font-size: 14px;
+    word-wrap: break-word;
+    max-width: 360px;
+    white-space: pre-line;
+  }
+
+  .feedback-icon {
+    display: flex;
+    gap: 15px;
+  }
+  /* icon.css */
+  .thumbs-up-icon,
+  .thumbs-down-icon {
+    transform: scale(1.1);
+    transition: transform 0.3s;
+  }
+
+  .default-icon {
+    transform: scale(1);
+  }
+
+  .refined-query {
+    font-style: italic;
+    font-size: 12px;
+    color: #888;
+    align-self: flex-end;
+  }
+
+  .input-container {
+    display: flex;
+    align-items: center;
+    padding: 2vh;
+    height: 5vh;
+    gap: 5px;
+    border-top: 2px solid #ccc;
+  }
+
+  input[type='text'] {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    font-family: 'Roman';
+    font-size: 14px;
+  }
+
+  .user-icon {
+    margin: 2px 6px;
+    align-self: flex-end;
+  }
+  .user-bot-icon {
+    height: 25px;
+    width: 25px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  .empty-input {
+    border: 1px solid #e80c31;
+    color: #e80c31;
+  }
+
+  /* Additional style for the "Enter Valid Query" placeholder */
+  .empty-input::placeholder {
+    color: #e80c31;
+  }
+
+  /* Add this CSS in your stylesheets */
+  .chatbot-overlay {
+    position: fixed;
+    right: 4%;
+    bottom: 7%;
+    background-color: white;
+    z-index: 999;
+  }
+
+  .send-icon {
+    font-size: 20px;
+    cursor: pointer;
+  }
+}

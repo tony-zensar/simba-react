@@ -16,11 +16,11 @@ const initialState = {
   clauses: [],
   selectedClause: [],
   newTemplate: {
-    templateName: 'Untitle contract',
+    templateName: 'Untitle template',
     category: {
-      id: '',
-      contractor: '',
-      form: '',
+      id: 1,
+      contractor: 'mainContractor',
+      form: 'longForm',
     },
     clausesSelected: [],
   },

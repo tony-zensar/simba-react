@@ -333,6 +333,40 @@
   }
 }
 
+.suggestions-tab {
+  .suggestions-tab-items {
+    display: flex;
+    margin-bottom: 24px;
+    border-bottom: 2px solid $neutralBorder;
+    & > div {
+      display: flex;
+      padding: 4px 24px 8px 0;
+      color: $neutralDefault;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 150%;
+      letter-spacing: -0.14px;
+      @include fonts();
+      position: relative;
+      top: 2px;
+
+      & * {
+        cursor: pointer;
+      }
+    }
+    & .suggestions-tab-active {
+      color: $neutralEmphasis;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: 150%;
+      letter-spacing: -0.14px;
+      border-bottom: 4px solid $secondaryDefault;
+      @include fonts(bold);
+    }
+  }
+}
 .suggestions {
   display: flex;
   width: 331px;
