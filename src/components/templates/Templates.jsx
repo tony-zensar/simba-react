@@ -30,12 +30,11 @@ export const Templates = () => {
     }, [])
 
     useEffect(() => {
-
         if (!templateList)
             getTemplates().then(res => {
-                console.log(res.data.items)
-                dispatch(setTemplateList(res?.data?.items))
                 previewHandler(res?.data?.items[0]?.id)
+                dispatch(setTemplateList(res?.data?.items))
+
             }).catch(err => {
                 console.log(err)
             })
@@ -46,7 +45,7 @@ export const Templates = () => {
             dispatch(setTemplateCategories(templateCategories))
         }).catch(err => {
             dispatch(setTemplateCategories(templateCategories))
-            console.log(err)
+
         })
 
 
@@ -80,7 +79,8 @@ export const Templates = () => {
         setPreviewLoading(true)
         getTemplateById(templateId).then(res => {
             setPreviewLoading(false)
-            dispatch(setTemplatePreview(templatesPreview))
+
+            dispatch(setTemplatePreview(res))
         }).catch(err => {
             setPreviewLoading(false)
             console.log(err)
@@ -109,25 +109,22 @@ export const Templates = () => {
                             </div>
                             <PreviewPane>
                                 {previewLoading ? "Loading" :
-                                    templatePreview?.map(({ type, title, content }, index) => {
-                                        const customClassName = type === "heading" ? 'template-preview-heading' : "template-preview-subheading";
-                                        const updatedCustomClassName = type === "description" ? "template-preview-description" : customClassName
-                                        return <div key={index}>
-                                            <p className={updatedCustomClassName}>{title}</p>
-                                            {content.map((text, textIndex) => {
-                                                return (
-                                                    <div key={textIndex} className='template-preview-content'>
-                                                        {text}
-                                                    </div>
-                                                )
-                                            })}
-                                        </div>
-                                    })}
+
+                                    <>
+                                        <p className="template-preview-heading">{templatePreview?.data?.heading}</p>
+                                        <div className='template-preview-content'>{templatePreview?.data?.subHeading}</div>
+                                        {/* <p className="template-preview-subheading">{title}</p> */}
+                                        {/* <div key={textIndex} className='template-preview-content'></div> */}
+                                        {!previewLoading && <p className="template-preview-description">Description</p>}
+                                        <div className='template-preview-content'>{templatePreview?.data?.description}</div>
+
+
+                                    </>}
                             </PreviewPane>
                         </div>
                     </TabContent>
                 </Tabs>
-            </div>
+            </div >
             <TemplateCategoryDialog open={open} closeHandler={dialogCloseHandler} showConfigHandler={showConfigHandler} />
         </>
 }
