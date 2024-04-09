@@ -1,76 +1,35 @@
 
 
 import { useEffect, useState } from "react"
-import { PageHeader } from "../page-utils/PageHeader"
-
 import { useDispatch, useSelector } from 'react-redux'
 import { Button, PreviewPane, SortHeader, TabContent, TabItems, Tabs } from "../"
-import { TemplateCategoryDialog } from "../templates/TemplateCategoryDialog"
+import { templatesPreview } from "../../data/templatesPreview"
+import { getTemplateById, getTemplates } from "../../requests/requests"
+import { setTemplateList, setTemplatePreview } from "../../store/actionCreators"
+import { PageHeader } from "../page-utils/PageHeader"
 import { TemplateConfig } from '../templates/TemplateConfig'
 import { TemplatesCard } from "../templates/TemplatesCard"
-
-
-import { templateCategories } from "../../data/templateCategories"
-import { templatesPreview } from "../../data/templatesPreview"
-import { getTemplateById, getTemplateCategories, getTemplates } from "../../requests/requests"
-import { setTemplateCategories, setTemplateList, setTemplatePreview } from "../../store/actionCreators"
 import "../templates/templates.scss"
 
-export const Contracts = ({ page }) => {
-    const [previewLoading, setPreviewLoading] = useState(true)
+export const Contracts = () => {
+    const [previewLoading, setPreviewLoading] = useState(false)
     const [showConfig, showConfigHandler] = useState(false)
-    const [open, setOpen] = useState(false);
     const [activeTab, setActiveTab] = useState(1)
 
     const { templateList, templatePreview } = useSelector(state => state.templatesReducer)
     const dispatch = useDispatch()
 
-    useEffect(() => () => {
-        setPreviewLoading(false)
-    }, [])
+
 
     useEffect(() => {
-
         if (!templateList)
             getTemplates().then(res => {
-                console.log(res.data.items)
                 dispatch(setTemplateList(res?.data?.items))
-                previewHandler(res?.data?.items[0]?.id)
+                return previewHandler(res?.data?.items[0]?.id)
             }).catch(err => {
                 console.log(err)
             })
     }, [])
-
-    useEffect(() => {
-        getTemplateCategories().then(res => {
-            dispatch(setTemplateCategories(templateCategories))
-        }).catch(err => {
-            dispatch(setTemplateCategories(templateCategories))
-
-        })
-
-
-
-    }, [])
-
-    useEffect(() => {
-        if (showConfig) {
-            dialogCloseHandler()
-        }
-    }, [showConfig])
-
-
-    const dialogOpenHandler = () => {
-        setOpen(() => {
-            return true
-        })
-    };
-
-    const dialogCloseHandler = () => {
-        setOpen(() => {
-            return false
-        })
-    };
 
     const tabChangeHandler = (tabIndex) => {
         setActiveTab(tabIndex)

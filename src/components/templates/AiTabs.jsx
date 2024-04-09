@@ -1,15 +1,81 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { AddIcon, StarIcon, TrashIcon } from "../../assets/IconList"
 import { ButtonSmall } from "../button/Button"
 import { Icon } from "../icon/Icon"
+import { getAiSuggestions } from "../../requests/requests"
+import { useDispatch, useSelector } from 'react-redux';
+import clone from "rfdc"
 
 
+import parse from 'html-react-parser';
 
 
 
 
 export const AiTabs = () => {
-    const [activeItem, setActiveItem] = useState(0)
+    const [activeItem, setActiveItem] = useState(1)
+
+    const { newTemplate, clauses, defaultTemplate } = useSelector(state => state.templatesReducer)
+    const dispatch = useDispatch()
+
+    const [suggestions, setSuggestions] = useState([])
+
+    useEffect(() => {
+
+        if (activeItem === 1) {
+            const obj = updateJson()
+            getAiSuggestions(obj).then(res => {
+                setSuggestions(res?.data?.items)
+
+            }).catch(err => {
+                console.log(err)
+            })
+
+
+        }
+    }, [activeItem])
+
+
+
+    const updateJson = () => {
+        return newTemplate.clausesSelected.optionGroups?.map((og, ogIndex) => {
+            return {
+                ...og, options: og?.options?.map((o, oIndex) => {
+                    return {
+                        ...o, groupClauses: o?.groupClauses?.map((gc, gcIndex) => {
+                            if (checkContent(gc.content)) {
+                                return gc
+                            }
+                            return { content: gc.clauses.map(i => i).toString() }
+                        })
+                    }
+                })
+            }
+        })
+
+
+
+
+    }
+
+    const checkContent = (content) => {
+        const isEmpty = content.replace(/<(.|\n)*?>/g, '').trim().length === 0
+        if (isEmpty) {
+            return null;
+        }
+        return content
+    }
+
+    const deleteSuggestionHandler = (itemIndex) => {
+        const suggestionsDetails = clone()(suggestions)
+        suggestionsDetails.splice(itemIndex, 1)
+        setSuggestions(suggestionsDetails)
+
+    }
+
+
+
+
 
     return <div className="suggestions-tab">
         <div className="suggestions-title suggestions-tab-items">
@@ -26,10 +92,7 @@ export const AiTabs = () => {
         {
             activeItem === 1 ?
                 <div className="suggestion-list">
-                    <SuggestionItem />
-                    <SuggestionItem />
-                    <SuggestionItem />
-                    <SuggestionItem />
+                    {suggestions?.map((s, index) => <SuggestionItem {...s} deleteHandler={() => deleteSuggestionHandler(index)} />)}
                 </div>
 
                 :
@@ -53,29 +116,29 @@ export const AiTabs = () => {
                 </div>
         }
 
-
-
     </div >
 
 
-
-
 }
-
-const SuggestionItem = ({ title = "Missing clause title", desc = "This is an example description of the clauses suggested by AI that user missed in the contract. Upon clicking on accept this clause will be added into the contract, clicking on delete icon will remove this suggestion from the list of suggestions." }) => {
+const SuggestionItem = ({ deleteHandler, heading = "Missing clause", groupClause, desc = "This is an example description of the clauses suggested by AI that user missed in the contract. Upon clicking on accept this clause will be added into the contract, clicking on delete icon will remove this suggestion from the list of suggestions." }) => {
     const [showDetails, showDetailsHandler] = useState(false)
+
+    const removeSuggestion = () => {
+        showDetailsHandler(false)
+        deleteHandler()
+    }
 
     return <div>
         {!showDetails ?
             <div className="suggestion-item" onClick={() => { showDetailsHandler(true) }}>
-                <p>Missing clause title</p>
+                <p>{heading} {groupClause}</p>
             </div> :
             <div className="suggestion-details">
-                <label className="suggestion-details-title">{title}</label>
+                <label className="suggestion-details-title">{heading} {groupClause}</label>
                 <p className="suggestion-details-desc">{desc}</p>
                 <div className="suggestion-actions">
                     <ButtonSmall icon={<AddIcon />} label="Add Clause" />
-                    <Icon component={<TrashIcon />} onClick={() => showDetailsHandler(false)} />
+                    <Icon component={<TrashIcon />} onClick={removeSuggestion} />
 
                 </div>
             </div>

@@ -40,7 +40,7 @@ export const coreTemplate = {
                 clauses: [
                   {
                     content:
-                      '<p id="something">Each Partner gives an early warning to the other Partners when it\n  becomes aware of<br> any matter that could affect the achievement of\n  another Partner�s objectives stated in the<br> Schedule of Partners.</p>',
+                      'Each Partner gives an early warning to the other Partners when it\n  becomes aware of<br> any matter that could affect the achievement of\n  another Partner�s objectives stated in the<br> Schedule of Partners.</p>',
                     id: 2,
                     label: 'Collaboration',
                     summary: 'Partners',
@@ -53,7 +53,7 @@ export const coreTemplate = {
                 clauses: [
                   {
                     content:
-                      '<p id="something">Each Partner gives an early warning to the other Partners when it\n  becomes aware of<br> any matter that could affect the achievement of\n  another Partner�s objectives stated in the<br> Schedule of Partners.</p>',
+                      'Each Partner gives an early warning to the other Partners when it\n  becomes aware of<br> any matter that could affect the achievement of\n  another Partner�s objectives stated in the<br> Schedule of Partners.</p>',
                     id: 2,
                     label: 'Collaboration',
                     summary: 'Partners',

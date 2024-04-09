@@ -1,4 +1,5 @@
 import {
+  CLEAR_STORE,
   SET_CLAUSES,
   SET_DEFAULT_TEMPLATE,
   SET_NEW_TEMPLATE,
@@ -16,7 +17,7 @@ const initialState = {
   clauses: [],
   selectedClause: [],
   newTemplate: {
-    templateName: 'Untitle template',
+    templateName: 'Untitled template',
     category: {
       id: 1,
       contractor: 'mainContractor',
@@ -24,9 +25,8 @@ const initialState = {
     },
     clausesSelected: [],
   },
+
   previewLoading: false,
-  templateName: '',
-  openDialog: false,
 };
 
 export const templatesReducer = (state = initialState, action = null) => {
@@ -57,6 +57,28 @@ export const templatesReducer = (state = initialState, action = null) => {
         ...state,
         defaultTemplate: action.template,
       };
+    case CLEAR_STORE:
+      return {
+        ...state,
+        templateList: null,
+        templateCategories: [],
+        templatePreview: [],
+        defaultTemplate: [],
+        clauses: [],
+        selectedClause: [],
+        newTemplate: {
+          templateName: 'Untitled template',
+          category: {
+            id: 1,
+            contractor: 'mainContractor',
+            form: 'longForm',
+          },
+          clausesSelected: [],
+        },
+
+        previewLoading: false,
+      };
+
     default:
       return state;
   }

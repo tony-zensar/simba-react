@@ -11,11 +11,11 @@ const Config = {
 
   chatBotName: 'Smart-Assistant',
 
-  headerLogo: 'assets/images/simba_bot.png',
-  headerText: 'ChatBot',
+  headerLogo: `/assets/images/simba_bot.png`,
+  headerText: 'Smart-Assistant',
   headerBgColor: '#fefcfc',
-  userLogo: 'assets/images/simba_user.png',
-  botLogo: 'assets/images/simba_bot.png',
+  userLogo: '/assets/images/simba_user.png',
+  botLogo: '/assets/images/simba_bot.png',
   userMsgBgColor: '#f4f4ed',
   botBgColor: '#f6f6e3',
   innerBoxColor: '#ffffff',

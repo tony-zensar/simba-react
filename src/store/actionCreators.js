@@ -1,6 +1,8 @@
 import {
+  CLEAR_STORE,
   SET_CLAUSES,
   SET_DEFAULT_TEMPLATE,
+  SET_NEW_CONTRACT,
   SET_NEW_TEMPLATE,
   SET_TEMPLATE_CATEGORIES,
   SET_TEMPLATE_LIST,
@@ -34,4 +36,8 @@ export const setClauses = (clauses) => {
 
 export const setDefaultTemplate = (template) => {
   return { type: SET_DEFAULT_TEMPLATE, template };
+};
+
+export const clearStore = () => {
+  return { type: CLEAR_STORE };
 };

@@ -7,6 +7,12 @@ export const getTemplates = async () => {
   );
 };
 
+export const getContracts = async () => {
+  return axios.get(
+    'https://webserver-lctzensarttl-prd.lfr.cloud/o/contract-management/1.0.0/template'
+  );
+};
+
 export const getTemplateById = async (id) => {
   return axios.get(
     'https://webserver-lctzensarttl-prd.lfr.cloud/o/contract-management/1.0.0/template/' +
@@ -31,4 +37,11 @@ export const getContract = () => {
   return new Promise((resolve, reject) => {
     resolve(coreTemplate);
   });
+};
+
+export const getAiSuggestions = async (data) => {
+  return axios.post(
+    'https://webserver-lctzensarttl-prd.lfr.cloud/o/contract-management/1.0.0/simba/suggestion',
+    data
+  );
 };

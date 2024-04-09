@@ -16,7 +16,7 @@ import { setTemplateCategories, setTemplateList, setTemplatePreview } from "../.
 import "./templates.scss"
 
 export const Templates = () => {
-    const [previewLoading, setPreviewLoading] = useState(true)
+    const [previewLoading, setPreviewLoading] = useState(false)
     const [showConfig, showConfigHandler] = useState(false)
     const [open, setOpen] = useState(false);
     const [activeTab, setActiveTab] = useState(1)
@@ -24,32 +24,23 @@ export const Templates = () => {
     const { templateList, templatePreview } = useSelector(state => state.templatesReducer)
     const dispatch = useDispatch()
 
-    useEffect(() => () => {
-        setPreviewLoading(false)
-    }, [])
+
 
     useEffect(() => {
         if (!templateList)
             getTemplates().then(res => {
-                previewHandler(res?.data?.items[0]?.id)
+                // previewHandler(res?.data?.items[0]?.id)
                 dispatch(setTemplateList(res?.data?.items))
 
             }).catch(err => {
                 console.log(err)
             })
-    }, [])
-
-    useEffect(() => {
         getTemplateCategories().then(res => {
             dispatch(setTemplateCategories(templateCategories))
         }).catch(err => {
             dispatch(setTemplateCategories(templateCategories))
-
         })
-
-
-
-    }, [])
+    }, [templateList])
 
     useEffect(() => {
         if (showConfig) {
@@ -75,16 +66,13 @@ export const Templates = () => {
     };
 
     const previewHandler = (templateId) => {
-        setPreviewLoading(true)
+        // setPreviewLoading(true)
         getTemplateById(templateId).then(res => {
             setPreviewLoading(false)
-
-            dispatch(setTemplatePreview(res))
+            // dispatch(setTemplatePreview(res))
         }).catch(err => {
             setPreviewLoading(false)
-            console.log(err)
         })
-
     };
 
     return showConfig ? <TemplateConfig closeHandler={() => showConfigHandler(false)} type="template" />
@@ -108,7 +96,7 @@ export const Templates = () => {
                             <PreviewPane>
                                 {previewLoading ? "Loading" :
 
-                                    <>
+                                    <div>
                                         <p className="template-preview-heading">{templatePreview?.data?.heading}</p>
                                         <div className='template-preview-content'>{templatePreview?.data?.subHeading}</div>
                                         {/* <p className="template-preview-subheading">{title}</p> */}
@@ -118,7 +106,7 @@ export const Templates = () => {
                                         <div style={{ display: "flex", justifyContent: "flex-end", width: "100%" }}>
                                             <Button onClickHandler={dialogOpenHandler} label="Use this template" />
                                         </div>
-                                    </>
+                                    </div>
                                 }
                             </PreviewPane>
                         </div>

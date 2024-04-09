@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getDefaultTemplate } from '../../requests/requests';
-import { setClauses, setDefaultTemplate, setNewTemplate } from '../../store/actionCreators';
+import { clearStore, setClauses, setDefaultTemplate, setNewTemplate } from '../../store/actionCreators';
 import { ClausesAndOptions } from '../ClausesAndOptions/ClausesAndOptions';
 import { Button, ClauseEditor, PreviewPane, Review, Suggestions, Summary } from '../index';
 import { NameInput } from '../name-input/NameInput';
@@ -33,6 +33,10 @@ export const TemplateConfig = ({ type, closeHandler }) => {
         }).catch(err => {
             console.log(err)
         })
+    }, [])
+
+    useEffect(() => () => {
+        dispatch(clearStore())
     }, [])
 
 
@@ -217,11 +221,9 @@ export const TemplateConfig = ({ type, closeHandler }) => {
                 {type === "contract" && review &&
                     <AiTabs />
                 }
-
-
-
-
-
+                {type === "contract" &&
+                    <smart-assistant ></smart-assistant>
+                }
             </div>
         </div>
     </div>
