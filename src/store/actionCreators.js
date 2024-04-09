@@ -13,7 +13,6 @@ export const showDialog = (flag) => {
 };
 
 export const setTemplateList = (templates) => {
-  console.log(templates);
   return { type: SET_TEMPLATE_LIST, templates };
 };
 

@@ -1,8 +1,8 @@
 import "./clauses-options.scss";
 
-export const ClausesAndOptions = ({ template, optionSelectHandler = null, optionSelected }) => {
+export const ClausesAndOptions = ({ optionGroups = [], optionSelectHandler = null, optionSelected }) => {
     return <div className="template-option-groups">
-        {template?.optionGroups.map(({ title, id: sectionId, options }, sectionIndex) => {
+        {optionGroups?.map(({ title, id: sectionId, options }, sectionIndex) => {
             return <div style={{ width: "100%" }}>
                 <div className="template-options level-1">
                     <p onClick={() => optionSelectHandler("section", sectionId)} className={`${optionSelected?.sectionId === sectionId ? "active" : ""}`} >{title}</p>

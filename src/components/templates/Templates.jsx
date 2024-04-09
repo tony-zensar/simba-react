@@ -10,8 +10,10 @@ import { TemplateConfig } from './TemplateConfig'
 import { TemplatesCard } from "./TemplatesCard"
 
 
-import { getDefaultTemplate, getTemplateById, getTemplateCategories, getTemplates } from "../../requests/requests"
-import { setDefaultTemplate, setTemplateCategories, setTemplateList, setTemplatePreview } from "../../store/actionCreators"
+import { templateCategories } from "../../data/templateCategories"
+import { templatesPreview } from "../../data/templatesPreview"
+import { getTemplateById, getTemplateCategories, getTemplates } from "../../requests/requests"
+import { setTemplateCategories, setTemplateList, setTemplatePreview } from "../../store/actionCreators"
 import "./templates.scss"
 
 export const Templates = () => {
@@ -22,6 +24,10 @@ export const Templates = () => {
 
     const { templateList, templatePreview } = useSelector(state => state.templatesReducer)
     const dispatch = useDispatch()
+
+    useEffect(() => () => {
+        setPreviewLoading(false)
+    }, [])
 
     useEffect(() => {
 
@@ -36,18 +42,15 @@ export const Templates = () => {
     }, [])
 
     useEffect(() => {
-
         getTemplateCategories().then(res => {
-            dispatch(setTemplateCategories(res))
+            dispatch(setTemplateCategories(templateCategories))
         }).catch(err => {
+            dispatch(setTemplateCategories(templateCategories))
             console.log(err)
         })
 
-        getDefaultTemplate().then(res => {
-            dispatch(setDefaultTemplate(res))
-        }).catch(err => {
-            console.log(err)
-        })
+
+
     }, [])
 
     useEffect(() => {
@@ -76,8 +79,8 @@ export const Templates = () => {
     const previewHandler = (templateId) => {
         setPreviewLoading(true)
         getTemplateById(templateId).then(res => {
-            dispatch(setTemplatePreview(res))
             setPreviewLoading(false)
+            dispatch(setTemplatePreview(templatesPreview))
         }).catch(err => {
             setPreviewLoading(false)
             console.log(err)
@@ -106,7 +109,7 @@ export const Templates = () => {
                             </div>
                             <PreviewPane>
                                 {previewLoading ? "Loading" :
-                                    Array.isArray(templatePreview)?.map(({ type, title, content }, index) => {
+                                    templatePreview?.map(({ type, title, content }, index) => {
                                         const customClassName = type === "heading" ? 'template-preview-heading' : "template-preview-subheading";
                                         const updatedCustomClassName = type === "description" ? "template-preview-description" : customClassName
                                         return <div key={index}>

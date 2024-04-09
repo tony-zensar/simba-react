@@ -1,10 +1,13 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { setClauses, setNewTemplate } from '../../store/actionCreators';
+import { getDefaultTemplate } from '../../requests/requests';
+import { setClauses, setDefaultTemplate, setNewTemplate } from '../../store/actionCreators';
 import { ClausesAndOptions } from '../ClausesAndOptions/ClausesAndOptions';
 import { Button, ClauseEditor, PreviewPane, Review, Suggestions, Summary } from '../index';
 import { NameInput } from '../name-input/NameInput';
 import { PageHeader } from '../page-utils/PageHeader';
+import { coreTemplate } from '../../data/coreTemplate';
+
 
 
 export const TemplateConfig = () => {
@@ -21,6 +24,15 @@ export const TemplateConfig = () => {
     const dispatch = useDispatch()
 
     useEffect(() => {
+        getDefaultTemplate().then(res => {
+            dispatch(setDefaultTemplate(coreTemplate))
+
+        }).catch(err => {
+            console.log(err)
+        })
+    }, [])
+
+    useEffect(() => {
         const content = getClauses({ sectionIndex: 0, subSectionIndex: 0, labelIndex: 0 })
         setOptionsSelected({
             sectionId: 1,
@@ -28,8 +40,8 @@ export const TemplateConfig = () => {
             labelId: 2
         })
 
-        // dispatch(setClauses(content))
-        dispatch(setNewTemplate('clausesSelected', { optionGroups: defaultTemplate.optionGroups }))
+        dispatch(setClauses(content))
+        dispatch(setNewTemplate('clausesSelected', { optionGroups: defaultTemplate.data.optionGroups }))
 
 
     }, [])
@@ -55,14 +67,15 @@ export const TemplateConfig = () => {
             }
             const content = getClauses(path)
 
-            // dispatch(setClauses(content))
+            dispatch(setClauses(content))
 
         }
         setOptionsSelected(updateSelections)
     }
 
     const getClauses = ({ sectionIndex, subSectionIndex, labelIndex }) => {
-        return defaultTemplate.optionGroups[sectionIndex]?.options[subSectionIndex]?.groupClauses[labelIndex]?.clauses
+
+        return defaultTemplate?.data?.optionGroups[sectionIndex]?.options[subSectionIndex]?.groupClauses[labelIndex]?.clauses
     }
 
     const addClauseHandler = (content) => {
@@ -70,7 +83,7 @@ export const TemplateConfig = () => {
 
         const clauseDetailsCpy = { ...clausesSelected }
 
-        const optionGroup = defaultTemplate.optionGroups.find(data => data.id === optionSelected.sectionId)
+        const optionGroup = defaultTemplate?.data?.optionGroups.find(data => data.id === optionSelected.sectionId)
         const options = optionGroup.options.find(data => data.id === optionSelected.subSectionId)
         const groupClauses = options.groupClauses.find(data => data.id === optionSelected.labelId)
 
@@ -107,7 +120,7 @@ export const TemplateConfig = () => {
 
         clauseDetailsCpy.optionGroups[optionGroupIndex].options[optionsIndex].groupClauses[groupClausesIndex].clauses.push({ content: content })
         dispatch(setNewTemplate('clausesSelected', clauseDetailsCpy))
-        console.log(clauseDetailsCpy)
+
     }
 
     const templateNameHandler = (e) => {
@@ -125,15 +138,12 @@ export const TemplateConfig = () => {
                 </div>
             </div>
             <div style={{ display: "flex", columnGap: "24px" }}>
-                <ClausesAndOptions template={defaultTemplate} optionSelectHandler={optionSelectHandler} optionSelected={optionSelected} />
+                <ClausesAndOptions optionGroups={defaultTemplate?.data?.optionGroups} optionSelectHandler={optionSelectHandler} optionSelected={optionSelected} />
                 <PreviewPane>
                     {reviewContract ?
-                        <>
-                            <Review data={clausesSelected?.optionGroups || []} />
-
-                        </>
+                        <Review data={clausesSelected?.optionGroups || []} />
                         :
-                        <ClauseEditor data={clauses.map(c => c.content).toString()} addClauseHandler={addClauseHandler} />
+                        <ClauseEditor data={clauses?.map(c => c.content).toString()} addClauseHandler={addClauseHandler} />
                     }
                 </PreviewPane>
                 {reviewContract ? <Suggestions /> : <Summary />}
