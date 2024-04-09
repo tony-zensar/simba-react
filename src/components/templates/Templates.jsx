@@ -4,7 +4,7 @@ import { useEffect, useState } from "react"
 import { PageHeader } from "../page-utils/PageHeader"
 
 import { useDispatch, useSelector } from 'react-redux'
-import { Button, PreviewPane, SortHeader, TabContent, TabItems, Tabs } from "../"
+import { Button, ButtonSmall, PreviewPane, SortHeader, TabContent, TabItems, Tabs } from "../"
 import { TemplateCategoryDialog } from "./TemplateCategoryDialog"
 import { TemplateConfig } from './TemplateConfig'
 import { TemplatesCard } from "./TemplatesCard"
@@ -14,6 +14,7 @@ import { templateCategories } from "../../data/templateCategories"
 import { getTemplateById, getTemplateCategories, getTemplates } from "../../requests/requests"
 import { setTemplateCategories, setTemplateList, setTemplatePreview } from "../../store/actionCreators"
 import "./templates.scss"
+import { EditIcon } from "../../assets/IconList"
 
 export const Templates = () => {
     const [previewLoading, setPreviewLoading] = useState(false)
@@ -96,15 +97,18 @@ export const Templates = () => {
                             <PreviewPane>
                                 {previewLoading ? "Loading" :
 
+
+
+
                                     <div>
-                                        <p className="template-preview-heading">{templatePreview?.data?.heading}</p>
-                                        <div className='template-preview-content'>{templatePreview?.data?.subHeading}</div>
-                                        {/* <p className="template-preview-subheading">{title}</p> */}
-                                        {/* <div key={textIndex} className='template-preview-content'></div> */}
-                                        {!previewLoading && <p className="template-preview-description">Description</p>}
+                                        <p className="template-preview-heading">{templatePreview?.data?.headingLabel}</p>
+                                        <div className='template-preview-content'>{templatePreview?.data?.headingContent}</div>
+                                        <p className="template-preview-subheading">{templatePreview?.data?.subHeadingLabel}</p>
+                                        <div className='template-preview-content'>{templatePreview?.data?.subHeadingContent}</div>
+                                        <p className="template-preview-description">Description</p>
                                         <div className='template-preview-content'>{templatePreview?.data?.description}</div>
-                                        <div style={{ display: "flex", justifyContent: "flex-end", width: "100%" }}>
-                                            <Button onClickHandler={dialogOpenHandler} label="Use this template" />
+                                        <div style={{ display: "flex", flexGrow: 0, justifyContent: "flex-end", width: "100%", position: "absolute", right: "10px", top: "10px" }}>
+                                            <ButtonSmall onClick={dialogOpenHandler} label="Use this template" />
                                         </div>
                                     </div>
                                 }

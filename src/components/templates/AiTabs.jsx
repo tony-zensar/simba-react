@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import { AddIcon, StarIcon, TrashIcon } from "../../assets/IconList"
 import { ButtonSmall } from "../button/Button"
 import { Icon } from "../icon/Icon"
-import { getAiSuggestions } from "../../requests/requests"
+import { getAiSuggestions, getAiSummary } from "../../requests/requests"
 import { useDispatch, useSelector } from 'react-redux';
 import clone from "rfdc"
 
@@ -19,6 +19,8 @@ export const AiTabs = () => {
     const dispatch = useDispatch()
 
     const [suggestions, setSuggestions] = useState([])
+    const [summary, setSummary] = useState([])
+
 
     useEffect(() => {
 
@@ -30,11 +32,16 @@ export const AiTabs = () => {
             }).catch(err => {
                 console.log(err)
             })
+        }
+        else {
+            getAiSummary(newTemplate?.clausesSelected?.optionGroups).then(res => {
+                setSummary(res?.data)
 
-
+            }).catch(err => {
+                console.log(err)
+            })
         }
     }, [activeItem])
-
 
 
     const updateJson = () => {
@@ -52,10 +59,6 @@ export const AiTabs = () => {
                 })
             }
         })
-
-
-
-
     }
 
     const checkContent = (content) => {
@@ -70,12 +73,7 @@ export const AiTabs = () => {
         const suggestionsDetails = clone()(suggestions)
         suggestionsDetails.splice(itemIndex, 1)
         setSuggestions(suggestionsDetails)
-
     }
-
-
-
-
 
     return <div className="suggestions-tab">
         <div className="suggestions-title suggestions-tab-items">
@@ -94,25 +92,15 @@ export const AiTabs = () => {
                 <div className="suggestion-list">
                     {suggestions?.map((s, index) => <SuggestionItem {...s} deleteHandler={() => deleteSuggestionHandler(index)} />)}
                 </div>
-
                 :
                 <div className="summary">
-
-                    <p className="summary-short">This text outlines various terms and concepts related to a contractual agreement, likely in the context of construction or project management. Here's what it all means:</p>
-
-                    <div className="summary-details">
-                        <label className="summary-title">Accepted Programme</label>
-                        <p className="summary-desc">This refers to the agreed-upon project schedule, subject to change if accepted by the Project Manager.</p>
-                    </div>
-                    <div className="summary-details">
-                        <label className="summary-title">Accepted Programme</label>
-                        <p className="summary-desc">This refers to the agreed-upon project schedule, subject to change if accepted by the Project Manager.</p>
-                    </div>
-                    <div className="summary-details">
-                        <label className="summary-title">Accepted Programme</label>
-                        <p className="summary-desc">This refers to the agreed-upon project schedule, subject to change if accepted by the Project Manager.</p>
-                    </div>
-
+                    <p className="summary-short">{summary?.overView}</p>
+                    {summary?.summaryItems?.map(({ heading, description }) => {
+                        return <div className="summary-details">
+                            <label className="summary-title">{heading}</label>
+                            <p className="summary-desc">{description}</p>
+                        </div>
+                    })}
                 </div>
         }
 
