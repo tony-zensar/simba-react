@@ -18,11 +18,14 @@ export const Contracts = () => {
 
     const [showConfig, showConfigHandler] = useState(false)
     const [activeTab, setActiveTab] = useState(1)
-    const { templateList, templatePreview } = useSelector(state => state.templatesReducer)
+    const { templateList, templatePreview, reloadPage } = useSelector(state => state.templatesReducer)
     const dispatch = useDispatch()
 
 
     useEffect(() => {
+        if (templateList?.length > 0) {
+            return
+        }
         setPageLoading(true)
         getContracts().then(res => {
             dispatch(setTemplateList(res?.data?.items))
@@ -30,9 +33,13 @@ export const Contracts = () => {
         }).catch(err => {
             console.log(err)
             setPageLoading(false)
+            setPreviewLoading(false)
 
         })
-    }, [])
+
+
+
+    }, [templateList])
 
     useEffect(() => () => {
         dispatch(clearStore())

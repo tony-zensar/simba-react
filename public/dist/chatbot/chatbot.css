@@ -1,41 +1,5 @@
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css');
 
-@font-face {
-  font-family: 'Black';
-  src: url('%PUBLIC_URL%/assets/fonts/FrutigerLTStd-Black.otf')
-    format('truetype');
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Bold';
-  src: url('%PUBLIC_URL%/assets/fonts/FrutigerLTStd-Bold.otf')
-    format('truetype');
-  font-weight: bold;
-  font-style: normal;
-}
-@font-face {
-  font-family: 'Cn';
-  src: url('%PUBLIC_URL%/assets/fonts/FrutigerLTStd-Cn.otf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-}
-@font-face {
-  font-family: 'LightCn';
-  src: url('%PUBLIC_URL%/assets/fonts/FrutigerLTStd-LightCn.otf')
-    format('truetype');
-  font-weight: lighter;
-  font-style: normal;
-}
-@font-face {
-  font-family: 'Roman';
-  src: url('%PUBLIC_URL%/assets/fonts/FrutigerLTStd-Roman.otf')
-    format('truetype');
-  font-weight: normal;
-  font-style: normal;
-}
-
 .body {
   font-family: 'LightCn', sans-serif;
 }
@@ -103,7 +67,6 @@ h6 {
 
   .chatbot-header {
     height: 3.5vh;
-
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -126,7 +89,7 @@ h6 {
   .bot-name {
     margin-left: 60px;
     text-align: center;
-    font-family: 'Roman';
+    font-family: sans-serif;
     font-size: 16px;
   }
   .close-icon {
@@ -355,7 +318,7 @@ h6 {
   .bot-name {
     text-align: center;
     margin-left: 60px;
-    font-family: 'Roman';
+    font-family: sans-serif;
     font-size: 16px;
   }
   .close-icon {
@@ -567,13 +530,11 @@ h6 {
     align-items: center;
     padding: 1.4vh;
     font-weight: bold;
-    font-family: 'LightCn', sans-serif;
   }
 
   .header-content {
     display: flex;
     align-items: center;
-    font-family: 'Roman';
   }
 
   .bot-logo {
@@ -586,7 +547,7 @@ h6 {
   .bot-name {
     margin-left: 60px;
     text-align: center;
-    font-family: 'Roman';
+    font-family: sans-serif;
     font-size: 16px;
   }
   .close-icon {
@@ -728,7 +689,7 @@ h6 {
   .chatbot-overlay {
     position: fixed;
     right: 4%;
-    bottom: 7%;
+    bottom: 10%;
     background-color: white;
     z-index: 999;
   }
@@ -737,4 +698,64 @@ h6 {
     font-size: 20px;
     cursor: pointer;
   }
+}
+
+@font-face {
+  font-family: 'FrutigerLTStd-Roman';
+  src: url('simba-react/assets/fonts/FrutigerLTStd-Roman.eot');
+  src: url('simba-react/assets/fonts/FrutigerLTStd-Roman.eot?#iefix')
+      format('embedded-opentype'),
+    url('simba-react/assets/fonts/FrutigerLTStd-Roman.woff') format('woff'),
+    url('simba-react/assets/fonts/FrutigerLTStd-Roman.woff2') format('woff2'),
+    url('simba-react/assets/fonts/FrutigerLTStd-Roman.ttf') format('truetype'),
+    url('simba-react/assets/fonts/FrutigerLTStd-Roman.svg#FrutigerLTStd-Roman')
+      format('svg');
+}
+
+@font-face {
+  font-family: 'FrutigerLTStd-LightCn';
+  src: url('simba-react/assets/fonts/FrutigerLTStd-LightCn.eot');
+  src: url('simba-react/assets/fonts/FrutigerLTStd-LightCn.eot?#iefix')
+      format('embedded-opentype'),
+    url('simba-react/assets/fonts/FrutigerLTStd-LightCn.svg#FrutigerLTStd-LightCn')
+      format('svg'),
+    url('simba-react/assets/fonts/FrutigerLTStd-LightCn.ttf') format('truetype'),
+    url('simba-react/assets/fonts/FrutigerLTStd-LightCn.woff') format('woff'),
+    url('simba-react/assets/fonts/FrutigerLTStd-LightCn.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'FrutigerLTStd-Cn';
+  src: url('simba-react/assets/fonts/FrutigerLTStd-Cn.eot');
+  src: url('simba-react/assets/fonts/FrutigerLTStd-Cn.eot?#iefix')
+      format('embedded-opentype'),
+    url('simba-react/assets/fonts/FrutigerLTStd-Cn.svg#FrutigerLTStd-Cn')
+      format('svg'),
+    url('simba-react/assets/fonts/FrutigerLTStd-Cn.ttf') format('truetype'),
+    url('simba-react/assets/fonts/FrutigerLTStd-Cn.woff') format('woff'),
+    url('simba-react/assets/fonts/FrutigerLTStd-Cn.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'FrutigerLTStd-Bold';
+  src: url('simba-react/assets/fonts/FrutigerLTStd-Bold.eot');
+  src: url('simba-react/assets/fonts/FrutigerLTStd-Bold.eot?#iefix')
+      format('embedded-opentype'),
+    url('simba-react/assets/fonts/FrutigerLTStd-Bold.svg#FrutigerLTStd-Bold')
+      format('svg'),
+    url('simba-react/assets/fonts/FrutigerLTStd-Bold.ttf') format('truetype'),
+    url('simba-react/assets/fonts/FrutigerLTStd-Bold.woff') format('woff'),
+    url('simba-react/assets/fonts/FrutigerLTStd-Bold.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'FrutigerLTStd-Black';
+  src: url('simba-react/assets/fonts/FrutigerLTStd-Black.eot');
+  src: url('simba-react/assets/fonts/FrutigerLTStd-Black.eot?#iefix')
+      format('embedded-opentype'),
+    url('simba-react/assets/fonts/FrutigerLTStd-Black.svg#FrutigerLTStd-Black')
+      format('svg'),
+    url('simba-react/assets/fonts/FrutigerLTStd-Black.ttf') format('truetype'),
+    url('simba-react/assets/fonts/FrutigerLTStd-Black.woff') format('woff'),
+    url('simba-react/assets/fonts/FrutigerLTStd-Black.woff2') format('woff2');
 }

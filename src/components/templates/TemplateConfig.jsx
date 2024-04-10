@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getDefaultTemplate } from '../../requests/requests';
 import { clearStore, setClauses, setDefaultTemplate, setNewTemplate } from '../../store/actionCreators';
 import { ClausesAndOptions } from '../ClausesAndOptions/ClausesAndOptions';
-import { Button, ClauseEditor, PreviewPane, Review, Suggestions, Summary } from '../index';
+import { Button, ChatBot, ClauseEditor, PreviewPane, Review, Suggestions, Summary } from '../index';
 import { NameInput } from '../name-input/NameInput';
 import { PageHeader } from '../page-utils/PageHeader';
 import { coreTemplate } from '../../data/coreTemplate';
@@ -42,6 +42,7 @@ export const TemplateConfig = ({ type, closeHandler }) => {
 
     useEffect(() => () => {
         dispatch(clearStore())
+
     }, [])
 
 
@@ -65,7 +66,6 @@ export const TemplateConfig = ({ type, closeHandler }) => {
     useEffect(() => {
         if (defaultTemplate.length < 1)
             return
-
         const x = defaultTemplate?.data?.optionGroups?.map(og => {
             return {
                 ...og, options: og?.options?.map(o => {
@@ -77,6 +77,7 @@ export const TemplateConfig = ({ type, closeHandler }) => {
                 })
             }
         })
+
         // clausesSelected.length &&
         //     getEditorClauses()
 
@@ -107,9 +108,7 @@ export const TemplateConfig = ({ type, closeHandler }) => {
 
             }
             const content = getClauses(path)
-
             dispatch(setClauses(content))
-
 
 
         }
@@ -169,9 +168,6 @@ export const TemplateConfig = ({ type, closeHandler }) => {
         clauseDetailsCpy.optionGroups[optionGroupIndex].options[optionsIndex].groupClauses[groupClausesIndex].content = content
         dispatch(setNewTemplate('clausesSelected', clauseDetailsCpy))
         setEditorClause(content)
-
-
-
     }
 
     const templateNameHandler = (e) => {
@@ -229,7 +225,7 @@ export const TemplateConfig = ({ type, closeHandler }) => {
                         <AiTabs />
                     }
                     {type === "contract" &&
-                        <smart-assistant ></smart-assistant>
+                        <ChatBot />
                     }
                 </div>
             }

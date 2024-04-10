@@ -2,6 +2,7 @@ import {
   CLEAR_STORE,
   SET_CLAUSES,
   SET_DEFAULT_TEMPLATE,
+  SET_FETCH,
   SET_NEW_TEMPLATE,
   SET_TEMPLATE_CATEGORIES,
   SET_TEMPLATE_LIST,
@@ -57,6 +58,7 @@ export const templatesReducer = (state = initialState, action = null) => {
         ...state,
         defaultTemplate: action.template,
       };
+
     case CLEAR_STORE:
       return {
         ...state,

@@ -28,6 +28,9 @@ export const Templates = () => {
 
 
     useEffect(() => {
+        if (templateList?.length > 0) {
+            return
+        }
         getTemplates().then(res => {
             dispatch(setTemplateList(res?.data?.items))
             previewHandler(res?.data?.items[0]?.id)
@@ -35,7 +38,12 @@ export const Templates = () => {
         }).catch(err => {
             console.log(err)
             setPageLoading(false)
+            setPreviewLoading(false)
         })
+
+    }, [templateList])
+
+    useEffect(() => {
         getTemplateCategories().then(res => {
             dispatch(setTemplateCategories(templateCategories))
         }).catch(err => {

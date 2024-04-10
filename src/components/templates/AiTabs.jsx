@@ -1,20 +1,18 @@
 import { useEffect, useState } from "react"
+import { Oval } from "react-loader-spinner"
 import { useDispatch, useSelector } from 'react-redux'
 import clone from "rfdc"
 import { AddIcon, StarIcon, TrashIcon } from "../../assets/IconList"
 import { getAiSuggestions, getAiSummary } from "../../requests/requests"
+import { setNewTemplate } from "../../store/actionCreators"
 import { ButtonSmall } from "../button/Button"
 import { Icon } from "../icon/Icon"
-import { Oval } from "react-loader-spinner"
 
 
 export const AiTabs = () => {
     const [activeItem, setActiveItem] = useState(1)
     const [pageLoading, setPageLoading] = useState(true)
-
-
-    const { newTemplate, clauses, defaultTemplate } = useSelector(state => state.templatesReducer)
-    const dispatch = useDispatch()
+    const { newTemplate } = useSelector(state => state.templatesReducer)
 
     const [suggestions, setSuggestions] = useState([])
     const [summary, setSummary] = useState([])
@@ -22,7 +20,7 @@ export const AiTabs = () => {
 
     useEffect(() => {
         if (activeItem === 1) {
-            const obj = updateJson()
+            const obj = getUpdatedJson()
             setPageLoading(true)
             getAiSuggestions(obj).then(res => {
                 setSuggestions(res?.data?.items)
@@ -48,7 +46,7 @@ export const AiTabs = () => {
     }, [activeItem])
 
 
-    const updateJson = () => {
+    const getUpdatedJson = () => {
         return newTemplate.clausesSelected.optionGroups?.map((og, ogIndex) => {
             return {
                 ...og, options: og?.options?.map((o, oIndex) => {
@@ -113,12 +111,60 @@ export const AiTabs = () => {
 
 
 }
-const SuggestionItem = ({ deleteHandler, heading = "Missing clause", groupClause, desc = "This is an example description of the clauses suggested by AI that user missed in the contract. Upon clicking on accept this clause will be added into the contract, clicking on delete icon will remove this suggestion from the list of suggestions." }) => {
+
+const SuggestionItem = ({ deleteHandler, heading = "Missing clause", groupClause, option, optionGroup, desc = "This is an example description of the clauses suggested by AI that user missed in the contract. Upon clicking on accept this clause will be added into the contract, clicking on delete icon will remove this suggestion from the list of suggestions." }) => {
+    const { newTemplate, defaultTemplate } = useSelector(state => state.templatesReducer)
+    const dispatch = useDispatch()
+
     const [showDetails, showDetailsHandler] = useState(false)
+    const { clausesSelected } = newTemplate
+    const defaultClauses = defaultTemplate?.data
 
     const removeSuggestion = () => {
         showDetailsHandler(false)
         deleteHandler()
+    }
+
+    const insertClauseHandler = (section, subSection, label) => {
+        const clauseDetailsCpy = clone()(clausesSelected)
+        clauseDetailsCpy.optionGroups.forEach(og => {
+            if (og.title === section) {
+                og.options.forEach(o => {
+                    if (o.summary === subSection) {
+                        o.groupClauses.forEach(gc => {
+                            if (gc.label === label) {
+                                gc.content = getClauseFromDefaultClause(section, subSection, label)
+                            }
+                        })
+                    }
+
+                })
+            }
+
+        });
+        dispatch(setNewTemplate('clausesSelected', clauseDetailsCpy))
+        showDetailsHandler(false)
+
+        deleteHandler()
+    }
+
+    const getClauseFromDefaultClause = (section, subSection, label) => {
+        let clauses = ''
+        defaultClauses?.optionGroups?.forEach(og => {
+            if (og?.title === section) {
+                og?.options?.forEach(o => {
+                    if (o?.summary === subSection) {
+                        o?.groupClauses?.forEach(gc => {
+                            if (gc?.label === label) {
+                                clauses = gc?.clauses?.map(c => c?.content).toString()
+                            }
+                        })
+                    }
+
+                })
+            }
+        });
+        return clauses
     }
 
     return <div>
@@ -130,7 +176,7 @@ const SuggestionItem = ({ deleteHandler, heading = "Missing clause", groupClause
                 <label className="suggestion-details-title">{heading} {groupClause}</label>
                 <p className="suggestion-details-desc">{desc}</p>
                 <div className="suggestion-actions">
-                    <ButtonSmall icon={<AddIcon />} label="Add Clause" />
+                    <ButtonSmall icon={<AddIcon />} label="Add Clause" onClick={() => insertClauseHandler(optionGroup, option, groupClause)} />
                     <Icon component={<TrashIcon />} onClick={removeSuggestion} />
 
                 </div>
