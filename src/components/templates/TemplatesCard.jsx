@@ -14,7 +14,7 @@ export const TemplatesCard = ({ id, name, description, templateName, templateCat
         </div>
 
         <div className="template-details">
-            <p className="template-title">{name || type === 'contract' ? "Contract name" : "Template name"}</p>
+            <p className="template-title">{name || (type === 'contract' ? "Contract name" : "Template name")}</p>
             {type === "contract" ? <p className="template-description">{trimText(templateName || "Template name", 53, true)}</p> : ""}
 
             <p className="template-description">{trimText(description || "Description", 53, true)}</p>

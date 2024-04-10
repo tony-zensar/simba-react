@@ -5,7 +5,7 @@ const Config = {
   feedbackUrl: 'http://localhost:5000/save_feedback',
   tokenUrl: 'http://localhost:5000/get_token',
 
-  getFileUrl: 'http://localhost:5000/open_file',
+  // getFileUrl: 'http://localhost:5000/open_file',
 
   chatSecretKey: '7c7a412d-2057-4fdb-824c-fe4f780a6147',
 

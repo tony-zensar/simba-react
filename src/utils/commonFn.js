@@ -18,6 +18,9 @@ const getLocalStore = (value) => {
 };
 
 const trimText = (str, length, dots) => {
+  if (str.length <= length) {
+    return str;
+  }
   return dots ? str.substring(0, length) + '...' : str.substring(0, length);
 };
 
