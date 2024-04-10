@@ -9,12 +9,14 @@ import { PageHeader } from '../page-utils/PageHeader';
 import { coreTemplate } from '../../data/coreTemplate';
 import clone from "rfdc"
 import { AiTabs } from './AiTabs';
+import { Oval } from 'react-loader-spinner';
 
 
 
 export const TemplateConfig = ({ type, closeHandler }) => {
     const { newTemplate, clauses, defaultTemplate } = useSelector(state => state.templatesReducer)
     const { templateName, clausesSelected } = newTemplate
+    const [pageLoading, setPageLoading] = useState(true)
 
     const [optionSelected, setOptionsSelected] = useState({
         sectionId: -1,
@@ -27,10 +29,13 @@ export const TemplateConfig = ({ type, closeHandler }) => {
     const dispatch = useDispatch()
 
     useEffect(() => {
+        setPageLoading(true)
         getDefaultTemplate().then(res => {
             dispatch(setDefaultTemplate(coreTemplate))
+            setPageLoading(false)
 
         }).catch(err => {
+            setPageLoading(false)
             console.log(err)
         })
     }, [])
@@ -209,22 +214,25 @@ export const TemplateConfig = ({ type, closeHandler }) => {
                     <Button variant='secondary' label="Save & Exit" onClickHandler={closeHandler} />
                 </div>
             </div>
-            <div style={{ display: "flex", columnGap: "24px" }}>
-                <ClausesAndOptions optionGroups={clausesSelected?.optionGroups} optionSelectHandler={optionSelectHandler} optionSelected={optionSelected} type={type} />
-                <PreviewPane>
-                    {review ?
-                        <Review data={clausesSelected?.optionGroups || []} />
-                        :
-                        <ClauseEditor data={editorClause} addClauseHandler={addClauseHandler} />
+            {pageLoading ? <Oval wrapperClass="spinner" height={50} color="#003866" /> :
+
+                <div style={{ display: "flex", columnGap: "24px" }}>
+                    <ClausesAndOptions optionGroups={clausesSelected?.optionGroups} optionSelectHandler={optionSelectHandler} optionSelected={optionSelected} type={type} />
+                    <PreviewPane>
+                        {review ?
+                            <Review data={clausesSelected?.optionGroups || []} />
+                            :
+                            <ClauseEditor data={editorClause} addClauseHandler={addClauseHandler} />
+                        }
+                    </PreviewPane>
+                    {type === "contract" && review &&
+                        <AiTabs />
                     }
-                </PreviewPane>
-                {type === "contract" && review &&
-                    <AiTabs />
-                }
-                {type === "contract" &&
-                    <smart-assistant ></smart-assistant>
-                }
-            </div>
+                    {type === "contract" &&
+                        <smart-assistant ></smart-assistant>
+                    }
+                </div>
+            }
         </div>
     </div>
 }

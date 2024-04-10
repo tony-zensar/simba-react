@@ -335,6 +335,8 @@
 }
 
 .suggestions-tab {
+  position: relative;
+  width: 330px;
   .suggestions-tab-items {
     display: flex;
     margin-bottom: 24px;
@@ -525,4 +527,8 @@
 }
 .preview-spinner {
   top: 20%;
+}
+
+.ai-tab-spinner {
+  top: 10%;
 }

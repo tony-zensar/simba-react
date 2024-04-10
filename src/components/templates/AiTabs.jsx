@@ -1,19 +1,17 @@
 import { useEffect, useState } from "react"
+import { useDispatch, useSelector } from 'react-redux'
+import clone from "rfdc"
 import { AddIcon, StarIcon, TrashIcon } from "../../assets/IconList"
+import { getAiSuggestions, getAiSummary } from "../../requests/requests"
 import { ButtonSmall } from "../button/Button"
 import { Icon } from "../icon/Icon"
-import { getAiSuggestions, getAiSummary } from "../../requests/requests"
-import { useDispatch, useSelector } from 'react-redux';
-import clone from "rfdc"
-
-
-import parse from 'html-react-parser';
-
-
+import { Oval } from "react-loader-spinner"
 
 
 export const AiTabs = () => {
     const [activeItem, setActiveItem] = useState(1)
+    const [pageLoading, setPageLoading] = useState(true)
+
 
     const { newTemplate, clauses, defaultTemplate } = useSelector(state => state.templatesReducer)
     const dispatch = useDispatch()
@@ -23,22 +21,28 @@ export const AiTabs = () => {
 
 
     useEffect(() => {
-
         if (activeItem === 1) {
             const obj = updateJson()
+            setPageLoading(true)
             getAiSuggestions(obj).then(res => {
                 setSuggestions(res?.data?.items)
+                setPageLoading(false)
 
             }).catch(err => {
                 console.log(err)
+                setPageLoading(false)
+
             })
         }
         else {
+            setPageLoading(true)
             getAiSummary(newTemplate?.clausesSelected?.optionGroups).then(res => {
                 setSummary(res?.data)
+                setPageLoading(false)
 
             }).catch(err => {
                 console.log(err)
+                setPageLoading(false)
             })
         }
     }, [activeItem])
@@ -88,20 +92,21 @@ export const AiTabs = () => {
 
         </div>
         {
-            activeItem === 1 ?
-                <div className="suggestion-list">
-                    {suggestions?.map((s, index) => <SuggestionItem {...s} deleteHandler={() => deleteSuggestionHandler(index)} />)}
-                </div>
-                :
-                <div className="summary">
-                    <p className="summary-short">{summary?.overView}</p>
-                    {summary?.summaryItems?.map(({ heading, description }) => {
-                        return <div className="summary-details">
-                            <label className="summary-title">{heading}</label>
-                            <p className="summary-desc">{description}</p>
-                        </div>
-                    })}
-                </div>
+            pageLoading ? <Oval wrapperClass="spinner simba-tab-content ai-tab-spinner" height={50} color="#003866" /> :
+                activeItem === 1 ?
+                    <div className="suggestion-list">
+                        {suggestions?.map((s, index) => <SuggestionItem {...s} deleteHandler={() => deleteSuggestionHandler(index)} />)}
+                    </div>
+                    :
+                    <div className="summary">
+                        <p className="summary-short">{summary?.overView}</p>
+                        {summary?.summaryItems?.map(({ heading, description }) => {
+                            return <div className="summary-details">
+                                <label className="summary-title">{heading}</label>
+                                <p className="summary-desc">{description}</p>
+                            </div>
+                        })}
+                    </div>
         }
 
     </div >
