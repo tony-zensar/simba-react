@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getDefaultTemplate } from '../../requests/requests';
+import { getDefaultTemplate, saveContract, saveTemplate } from '../../requests/requests';
 import { clearStore, setClauses, setDefaultTemplate, setNewTemplate } from '../../store/actionCreators';
 import { ClausesAndOptions } from '../ClausesAndOptions/ClausesAndOptions';
 import { Button, ChatBot, ClauseEditor, PreviewPane, Review, Suggestions, Summary } from '../index';
@@ -15,7 +15,7 @@ import { Oval } from 'react-loader-spinner';
 
 export const TemplateConfig = ({ type, closeHandler }) => {
     const { newTemplate, clauses, defaultTemplate } = useSelector(state => state.templatesReducer)
-    const { templateName, clausesSelected } = newTemplate
+    const { templateName, clausesSelected, category } = newTemplate
     const [pageLoading, setPageLoading] = useState(true)
 
     const [optionSelected, setOptionsSelected] = useState({
@@ -55,6 +55,9 @@ export const TemplateConfig = ({ type, closeHandler }) => {
             subSectionId: 8,
             labelId: 2
         })
+
+        dispatch(setNewTemplate("templateName", type === 'template' ? 'Untitled template' : 'Untitled contract'))
+
 
         dispatch(setClauses(content))
 
@@ -200,19 +203,41 @@ export const TemplateConfig = ({ type, closeHandler }) => {
         setEditorClause(clauseDetailsCpy.optionGroups[optionGroupIndex].options[optionsIndex].groupClauses[groupClausesIndex].content || "");
     }, [])
 
+    const saveHandler = () => {
+        const data = { templateName, optionGroups: clausesSelected.optionGroups, category }
+
+        if (type === "template") {
+            saveTemplate().then(data => {
+                closeHandler()
+            }).catch(err => {
+                console.log(err)
+                closeHandler()
+            })
+        } else {
+            saveContract().then(data => {
+                closeHandler()
+            }).catch(err => {
+                console.log(err)
+                closeHandler()
+            })
+        }
+
+    }
+
     return <div >
         <PageHeader />
         <div className='config-container'>
             <div className='config-header'>
-                <NameInput onChange={templateNameHandler} value={type === "template" ? templateName : "Untitled contract"} />
+                <NameInput onChange={templateNameHandler} value={templateName} />
                 <div className='config-actions'>
                     {review ? <Button label={type === "template" ? "Edit template" : "Edit Contract"} onClickHandler={() => setReview(false)} /> : <Button label={type === "template" ? "Review Template" : "Review Contract"} onClickHandler={() => setReview(true)} />}
-                    <Button variant='secondary' label="Save & Exit" onClickHandler={closeHandler} />
+                    <Button variant='secondary' label="Save & Exit" onClickHandler={saveHandler} />
                 </div>
             </div>
             {pageLoading ? <Oval wrapperClass="spinner" height={50} color="#003866" /> :
 
                 <div style={{ display: "flex", columnGap: "24px" }}>
+
                     <ClausesAndOptions optionGroups={clausesSelected?.optionGroups} optionSelectHandler={optionSelectHandler} optionSelected={optionSelected} type={type} />
                     <PreviewPane>
                         {review ?

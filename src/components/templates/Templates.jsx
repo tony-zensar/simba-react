@@ -106,7 +106,7 @@ export const Templates = () => {
                                 <div style={{ width: "333px", flexShrink: 0 }}>
                                     <SortHeader />
                                     <div className="templates-list">
-                                        {templateList?.map(template => <TemplatesCard {...template} previewHandler={previewHandler} />)}
+                                        {templateList?.map((template, index) => <TemplatesCard {...template} previewHandler={previewHandler} key={index} />)}
                                     </div>
                                 </div>
                                 <PreviewPane>

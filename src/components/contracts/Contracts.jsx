@@ -79,7 +79,7 @@ export const Contracts = () => {
                                 <div style={{ width: "333px", flexShrink: 0 }}>
                                     <SortHeader />
                                     <div className="templates-list">
-                                        {templateList?.map(template => <TemplatesCard {...template} previewHandler={previewHandler} type="contract" />)}
+                                        {templateList?.map((template, index) => <TemplatesCard {...template} previewHandler={previewHandler} type="contract" key={index} />)}
                                     </div>
                                 </div>
                                 <PreviewPane>
