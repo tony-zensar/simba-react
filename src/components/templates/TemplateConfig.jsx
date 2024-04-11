@@ -175,31 +175,7 @@ export const TemplateConfig = ({ type, closeHandler }) => {
         dispatch(setNewTemplate("templateName", e.target.value))
     }
 
-    const getEditorClauses = useCallback(() => {
 
-        if (clausesSelected.length < 1) {
-            return ""
-        }
-        const clauseDetailsCpy = clone()(clausesSelected)
-        const optionGroup = defaultTemplate?.data?.optionGroups.find(data => data.id === optionSelected.sectionId)
-        const options = optionGroup?.options?.find(data => data.id === optionSelected.subSectionId)
-        const groupClauses = options?.groupClauses.find(data => data.id === optionSelected.labelId)
-
-        let optionGroupIndex = -1;
-        let optionsIndex = -1;
-        let groupClausesIndex = -1;
-
-        optionGroupIndex = clauseDetailsCpy?.optionGroups?.findIndex(data => data.title === optionGroup.title)
-        optionsIndex = clauseDetailsCpy?.optionGroups[optionGroupIndex]?.options?.findIndex(data => data.summary === options.summary)
-        groupClausesIndex = clauseDetailsCpy.optionGroups[optionGroupIndex]?.options[optionsIndex]?.groupClauses?.findIndex(data => data.label === groupClauses.label)
-
-
-
-        if (optionGroupIndex < 0 || optionsIndex < 0 || groupClausesIndex < 0) {
-            setEditorClause(clauseDetailsCpy?.optionGroups[0]?.options[0]?.groupClauses[0]?.content);
-        }
-        setEditorClause(clauseDetailsCpy.optionGroups[optionGroupIndex].options[optionsIndex].groupClauses[groupClausesIndex].content || "");
-    }, [])
 
     const saveHandler = () => {
 
