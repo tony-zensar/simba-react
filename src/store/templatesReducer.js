@@ -13,12 +13,12 @@ import {
 const initialState = {
   templateList: null,
   templateCategories: [],
-  templatePreview: [],
+  templatePreview: {},
   defaultTemplate: [],
   clauses: [],
   selectedClause: [],
   newTemplate: {
-    templateName: 'Untitled template',
+    templateName: null,
     category: {
       id: 1,
       contractor: 'mainContractor',
@@ -64,12 +64,12 @@ export const templatesReducer = (state = initialState, action = null) => {
         ...state,
         templateList: null,
         templateCategories: [],
-        templatePreview: [],
+        templatePreview: {},
         defaultTemplate: [],
         clauses: [],
         selectedClause: [],
         newTemplate: {
-          templateName: 'Untitled template',
+          templateName: null,
           category: {
             id: 1,
             contractor: 'mainContractor',

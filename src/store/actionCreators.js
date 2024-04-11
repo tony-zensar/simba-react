@@ -1,5 +1,6 @@
 import {
   CLEAR_STORE,
+  COPY_TEMPLATE,
   SET_CLAUSES,
   SET_DEFAULT_TEMPLATE,
   SET_FETCH,
@@ -41,4 +42,8 @@ export const setDefaultTemplate = (template) => {
 
 export const clearStore = () => {
   return { type: CLEAR_STORE };
+};
+
+export const copyTemplate = () => {
+  return { type: COPY_TEMPLATE };
 };

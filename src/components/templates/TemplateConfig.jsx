@@ -10,11 +10,12 @@ import { coreClauses } from '../../data/coreClauses';
 import clone from "rfdc"
 import { AiTabs } from './AiTabs';
 import { Oval } from 'react-loader-spinner';
+import { getUpdatedJson } from '../../utils/commonFn';
 
 
 
 export const TemplateConfig = ({ type, closeHandler }) => {
-    const { newTemplate, clauses, defaultTemplate } = useSelector(state => state.templatesReducer)
+    const { newTemplate, defaultTemplate, templatePreview } = useSelector(state => state.templatesReducer)
     const { templateName, clausesSelected, category } = newTemplate
     const [pageLoading, setPageLoading] = useState(true)
 
@@ -49,18 +50,15 @@ export const TemplateConfig = ({ type, closeHandler }) => {
 
 
     useEffect(() => {
-        const content = getClauses({ sectionIndex: 0, subSectionIndex: 0, labelIndex: 0 })
+        // const content = getClauses({ sectionIndex: 0, subSectionIndex: 0, labelIndex: 0 })
         setOptionsSelected({
             sectionId: 1,
             subSectionId: 8,
             labelId: 2
         })
 
-        dispatch(setNewTemplate("templateName", type === 'template' ? 'Untitled template' : 'Untitled contract'))
-
-
-        dispatch(setClauses(content))
-
+        dispatch(setNewTemplate("templateName", templatePreview?.name))
+        // dispatch(setClauses(content))
 
     }, [])
 
@@ -204,9 +202,12 @@ export const TemplateConfig = ({ type, closeHandler }) => {
     }, [])
 
     const saveHandler = () => {
-        const data = { templateName, optionGroups: clausesSelected.optionGroups, category }
+
 
         if (type === "template") {
+            const data = { ...templatePreview, name: templateName, optionGroups: getUpdatedJson(newTemplate), category }
+            console.log(data)
+            return
             saveTemplate(data).then(data => {
                 closeHandler()
             }).catch(err => {
@@ -214,6 +215,9 @@ export const TemplateConfig = ({ type, closeHandler }) => {
                 closeHandler()
             })
         } else {
+            const data = { ...templatePreview, name: templateName, optionGroups: getUpdatedJson(newTemplate) }
+            console.log(data)
+            return;
             saveContract(data).then(data => {
                 closeHandler()
             }).catch(err => {
@@ -228,7 +232,7 @@ export const TemplateConfig = ({ type, closeHandler }) => {
         <PageHeader />
         <div className='config-container'>
             <div className='config-header'>
-                <NameInput onChange={templateNameHandler} value={templateName} />
+                <NameInput onChange={templateNameHandler} value={templateName ? templateName : templatePreview.name} />
                 <div className='config-actions'>
                     {review ? <Button label={type === "template" ? "Edit template" : "Edit Contract"} onClickHandler={() => setReview(false)} /> : <Button label={type === "template" ? "Review Template" : "Review Contract"} onClickHandler={() => setReview(true)} />}
                     <Button variant='secondary' label="Save & Exit" onClickHandler={saveHandler} />

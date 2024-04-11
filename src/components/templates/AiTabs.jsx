@@ -7,6 +7,7 @@ import { getAiSuggestions, getAiSummary } from "../../requests/requests"
 import { setNewTemplate } from "../../store/actionCreators"
 import { ButtonSmall } from "../button/Button"
 import { Icon } from "../icon/Icon"
+import { checkContent, getUpdatedJson } from "../../utils/commonFn"
 
 
 export const AiTabs = () => {
@@ -23,7 +24,7 @@ export const AiTabs = () => {
 
     useEffect(() => {
         if (activeItem === 1) {
-            const obj = getUpdatedJson()
+            const obj = getUpdatedJson(newTemplate)
             setPageLoading(true)
             getAiSuggestions(obj).then(res => {
                 setSuggestions(res?.data)
@@ -50,51 +51,11 @@ export const AiTabs = () => {
     }, [activeItem])
 
 
-    const getUpdatedJson = () => {
-        const x = clone()(newTemplate)
-        const a = x.clausesSelected.optionGroups?.map((og, ogIndex) => {
-            return {
-                ...og, options: og?.options?.map((o, oIndex) => {
-                    return {
-                        ...o, groupClauses: o?.groupClauses?.map((gc, gcIndex) => {
-                            if (checkContent(gc.content)) {
-                                return gc
-                            }
-                            return { ...gc, content: null }
-                        })
-                    }
-                })
-            }
-        })
-        return a
-    }
 
-    const getUpdatedJson2 = () => {
-        return newTemplate.clausesSelected.optionGroups?.map((og, ogIndex) => {
-            if (og.title === "Core Clause")
-                return {
-                    ...og, options: og?.options?.map((o, oIndex) => {
-                        if (o.summary === 'General')
-                            return {
-                                ...o, groupClauses: o?.groupClauses?.map((gc, gcIndex) => {
-                                    if (checkContent(gc.content)) {
-                                        return gc
-                                    }
-                                    return { content: gc.clauses.map(i => i).toString() }
-                                })
-                            }
-                    })
-                }
-        })
-    }
 
-    const checkContent = (content) => {
-        const isEmpty = content.replace(/<(.|\n)*?>/g, '').trim().length === 0
-        if (isEmpty) {
-            return null;
-        }
-        return content
-    }
+
+
+
 
     const deleteSuggestionHandler = (itemIndex) => {
         const suggestionsDetails = clone()(suggestions)

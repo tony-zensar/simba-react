@@ -12,3 +12,5 @@ export const SET_CLAUSES = 'SET_CLAUSES';
 export const TOGGLE_DIALOG = 'TOGGLE_DIALOG';
 
 export const CLEAR_STORE = 'CLEAR_STORE';
+
+export const COPY_TEMPLATE = 'COPY_TEMPLATE';
