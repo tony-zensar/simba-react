@@ -18,7 +18,7 @@ export const AiTabs = () => {
     const [summary, setSummary] = useState([])
 
 
-    const y = newTemplate.clausesSelected.optionGroups
+
 
 
     useEffect(() => {
@@ -26,7 +26,7 @@ export const AiTabs = () => {
             const obj = getUpdatedJson()
             setPageLoading(true)
             getAiSuggestions(obj).then(res => {
-                setSuggestions(res?.data?.items)
+                setSuggestions(res?.data)
                 setPageLoading(false)
 
             }).catch(err => {
@@ -37,8 +37,9 @@ export const AiTabs = () => {
         }
         else {
             setPageLoading(true)
-            getAiSummary(y).then(res => {
-                setSummary(res?.data)
+            getAiSummary(newTemplate?.clausesSelected?.optionGroups).then(res => {
+                setSummary(res.data)
+                console.log(res)
                 setPageLoading(false)
 
             }).catch(err => {
@@ -117,12 +118,12 @@ export const AiTabs = () => {
             pageLoading ? <Oval wrapperClass="spinner simba-tab-content ai-tab-spinner" height={50} color="#003866" /> :
                 activeItem === 1 ?
                     <div className="suggestion-list">
-                        {suggestions?.map((s, index) => <SuggestionItem {...s} deleteHandler={() => deleteSuggestionHandler(index)} />)}
+                        {Array.isArray(suggestions) && suggestions?.map((s, index) => <SuggestionItem {...s} deleteHandler={() => deleteSuggestionHandler(index)} />)}
                     </div>
                     :
                     <div className="summary">
                         <p className="summary-short">{summary?.overView}</p>
-                        {summary?.summaryItems?.map(({ heading, description }) => {
+                        {summary?.summary?.map(({ heading, description }) => {
                             return <div className="summary-details">
                                 <label className="summary-title">{heading}</label>
                                 <p className="summary-desc">{description}</p>
