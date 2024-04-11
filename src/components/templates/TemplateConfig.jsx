@@ -6,7 +6,7 @@ import { ClausesAndOptions } from '../ClausesAndOptions/ClausesAndOptions';
 import { Button, ChatBot, ClauseEditor, PreviewPane, Review, Suggestions, Summary } from '../index';
 import { NameInput } from '../name-input/NameInput';
 import { PageHeader } from '../page-utils/PageHeader';
-import { coreTemplate } from '../../data/coreTemplate';
+import { coreClauses } from '../../data/coreClauses';
 import clone from "rfdc"
 import { AiTabs } from './AiTabs';
 import { Oval } from 'react-loader-spinner';
@@ -31,7 +31,7 @@ export const TemplateConfig = ({ type, closeHandler }) => {
     useEffect(() => {
         setPageLoading(true)
         getDefaultTemplate().then(res => {
-            dispatch(setDefaultTemplate(coreTemplate))
+            dispatch(setDefaultTemplate(coreClauses))
             setPageLoading(false)
 
         }).catch(err => {
@@ -207,14 +207,14 @@ export const TemplateConfig = ({ type, closeHandler }) => {
         const data = { templateName, optionGroups: clausesSelected.optionGroups, category }
 
         if (type === "template") {
-            saveTemplate().then(data => {
+            saveTemplate(data).then(data => {
                 closeHandler()
             }).catch(err => {
                 console.log(err)
                 closeHandler()
             })
         } else {
-            saveContract().then(data => {
+            saveContract(data).then(data => {
                 closeHandler()
             }).catch(err => {
                 console.log(err)

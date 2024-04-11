@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { coreTemplate } from '../data/coreTemplate';
+import { coreClauses } from '../data/coreClauses';
 
 export const getTemplates = async () => {
   return axios.get(
