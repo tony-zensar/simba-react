@@ -63,7 +63,6 @@ export const templatesReducer = (state = initialState, action = null) => {
       return {
         ...state,
         templateList: null,
-        templateCategories: [],
         templatePreview: {},
         defaultTemplate: [],
         clauses: [],

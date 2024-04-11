@@ -1,4 +1,5 @@
 import parse from 'html-react-parser';
+import { checkContent } from '../../utils/commonFn';
 
 export const Review = ({ data = [] }) => {
     return <div className="template-review">
@@ -7,11 +8,10 @@ export const Review = ({ data = [] }) => {
                 return <>
                     <div className="template-clause">{summary}</div>
                     {groupClauses?.map(({ content, label }) => {
-
-                        return <div key={label}>
+                        return checkContent(content) ? <div key={label}>
                             <div className="template-subclause">{label}</div>
-                            <div className="template-clause-content">{content ? parse(content) : ""}</div>
-                        </div>
+                            <div className="template-clause-content">{parse(content || "")}</div>
+                        </div> : ""
                     })}
 
                 </>

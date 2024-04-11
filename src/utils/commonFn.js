@@ -26,7 +26,7 @@ const trimText = (str, length, dots) => {
 };
 
 const checkContent = (content) => {
-  const isEmpty = content.replace(/<(.|\n)*?>/g, '').trim().length === 0;
+  const isEmpty = content?.replace(/<(.|\n)*?>/g, '').trim().length === 0;
   if (isEmpty) {
     return null;
   }
@@ -42,7 +42,10 @@ const getUpdatedJson = (newTemplate) => {
         return {
           ...o,
           groupClauses: o?.groupClauses?.map((gc, gcIndex) => {
-            return gc;
+            if (checkContent(gc.content)) {
+              return gc;
+            }
+            return { ...gc, content: null };
           }),
         };
       }),

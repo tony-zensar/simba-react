@@ -46,7 +46,7 @@ export const TemplateConfig = ({ type, closeHandler }) => {
     }, [])
 
     useEffect(() => () => {
-        // dispatch(clearStore())
+        dispatch(clearStore())
 
     }, [])
 

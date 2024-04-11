@@ -32,6 +32,8 @@ export const Templates = () => {
         if (templateList?.length > 0) {
             return
         }
+        setPageLoading(true)
+
         getTemplates().then(res => {
             dispatch(setTemplateList(res?.data?.items))
             previewHandler(res?.data?.items[0]?.id)
@@ -53,7 +55,7 @@ export const Templates = () => {
     }, [])
 
     useEffect(() => () => {
-        // dispatch(clearStore())
+        dispatch(clearStore())
     }, [])
 
     useEffect(() => {
@@ -114,11 +116,11 @@ export const Templates = () => {
                                     {previewLoading ? <Oval wrapperClass="spinner preview-spinner" height={50} color="#003866" /> :
                                         <div>
                                             <p className="template-preview-heading">{templatePreview?.heading}</p>
-                                            <div className='template-preview-content'>{parse(templatePreview?.headingContent)}</div>
+                                            <div className='template-preview-content'>{parse(templatePreview?.headingContent || "")}</div>
                                             <p className="template-preview-subheading">{templatePreview?.subHeading}</p>
-                                            <div className='template-preview-content'>{parse(templatePreview?.subHeadingContent)}</div>
+                                            <div className='template-preview-content'>{parse(templatePreview?.subHeadingContent || "")}</div>
                                             <p className="template-preview-description">Description</p>
-                                            <div className='template-preview-content'>{parse(templatePreview?.description)}</div>
+                                            <div className='template-preview-content'>{parse(templatePreview?.description || "")}</div>
                                             <div style={{ display: "flex", flexGrow: 0, justifyContent: "flex-end", width: "100%", position: "absolute", right: "10px", top: "10px" }}>
                                                 <ButtonSmall onClick={dialogOpenHandler} label="Use this template" />
                                             </div>
