@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/simba-react/static/css/main.abdd6b31.css",
-    "main.js": "/simba-react/static/js/main.69faafeb.js",
+    "main.js": "/simba-react/static/js/main.6984cfef.js",
     "static/media/FrutigerLTStd-Cn.svg": "/simba-react/static/media/FrutigerLTStd-Cn.3097ad2afd9de99a83b3.svg",
     "static/media/FrutigerLTStd-LightCn.svg": "/simba-react/static/media/FrutigerLTStd-LightCn.030cf6f111a70d0e8096.svg",
     "static/media/FrutigerLTStd-Bold.svg": "/simba-react/static/media/FrutigerLTStd-Bold.07824f069c6a6e3eb541.svg",
@@ -43,10 +43,10 @@
     "static/media/BookmarkFilled.svg": "/simba-react/static/media/BookmarkFilled.7aaf6bb1581fc06fd88a87bea5e2a6d3.svg",
     "static/media/LeftArrow.svg": "/simba-react/static/media/LeftArrow.83123a2edb524a7712f8092c106ec9a0.svg",
     "main.abdd6b31.css.map": "/simba-react/static/css/main.abdd6b31.css.map",
-    "main.69faafeb.js.map": "/simba-react/static/js/main.69faafeb.js.map"
+    "main.6984cfef.js.map": "/simba-react/static/js/main.6984cfef.js.map"
   },
   "entrypoints": [
     "static/css/main.abdd6b31.css",
-    "static/js/main.69faafeb.js"
+    "static/js/main.6984cfef.js"
   ]
 }
