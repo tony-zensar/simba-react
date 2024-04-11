@@ -5,9 +5,9 @@ import clone from "rfdc"
 import { AddIcon, StarIcon, TrashIcon } from "../../assets/IconList"
 import { getAiSuggestions, getAiSummary } from "../../requests/requests"
 import { setNewTemplate } from "../../store/actionCreators"
+import { getUpdatedJson } from "../../utils/commonFn"
 import { ButtonSmall } from "../button/Button"
 import { Icon } from "../icon/Icon"
-import { checkContent, getUpdatedJson } from "../../utils/commonFn"
 
 
 export const AiTabs = () => {
@@ -98,7 +98,7 @@ export const AiTabs = () => {
 
 }
 
-const SuggestionItem = ({ deleteHandler, heading = "Missing clause", groupClause, option, optionGroup, desc = "This is an example description of the clauses suggested by AI that user missed in the contract. Upon clicking on accept this clause will be added into the contract, clicking on delete icon will remove this suggestion from the list of suggestions." }) => {
+const SuggestionItem = ({ deleteHandler, heading = "Missing clause", groupClause, option, optionGroup, description = "This is an example description of the clauses suggested by AI that user missed in the contract. Upon clicking on accept this clause will be added into the contract, clicking on delete icon will remove this suggestion from the list of suggestions." }) => {
     const { newTemplate, defaultTemplate } = useSelector(state => state.templatesReducer)
     const dispatch = useDispatch()
 
@@ -112,10 +112,11 @@ const SuggestionItem = ({ deleteHandler, heading = "Missing clause", groupClause
     }
 
     const insertClauseHandler = (section, subSection, label) => {
+
         const clauseDetailsCpy = clone()(clausesSelected)
         clauseDetailsCpy.optionGroups.forEach(og => {
             if (og.title === section) {
-                og.options.forEach(o => {
+                og?.options.forEach(o => {
                     if (o.summary === subSection) {
                         o.groupClauses.forEach(gc => {
                             if (gc.label === label) {
@@ -160,11 +161,10 @@ const SuggestionItem = ({ deleteHandler, heading = "Missing clause", groupClause
             </div> :
             <div className="suggestion-details">
                 <label className="suggestion-details-title">{heading} {groupClause}</label>
-                <p className="suggestion-details-desc">{desc}</p>
+                <p className="suggestion-details-desc">{description}</p>
                 <div className="suggestion-actions">
                     <ButtonSmall icon={<AddIcon />} label="Add Clause" onClick={() => insertClauseHandler(optionGroup, option, groupClause)} />
                     <Icon component={<TrashIcon />} onClick={removeSuggestion} />
-
                 </div>
             </div>
         }

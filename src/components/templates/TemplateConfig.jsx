@@ -32,17 +32,21 @@ export const TemplateConfig = ({ type, closeHandler }) => {
     useEffect(() => {
         setPageLoading(true)
         getDefaultTemplate().then(res => {
-            dispatch(setDefaultTemplate(coreClauses))
+            let updatedClause = res?.data?.optionGroups
+            updatedClause.shift()
+            dispatch(setDefaultTemplate({ data: { optionGroups: updatedClause } }))
             setPageLoading(false)
 
         }).catch(err => {
             setPageLoading(false)
+            dispatch(setDefaultTemplate(coreClauses))
+
             console.log(err)
         })
     }, [])
 
     useEffect(() => () => {
-        dispatch(clearStore())
+        // dispatch(clearStore())
 
     }, [])
 
@@ -178,7 +182,8 @@ export const TemplateConfig = ({ type, closeHandler }) => {
 
 
     const saveHandler = () => {
-
+        closeHandler()
+        return
         let data = { ...templatePreview, name: templateName, optionGroups: getUpdatedJson(newTemplate) }
         const id = templatePreview.id
         if (type === "template") {

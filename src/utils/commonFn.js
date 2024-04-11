@@ -42,10 +42,28 @@ const getUpdatedJson = (newTemplate) => {
         return {
           ...o,
           groupClauses: o?.groupClauses?.map((gc, gcIndex) => {
+            return gc;
+          }),
+        };
+      }),
+    };
+  });
+  return a;
+};
+
+const getUpdatedJson2 = (newTemplate) => {
+  const x = clone()(newTemplate);
+  const a = x.clausesSelected.optionGroups?.map((og, ogIndex) => {
+    return {
+      ...og,
+      options: og?.options?.map((o, oIndex) => {
+        return {
+          ...o,
+          groupClauses: o?.groupClauses?.map((gc, gcIndex) => {
             if (checkContent(gc.content)) {
               return gc;
             }
-            return { ...gc, content: null };
+            return null;
           }),
         };
       }),
