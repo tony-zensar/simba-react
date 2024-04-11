@@ -203,22 +203,18 @@ export const TemplateConfig = ({ type, closeHandler }) => {
 
     const saveHandler = () => {
 
-
+        let data = { ...templatePreview, name: templateName, optionGroups: getUpdatedJson(newTemplate) }
+        const id = templatePreview.id
         if (type === "template") {
-            const data = { ...templatePreview, name: templateName, optionGroups: getUpdatedJson(newTemplate), category }
-            console.log(data)
-            return
-            saveTemplate(data).then(data => {
+            data = { ...data, category }
+            saveTemplate(id, data).then(data => {
                 closeHandler()
             }).catch(err => {
                 console.log(err)
                 closeHandler()
             })
         } else {
-            const data = { ...templatePreview, name: templateName, optionGroups: getUpdatedJson(newTemplate) }
-            console.log(data)
-            return;
-            saveContract(data).then(data => {
+            saveContract(id, data).then(data => {
                 closeHandler()
             }).catch(err => {
                 console.log(err)

@@ -55,16 +55,18 @@ export const getAiSummary = async (data) => {
   );
 };
 
-export const saveTemplate = (template) => {
+export const saveTemplate = (id, template) => {
   return axios.put(
-    'https://webserver-lctzensarttl-prd.lfr.cloud/o/contract-management/1.0.0/templat',
+    'https://webserver-lctzensarttl-prd.lfr.cloud/o/contract-management/1.0.0/template/' +
+      id,
     template
   );
 };
 
-export const saveContract = (contract) => {
+export const saveContract = (id, contract) => {
   return axios.put(
-    'https://webserver-lctzensarttl-prd.lfr.cloud/o/contract-management/1.0.0/contrac',
+    'https://webserver-lctzensarttl-prd.lfr.cloud/o/contract-management/1.0.0/contract/' +
+      id,
     contract
   );
 };
